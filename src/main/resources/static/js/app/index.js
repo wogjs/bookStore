@@ -5,6 +5,10 @@ var main = {
             _this.save();
         });
 
+        $('#btn-login').on('click', function() {
+            _this.login();
+        })
+
 //        $('#btn-update').on('click', function () {
 //            _this.update();
 //        });
@@ -28,11 +32,10 @@ var main = {
         $.ajax({
             type: 'POST',
             url: '/users/userJoin',
-            dataType: 'json',
+            dataType: 'text',
             contentType:'application/json; charset=UTF-8',
             data: JSON.stringify(data)
         }).done(function() {
-            console.log("들어는 가냐")
             alert('회원가입 되었습니다..');
             window.location.href = '/';
         }).fail(function (error) {
@@ -40,6 +43,27 @@ var main = {
             alert(JSON.stringify(error));
         });
     },
+
+    login : function () {
+        var data = {
+            id: $('#id').val(),
+            pw: $('#pw').val()
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/users/signIn',
+            dataType: 'text',
+            contentType:'application/json; charset=UTF-8',
+            data: JSON.stringify(data)
+        }).done(function() {
+            alert('로그인이 되었습니다.');
+            window.location.href = '/';
+        }).fail(function (error) {
+            console.log(error)
+            alert(JSON.stringify(error));
+        });
+    }
 //    update : function () {
 //        var data = {
 //            title: $('#title').val(),
