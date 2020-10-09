@@ -1,6 +1,7 @@
 package com.project.bookstore.web.user;
 
 import com.project.bookstore.service.users.UsersService;
+import com.project.bookstore.web.user.dto.UserInfoDto;
 import com.project.bookstore.web.user.dto.UserSignInDto;
 import com.project.bookstore.web.user.dto.UserSignUpDto;
 import io.swagger.annotations.Api;
@@ -35,7 +36,7 @@ public class UsersApiController {
             @ApiImplicitParam(name = "title", value = "제목", required = true, dataType = "string", paramType = "query", defaultValue = ""),
             @ApiImplicitParam(name = "content", value = "로그인", required = true, dataType = "string", paramType = "query", defaultValue = ""), })
     @PostMapping("/signIn")
-    public UserSignInDto signin(@RequestBody UserSignInDto userSignInDto) {
+    public UserInfoDto signin(@RequestBody UserSignInDto userSignInDto) {
         return usersService.signIn(userSignInDto);
     }
 }

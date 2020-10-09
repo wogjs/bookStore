@@ -22,12 +22,10 @@ public class Users {
     private int num;
     private String mail;
     private String nic_name;
-
     private String mem = "B";
-//
-//    private int total_sum;
-//    private String non_user;
-//    private String sns_login;
+    private int total_sum;
+    private String non_user;
+    private String sns_login;
 
     @Builder
     public Users(String id, String pw, String name, String sex, int num, String mail, String nic_name) {
