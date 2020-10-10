@@ -1,5 +1,6 @@
 package com.project.bookstore.web.user;
 
+import com.project.bookstore.config.ApiResponse;
 import com.project.bookstore.service.users.UsersService;
 import com.project.bookstore.web.user.dto.UserInfoDto;
 import com.project.bookstore.web.user.dto.UserSignInDto;
@@ -9,6 +10,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +38,25 @@ public class UsersApiController {
             @ApiImplicitParam(name = "title", value = "제목", required = true, dataType = "string", paramType = "query", defaultValue = ""),
             @ApiImplicitParam(name = "content", value = "로그인", required = true, dataType = "string", paramType = "query", defaultValue = ""), })
     @PostMapping("/signIn")
-    public UserInfoDto signin(@RequestBody UserSignInDto userSignInDto) {
-        return usersService.signIn(userSignInDto);
+    public ResponseEntity<?> signin(@RequestBody UserSignInDto userSignInDto){
+        ApiResponse result = null;
+        try{
+            System.out.println(userSignInDto);
+            UserInfoDto userInfoDto = usersService.signIn(userSignInDto);
+            if(userInfoDto != null) {
+                result = new ApiResponse(true, "성공", userInfoDto);
+                return ResponseEntity.ok().body(result);
+            } else {
+                result = new ApiResponse(false, "아이디나 비밀번호가 없습니다.", userInfoDto);
+                return ResponseEntity.badRequest().body(result);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = new ApiResponse(false, e.getMessage(), null);
+            return ResponseEntity.badRequest().body(result);
+        }
     }
+//    public UserInfoDto signin(@RequestBody UserSignInDto userSignInDto) {
+//        return usersService.signIn(userSignInDto);
+//    }
 }

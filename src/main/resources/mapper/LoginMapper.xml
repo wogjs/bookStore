@@ -9,10 +9,4 @@
         FROM users
         WHERE ID = #{id} AND PW=#{pw};
     </select>
-
-<!--    <select id="findID" parameterType="com.wogjs.permission.login.Login" resultType="com.wogjs.permission.login.LoginFind">-->
-<!--        SELECT userID-->
-<!--        FROM tbUser-->
-<!--        WHERE email = #{email} AND userName = #{userName};-->
-<!--    </select>-->
 </mapper>
