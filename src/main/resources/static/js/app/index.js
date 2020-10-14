@@ -19,8 +19,8 @@ var main = {
     },
     save : function () {
         var data = {
-            id: $('#id').val(),
-            pw: $('#pw').val(),
+            userID: $('#userID').val(),
+            userPW: $('#userPW').val(),
             name: $('#name').val(),
             sex: $('#sex').val(),
             num: $('#num').val(),
@@ -31,7 +31,7 @@ var main = {
 
         $.ajax({
             type: 'POST',
-            url: '/users/userJoin',
+            url: '/users/login',
             dataType: 'text',
             contentType:'application/json; charset=UTF-8',
             data: JSON.stringify(data)
@@ -46,13 +46,13 @@ var main = {
 
     login : function () {
         var data = {
-            id: $('#id').val(),
-            pw: $('#pw').val()
+            userID: $('#userID').val(),
+            userPW: $('#userPW').val()
         };
 
         $.ajax({
             type: 'POST',
-            url: '/users/signIn',
+            url: '/users/login',
             dataType: 'text',
             contentType:'application/json; charset=UTF-8',
             data: JSON.stringify(data)

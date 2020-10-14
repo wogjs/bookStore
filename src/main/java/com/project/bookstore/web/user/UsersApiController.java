@@ -1,3 +1,4 @@
+
 package com.project.bookstore.web.user;
 
 import com.project.bookstore.config.ApiResponse;
@@ -37,7 +38,7 @@ public class UsersApiController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "title", value = "제목", required = true, dataType = "string", paramType = "query", defaultValue = ""),
             @ApiImplicitParam(name = "content", value = "로그인", required = true, dataType = "string", paramType = "query", defaultValue = ""), })
-    @PostMapping("/signIn")
+    @PostMapping("/login")
     public ResponseEntity<?> signin(@RequestBody UserSignInDto userSignInDto){
         ApiResponse result = null;
         try{

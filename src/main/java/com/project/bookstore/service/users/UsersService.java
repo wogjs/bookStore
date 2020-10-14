@@ -1,3 +1,4 @@
+
 package com.project.bookstore.service.users;
 
 import com.project.bookstore.domain.users.Users;
@@ -20,7 +21,7 @@ public class UsersService {
 
     @Transactional
     public String save(UserSignUpDto requestDto) {
-        return usersRepository.save(requestDto.toEntity()).getId();
+        return usersRepository.save(requestDto.toEntity()).getUserID();
     }
 
     public UserInfoDto signIn(UserSignInDto signInDto) {

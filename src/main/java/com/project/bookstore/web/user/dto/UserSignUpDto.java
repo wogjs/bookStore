@@ -7,8 +7,8 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 public class UserSignUpDto {
-    private String id;
-    private String pw;
+    private String userID;
+    private String userPW;
     private String name;
     private String sex;
     private int num;
@@ -16,9 +16,9 @@ public class UserSignUpDto {
     private String nic_name;
 
     @Builder
-    private UserSignUpDto(String id, String pw, String name, String sex, int num, String mail, String nic_name) {
-        this.id = id;
-        this.pw = pw;
+    private UserSignUpDto(String userID, String userPW, String name, String sex, int num, String mail, String nic_name) {
+        this.userID = userID;
+        this.userPW = userPW;
         this.name = name;
         this.sex = sex;
         this.num = num;
@@ -28,8 +28,8 @@ public class UserSignUpDto {
 
     public Users toEntity() {
         return Users.builder()
-                .id(id)
-                .pw(pw)
+                .userID(userID)
+                .userPW(userPW)
                 .name(name)
                 .sex(sex)
                 .num(num)
