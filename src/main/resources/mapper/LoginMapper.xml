@@ -7,6 +7,8 @@
     <select id="signIn" parameterType="com.project.bookstore.web.user.dto.UserSignInDto" resultType="com.project.bookstore.web.user.dto.UserInfoDto">
         SELECT *
         FROM users
-        WHERE userID = #{userID} AND userPW=#{userPW};
+        WHERE id = #{id} AND pw=#{pw};
     </select>
+
+
 </mapper>

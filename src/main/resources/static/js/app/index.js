@@ -19,41 +19,45 @@ var main = {
     },
     save : function () {
         var data = {
-            userID: $('#userID').val(),
-            userPW: $('#userPW').val(),
+            id: $('#id').val(),
+            pw: $('#pw').val(),
             name: $('#name').val(),
             sex: $('#sex').val(),
             num: $('#num').val(),
             mail: $('#mail').val(),
-            nic_name: $('#nic_name').val()
+            nic_Name: $('#nic_Name').val()
 
         };
 
         $.ajax({
             type: 'POST',
-            url: '/users/login',
-            dataType: 'text',
+            url: '/users/userJoin',
+            dataType: 'JSON',
             contentType:'application/json; charset=UTF-8',
             data: JSON.stringify(data)
         }).done(function() {
+
             alert('회원가입 되었습니다..');
             window.location.href = '/';
-        }).fail(function (error) {
-            console.log(error)
-            alert(JSON.stringify(error));
+        }).fail(function () {
+            if(data.id == "") {
+                alert('값을 입력하세요');
+            } else {
+                alert('이미 사용중인 아이디입니다.');
+            }
         });
     },
 
     login : function () {
         var data = {
-            userID: $('#userID').val(),
-            userPW: $('#userPW').val()
+            id: $('#id').val(),
+            pw: $('#pw').val()
         };
 
         $.ajax({
             type: 'POST',
             url: '/users/login',
-            dataType: 'text',
+            dataType: 'JSON',
             contentType:'application/json; charset=UTF-8',
             data: JSON.stringify(data)
         }).done(function() {

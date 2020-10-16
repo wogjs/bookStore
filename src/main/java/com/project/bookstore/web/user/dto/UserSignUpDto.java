@@ -7,34 +7,34 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 public class UserSignUpDto {
-    private String userID;
-    private String userPW;
+    private String id;
+    private String pw;
     private String name;
     private String sex;
     private int num;
     private String mail;
-    private String nic_name;
+    private String nic_Name;
 
     @Builder
-    private UserSignUpDto(String userID, String userPW, String name, String sex, int num, String mail, String nic_name) {
-        this.userID = userID;
-        this.userPW = userPW;
+    private UserSignUpDto(String id, String pw, String name, String sex, int num, String mail, String nic_Name) {
+        this.id = id;
+        this.pw = pw;
         this.name = name;
         this.sex = sex;
         this.num = num;
         this.mail = mail;
-        this.nic_name = nic_name;
+        this.nic_Name = nic_Name;
     }
 
     public Users toEntity() {
         return Users.builder()
-                .userID(userID)
-                .userPW(userPW)
+                .id(id)
+                .pw(pw)
                 .name(name)
                 .sex(sex)
                 .num(num)
                 .mail(mail)
-                .nic_name(nic_name)
+                .nic_Name(nic_Name)
                 .build();
     }
 }

@@ -19,9 +19,23 @@ public class UsersService {
     private final UsersRepository usersRepository;
     private final UsersMapperRepository usersMapperRepository;
 
+//    @Transactional
+//    public List<UserInfoDto> findAll(){
+//        return usersRepository.findAll().stream()
+//                .map(UserInfoDto::new)
+//                .collect(Collectors.toList());
+//    }
+
+    @Transactional
+    public Users findById(String id) {
+        Users entity = usersRepository.findById(id).orElseGet(Users::new);
+
+        return entity;
+    }
+
     @Transactional
     public String save(UserSignUpDto requestDto) {
-        return usersRepository.save(requestDto.toEntity()).getUserID();
+        return usersRepository.save(requestDto.toEntity()).getId();
     }
 
     public UserInfoDto signIn(UserSignInDto signInDto) {
