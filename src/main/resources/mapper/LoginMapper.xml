@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.bookstore.domain.users.UsersMapperRepository">
-    <select id="signIn" parameterType="com.project.bookstore.web.user.dto.UserSignInDto" resultType="com.project.bookstore.web.user.dto.UserInfoDto">
+    <select id="signIn" parameterType="com.project.bookstore.web.user.dto.userDto.UserSignInDto" resultType="com.project.bookstore.web.user.dto.userDto.UserInfoDto">
         SELECT *
         FROM users
         WHERE id = #{id} AND pw=#{pw};
