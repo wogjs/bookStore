@@ -12,6 +12,7 @@ import javax.persistence.*;
 public class Users {
 
     @Id
+    @Column(name = "Users_id")
     private String id;
 
     @Column(length = 500, nullable = false)
