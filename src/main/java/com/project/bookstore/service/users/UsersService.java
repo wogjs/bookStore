@@ -8,6 +8,7 @@ import com.project.bookstore.domain.users.UsersMapperRepository;
 import com.project.bookstore.domain.users.UsersRepository;
 import com.project.bookstore.web.user.dto.addrDto.AddrInsertDto;
 import com.project.bookstore.web.user.dto.addrDto.AddrListDto;
+import com.project.bookstore.web.user.dto.cardDto.CardCheckDto;
 import com.project.bookstore.web.user.dto.cardDto.CardInsertDto;
 import com.project.bookstore.web.user.dto.cardDto.CardListDto;
 import com.project.bookstore.web.user.dto.userDto.UserInfoDto;
@@ -37,6 +38,7 @@ public class UsersService {
         return usersRepository.save(requestDto.toEntity()).getId();
     }
 
+    // 중복 검사
     @Transactional
     public Users findById(String id) {
         Users entity = usersRepository.findById(id).orElseGet(Users::new);
@@ -44,18 +46,26 @@ public class UsersService {
         return entity;
     }
 
-    //로그인
+    // 로그인
     public UserInfoDto signIn(UserSignInDto signInDto) {
         return usersMapperRepository.signIn(signInDto);
     }
 
-    //카드 등록
+    // 카드 등록
     @Transactional
     public String cardSave(CardInsertDto insertDto) {
         return cardsRepository.save(insertDto.toEntity()).getCard_Num();
     }
 
-    //카드 조회
+    // 카드 중복 검사
+    @Transactional
+    public List<CardCheckDto> findByCard(String id, String card_Num) {
+        return cardsRepository.findByCard(id, card_Num).stream()
+                .map(CardCheckDto::new)
+                .collect(Collectors.toList());
+    }
+
+    // 카드 조회
     @Transactional
     public List<CardListDto> findCard(String users_ID){
         return cardsRepository.findAll(users_ID).stream()
@@ -63,17 +73,24 @@ public class UsersService {
                 .collect(Collectors.toList());
     }
 
-    //주소 등록
+    // 주소 등록
     @Transactional
     public Long addrSave(AddrInsertDto insertDto) {
         return addrRepository.save(insertDto.toEntity()).getAddr_Zip();
     }
 
+    // 주소 조회
     @Transactional
     public List<AddrListDto> findAddr(String users_ID) {
         return addrRepository.findAll(users_ID).stream()
                 .map(AddrListDto::new)
                 .collect(Collectors.toList());
+    }
+
+    //기본 배송지 변경
+    @Transactional
+    public void addrUpdateYN(String users_id) {
+        addrRepository.updateAddrYN(users_id);
     }
 
 }
