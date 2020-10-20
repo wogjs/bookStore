@@ -14,6 +14,7 @@ import com.project.bookstore.web.user.dto.cardDto.CardListDto;
 import com.project.bookstore.web.user.dto.userDto.UserInfoDto;
 import com.project.bookstore.web.user.dto.userDto.UserSignInDto;
 import com.project.bookstore.web.user.dto.userDto.UserSignUpDto;
+import com.project.bookstore.web.user.dto.userDto.UserUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -87,10 +88,20 @@ public class UsersService {
                 .collect(Collectors.toList());
     }
 
-    //기본 배송지 변경
+    // 기본 배송지 변경
     @Transactional
     public void addrUpdateYN(String users_id) {
         addrRepository.updateAddrYN(users_id);
     }
 
+    // 개인 정보 변경
+    @Transactional
+    public Users update(String id, UserUpdateDto updateDto) {
+        Users users = usersRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("에러"));
+
+        users.update(updateDto.getPw(), updateDto.getName(), updateDto.getNum(), updateDto.getMail(), updateDto.getNic_Name());
+
+        return users;
+    }
 }

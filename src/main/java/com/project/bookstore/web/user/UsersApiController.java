@@ -4,10 +4,7 @@ import com.project.bookstore.config.ApiResponse;
 import com.project.bookstore.service.users.UsersService;
 import com.project.bookstore.web.user.dto.addrDto.AddrInsertDto;
 import com.project.bookstore.web.user.dto.cardDto.CardInsertDto;
-import com.project.bookstore.web.user.dto.userDto.UserCheckDto;
-import com.project.bookstore.web.user.dto.userDto.UserInfoDto;
-import com.project.bookstore.web.user.dto.userDto.UserSignInDto;
-import com.project.bookstore.web.user.dto.userDto.UserSignUpDto;
+import com.project.bookstore.web.user.dto.userDto.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -135,6 +132,20 @@ public class UsersApiController {
                 result = new ApiResponse(false, "실패", null);
                 return ResponseEntity.badRequest().body(result);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = new ApiResponse(false, e.getMessage(), null);
+            return ResponseEntity.badRequest().body(result);
+        }
+    }
+
+    @ApiOperation(value = "정보 수정")
+    @PutMapping("/mypage/update/{id}")
+    public ResponseEntity<?> mypageUpdate(@PathVariable("id") String id, @RequestBody UserUpdateDto updateDto) {
+        ApiResponse result = null;
+        try {
+            result = new ApiResponse(true, "성공", usersService.update(id, updateDto));
+            return ResponseEntity.ok().body(result);
         } catch (Exception e) {
             e.printStackTrace();
             result = new ApiResponse(false, e.getMessage(), null);

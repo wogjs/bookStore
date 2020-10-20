@@ -47,11 +47,11 @@ public class UsersController {
 //        model.addAttribute("userInfo", usersService.findAll(users_id));
         ApiResponse2 result = null;
         try{
-            result = new ApiResponse2(true, "성공", usersService.findCard(users_ID), usersService.findAddr(users_ID));
+            result = new ApiResponse2(true, "성공", usersService.findById(users_ID), usersService.findCard(users_ID), usersService.findAddr(users_ID));
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
             e.printStackTrace();
-            result = new ApiResponse2(false, e.getMessage(), null, null);
+            result = new ApiResponse2(false, e.getMessage(), null,null, null);
             return  ResponseEntity.badRequest().body(result);
         }
     }

@@ -11,7 +11,7 @@ public class UserInfoDto {
     private String pw;
     private String name;
     private String sex;
-    private int num;
+    private String num;
     private String mail;
     private String nic_Name;
     private int total_Sum;

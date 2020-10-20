@@ -4,6 +4,8 @@ package com.project.bookstore.web.user.dto.userDto;
 import com.project.bookstore.domain.users.Users;
 import lombok.*;
 
+import java.util.Date;
+
 @Getter
 @NoArgsConstructor
 public class UserSignUpDto {
@@ -11,12 +13,13 @@ public class UserSignUpDto {
     private String pw;
     private String name;
     private String sex;
-    private int num;
+    private String num;
     private String mail;
     private String nic_Name;
+    private String creates;
 
     @Builder
-    private UserSignUpDto(String id, String pw, String name, String sex, int num, String mail, String nic_Name) {
+    private UserSignUpDto(String id, String pw, String name, String sex, String num, String mail, String nic_Name, String creates) {
         this.id = id;
         this.pw = pw;
         this.name = name;
@@ -24,6 +27,7 @@ public class UserSignUpDto {
         this.num = num;
         this.mail = mail;
         this.nic_Name = nic_Name;
+        this.creates = creates;
     }
 
     public Users toEntity() {
@@ -35,6 +39,7 @@ public class UserSignUpDto {
                 .num(num)
                 .mail(mail)
                 .nic_Name(nic_Name)
+                .creates(creates)
                 .build();
     }
 }

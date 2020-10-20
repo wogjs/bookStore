@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class ApiResponse2 {
     private Boolean result;
     private String msg;
-    private Object data;
-    private Object data2;
+    private Object userInfo;
+    private Object card;
+    private Object addr;
 }
