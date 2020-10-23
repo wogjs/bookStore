@@ -15,20 +15,33 @@ import java.util.stream.Collectors;
 public class BooksService {
     private final BooksRepository booksRepository;
 
+    // 책 삽입
     @Transactional
     public String bookInsert(BookInsertDto bookInsertDto) {
-        System.out.println("+==============================");
-
-        System.out.println("+==============================");
-        System.out.println(bookInsertDto.toEntity().getIsbn());
-        System.out.println("+==============================");
         return booksRepository.save(bookInsertDto.toEntity()).getIsbn();
     }
 
+    // 책 리스트 출력
     @Transactional
     public List<BookListDto> findAllDesc() {
         return  booksRepository.findAllDesc().stream()
                 .map(BookListDto::new)
                 .collect(Collectors.toList());
     }
+
+    // 책 검색
+    @Transactional
+    public List<BookListDto> bookName(String searchKey) {
+        return booksRepository.findByBookNameContaining(searchKey).stream()
+                .map(BookListDto::new)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public List<BookListDto> bookAuthor (String searchKey) {
+        return booksRepository.findByBookAutContaining(searchKey).stream()
+                .map(BookListDto::new)
+                .collect(Collectors.toList());
+    }
+
 }

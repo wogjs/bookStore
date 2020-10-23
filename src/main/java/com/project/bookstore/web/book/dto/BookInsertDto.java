@@ -10,8 +10,8 @@ import java.util.Date;
 public class BookInsertDto {
 
     private String isbn;
-    private String book_Name;
-    private String book_Aut;
+    private String bookName;
+    private String bookAut;
     private String book_Trans;
     private Date book_Date;
     private String book_Cov;
@@ -20,10 +20,10 @@ public class BookInsertDto {
     private String book_Det;
 
     @Builder
-    private BookInsertDto(String isbn, String book_Name, String book_Aut, String book_Trans, Date book_Date, String book_Cov, int book_Pri, String book_Gen, String book_Det) {
+    private BookInsertDto(String isbn, String bookName, String bookAut, String book_Trans, Date book_Date, String book_Cov, int book_Pri, String book_Gen, String book_Det) {
         this.isbn = isbn;
-        this.book_Name = book_Name;
-        this.book_Aut = book_Aut;
+        this.bookName = bookName;
+        this.bookAut = bookAut;
         this.book_Trans = book_Trans;
         this.book_Date = book_Date;
         this.book_Cov = book_Cov;
@@ -35,8 +35,8 @@ public class BookInsertDto {
     public Books toEntity() {
         return Books.builder()
                 .isbn(isbn)
-                .book_Name(book_Name)
-                .book_Aut(book_Aut)
+                .bookName(bookName)
+                .bookAut(bookAut)
                 .book_Trans(book_Trans)
                 .book_Date(book_Date)
                 .book_Cov(book_Cov)

@@ -22,8 +22,8 @@ public class Books {
     private String isbn;
 
     @Column
-    private String book_Name;
-    private String book_Aut;
+    private String bookName;
+    private String bookAut;
     private String book_Trans;
     private Date book_Date;
     private String book_Cov;
@@ -32,10 +32,10 @@ public class Books {
     private String book_Det;
 
     @Builder
-    public Books(String isbn, String book_Name, String book_Aut, String book_Trans, Date book_Date, String book_Cov, int book_Pri, String book_Gen, String book_Det) {
+    public Books(String isbn, String bookName, String bookAut, String book_Trans, Date book_Date, String book_Cov, int book_Pri, String book_Gen, String book_Det) {
         this.isbn = isbn;
-        this.book_Name = book_Name;
-        this.book_Aut = book_Aut;
+        this.bookName = bookName;
+        this.bookAut = bookAut;
         this.book_Trans = book_Trans;
         this.book_Date = book_Date;
         this.book_Cov = book_Cov;

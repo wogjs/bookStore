@@ -8,8 +8,8 @@ import java.util.Date;
 @Getter
 public class BookListDto {
     private String isbn;
-    private String book_Name;
-    private String book_Aut;
+    private String bookName;
+    private String bookAut;
     private String book_Trans;
     private Date book_Date;
     private String book_Cov;
@@ -19,8 +19,8 @@ public class BookListDto {
 
     public BookListDto(Books entity) {
         this.isbn = entity.getIsbn();
-        this.book_Name = entity.getBook_Name();
-        this.book_Aut = entity.getBook_Aut();
+        this.bookName = entity.getBookName();
+        this.bookAut = entity.getBookAut();
         this.book_Trans = entity.getBook_Trans();
         this.book_Date = entity.getBook_Date();
         this.book_Cov = entity.getBook_Cov();
