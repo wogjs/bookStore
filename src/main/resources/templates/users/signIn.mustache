@@ -1,0 +1,27 @@
+{{>layout/header}}
+<div class="col-md-12">
+    <div class="col-md-4">
+        <form class="form-signin" method="post" action="/users/login" accept-charset="UTF-8">
+            <div class="form-group">
+                <label for="id" class="sr-only">User ID</label>
+                <input type="text" id="id" name="id" class="form-control" placeholder="User ID" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="pw" class="sr-only">Password</label>
+                <input type="password" id="pw" name="pw" class="form-control" placeholder="Password" required>
+            </div>
+        </form>
+        <button class="btn btn-lg btn-primary btn-block" type="button" id="btn-login">Sign in</button>
+
+        <div>
+            <div>
+                <a target="_self" id="findID" href="#">아이디 찾기</a>
+                <span class="bar" aria-hidden="true">|</span>
+                <a target="_self" id="findPW" href="#">비밀번호 찾기</a>
+                <span class="bar" aria-hidden="true">|</span>
+                <a target="_self" id="join" href="/users/signUp">회원가입</a>
+            </div>
+        </div>
+    </div>
+</div>
+{{>layout/footer}}
