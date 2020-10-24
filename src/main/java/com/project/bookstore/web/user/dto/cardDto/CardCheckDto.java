@@ -5,11 +5,11 @@ import lombok.Getter;
 
 @Getter
 public class CardCheckDto {
-    private String users_id;
-    private String card_Num;
+    private String usersid;
+    private String cardNum;
 
     public CardCheckDto(Cards entity) {
-        this.users_id = entity.getUsers_ID();
-        this.card_Num = entity.getCard_Num();
+        this.usersid = entity.getUsersID();
+        this.cardNum = entity.getCardNum();
     }
 }

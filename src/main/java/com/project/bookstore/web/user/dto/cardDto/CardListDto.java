@@ -7,13 +7,13 @@ import java.util.Date;
 
 @Getter
 public class CardListDto {
-    private String card_Num;
-    private Date card_Period;
-    private String card_Val;
+    private String cardNum;
+    private Date cardPeriod;
+    private String cardVal;
 
     public CardListDto(Cards entity) {
-        this.card_Num = entity.getCard_Num();
-        this.card_Period = entity.getCard_Period();
-        this.card_Val = entity.getCard_Val();
+        this.cardNum = entity.getCardNum();
+        this.cardPeriod = entity.getCardPeriod();
+        this.cardVal = entity.getCardVal();
     }
 }

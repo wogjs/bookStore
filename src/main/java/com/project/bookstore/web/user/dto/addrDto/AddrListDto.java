@@ -5,23 +5,23 @@ import lombok.Getter;
 
 @Getter
 public class AddrListDto {
-    private String addr_Name;
-    private Long addr_Zip;
-    private String addr_Bas;
-    private String addr_Det;
-    private String addr_Num;
-    private String addr_YN;
-    private String addr_Nic;
-    private String sec_Num;
+    private String addrName;
+    private Long addrZip;
+    private String addrBas;
+    private String addrDet;
+    private String addrNum;
+    private String addrYN;
+    private String addrNic;
+    private String secNum;
 
     public AddrListDto(Addr entity) {
-        this.addr_Name = entity.getAddr_Name();
-        this.addr_Zip = entity.getAddr_Zip();
-        this.addr_Bas = entity.getAddr_Bas();
-        this.addr_Det = entity.getAddr_Det();
-        this.addr_Num = entity.getAddr_Num();
-        this.addr_YN = entity.getAddr_YN();
-        this.addr_Nic = entity.getAddr_Nic();
-        this.sec_Num = entity.getSec_Num();
+        this.addrName = entity.getAddrName();
+        this.addrZip = entity.getAddrZip();
+        this.addrBas = entity.getAddrBas();
+        this.addrDet = entity.getAddrDet();
+        this.addrNum = entity.getAddrNum();
+        this.addrYN = entity.getAddrYN();
+        this.addrNic = entity.getAddrNic();
+        this.secNum = entity.getSecNum();
     }
 }

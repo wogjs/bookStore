@@ -55,21 +55,21 @@ public class UsersService {
     // 카드 등록
     @Transactional
     public String cardSave(CardInsertDto insertDto) {
-        return cardsRepository.save(insertDto.toEntity()).getCard_Num();
+        return cardsRepository.save(insertDto.toEntity()).getCardNum();
     }
 
     // 카드 중복 검사
     @Transactional
-    public List<CardCheckDto> findByCard(String id, String card_Num) {
-        return cardsRepository.findByCard(id, card_Num).stream()
+    public List<CardCheckDto> findByCard(String id, String cardNum) {
+        return cardsRepository.findByCard(id, cardNum).stream()
                 .map(CardCheckDto::new)
                 .collect(Collectors.toList());
     }
 
     // 카드 조회
     @Transactional
-    public List<CardListDto> findCard(String users_ID){
-        return cardsRepository.findAll(users_ID).stream()
+    public List<CardListDto> findCard(String usersID){
+        return cardsRepository.findAll(usersID).stream()
                 .map(CardListDto::new)
                 .collect(Collectors.toList());
     }
@@ -77,21 +77,21 @@ public class UsersService {
     // 주소 등록
     @Transactional
     public Long addrSave(AddrInsertDto insertDto) {
-        return addrRepository.save(insertDto.toEntity()).getAddr_Zip();
+        return addrRepository.save(insertDto.toEntity()).getAddrZip();
     }
 
     // 주소 조회
     @Transactional
-    public List<AddrListDto> findAddr(String users_ID) {
-        return addrRepository.findAll(users_ID).stream()
+    public List<AddrListDto> findAddr(String usersID) {
+        return addrRepository.findAll(usersID).stream()
                 .map(AddrListDto::new)
                 .collect(Collectors.toList());
     }
 
     // 기본 배송지 변경
     @Transactional
-    public void addrUpdateYN(String users_id) {
-        addrRepository.updateAddrYN(users_id);
+    public void addrUpdateYN(String usersid) {
+        addrRepository.updateAddrYN(usersid);
     }
 
     // 개인 정보 변경
@@ -100,7 +100,7 @@ public class UsersService {
         Users users = usersRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("에러"));
 
-        users.update(updateDto.getPw(), updateDto.getName(), updateDto.getNum(), updateDto.getMail(), updateDto.getNic_Name());
+        users.update(updateDto.getPw(), updateDto.getName(), updateDto.getNum(), updateDto.getMail(), updateDto.getNicName());
 
         return users;
     }

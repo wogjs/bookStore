@@ -79,10 +79,10 @@ public class UsersApiController {
     @PostMapping("/mypage/cards/{id}")
     public ResponseEntity<?> cardInsert(@PathVariable("id") String id, @RequestBody CardInsertDto insertDto) {
         ApiResponse result = null;
-        if (usersService.findByCard(id, insertDto.getCard_Num()).isEmpty()) {
+        if (usersService.findByCard(id, insertDto.getCardNum()).isEmpty()) {
             try {
-                if(insertDto.getCard_Num() != null) {
-                    insertDto.setUsers_ID(id);
+                if(insertDto.getCardNum() != null) {
+                    insertDto.setUsersID(id);
                     result = new ApiResponse(true, "성공", usersService.cardSave(insertDto));
                     return ResponseEntity.ok().body(result);
                 } else {
@@ -105,27 +105,27 @@ public class UsersApiController {
     public ResponseEntity<?> addrInsert(@PathVariable("id") String id, @RequestBody AddrInsertDto insertDto) {
         ApiResponse result = null;
         try {
-            if(insertDto.getAddr_Zip() != null) {
-                System.out.println(insertDto.getAddr_YN());
-                if(insertDto.getAddr_YN() == null) {
+            if(insertDto.getAddrZip() != null) {
+                System.out.println(insertDto.getAddrYN());
+                if(insertDto.getAddrYN() == null) {
                     if(usersService.findAddr(id).isEmpty()){
-                        insertDto.setAddr_YN("Y");
+                        insertDto.setAddrYN("Y");
                     } else {
-                        insertDto.setAddr_YN("N");
+                        insertDto.setAddrYN("N");
                     }
                 } else {
                     if (!usersService.findAddr(id).isEmpty()){
                         usersService.addrUpdateYN(id);
                     }
-                    insertDto.setAddr_YN("Y");
+                    insertDto.setAddrYN("Y");
                 }
-                if (insertDto.getAddr_Nic() == null) {
-                    insertDto.setAddr_Nic(null);
+                if (insertDto.getAddrNic() == null) {
+                    insertDto.setAddrNic(null);
                 }
-                if (insertDto.getSec_Num() == null) {
-                    insertDto.setSec_Num(null);
+                if (insertDto.getSecNum() == null) {
+                    insertDto.setSecNum(null);
                 }
-                insertDto.setUsers_ID(id);
+                insertDto.setUsersID(id);
                 result = new ApiResponse(true, "성공", usersService.addrSave(insertDto));
                 return ResponseEntity.ok().body(result);
             } else {

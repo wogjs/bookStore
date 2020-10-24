@@ -29,7 +29,7 @@ public class BooksService {
                 .collect(Collectors.toList());
     }
 
-    // 책 검색
+    // 책 이름으로 검색
     @Transactional
     public List<BookListDto> bookName(String searchKey) {
         return booksRepository.findByBookNameContaining(searchKey).stream()
@@ -37,6 +37,7 @@ public class BooksService {
                 .collect(Collectors.toList());
     }
 
+    // 책 저자로 검색
     @Transactional
     public List<BookListDto> bookAuthor (String searchKey) {
         return booksRepository.findByBookAutContaining(searchKey).stream()

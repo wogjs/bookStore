@@ -13,31 +13,31 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 public class CardInsertDto {
-    private String card_Num;
-    private String users_ID;
-    private Date card_Period;
-    private Long card_CVC;
-    private Long card_PW;
-    private String card_Val;
+    private String cardNum;
+    private String usersID;
+    private Date cardPeriod;
+    private Long cardCVC;
+    private Long cardPW;
+    private String cardVal;
 
     @Builder
-    private CardInsertDto(String card_Num, String users_ID, Date card_Period, Long card_CVC, Long card_PW, String card_Val) {
-        this.card_Num = card_Num;
-        this.users_ID = users_ID;
-        this.card_Period = card_Period;
-        this.card_CVC = card_CVC;
-        this.card_PW = card_PW;
-        this.card_Val = card_Val;
+    private CardInsertDto(String cardNum, String usersID, Date cardPeriod, Long cardCVC, Long cardPW, String cardVal) {
+        this.cardNum = cardNum;
+        this.usersID = usersID;
+        this.cardPeriod = cardPeriod;
+        this.cardCVC = cardCVC;
+        this.cardPW = cardPW;
+        this.cardVal = cardVal;
     }
 
     public Cards toEntity() {
         return Cards.builder()
-                .card_Num(card_Num)
-                .users_ID(users_ID)
-                .card_Period(card_Period)
-                .card_CVC(card_CVC)
-                .card_PW(card_PW)
-                .card_Val(card_Val)
+                .cardNum(cardNum)
+                .usersID(usersID)
+                .cardPeriod(cardPeriod)
+                .cardCVC(cardCVC)
+                .cardPW(cardPW)
+                .cardVal(cardVal)
                 .build();
     }
 }

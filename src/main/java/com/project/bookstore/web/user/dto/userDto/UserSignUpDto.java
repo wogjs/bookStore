@@ -15,18 +15,18 @@ public class UserSignUpDto {
     private String sex;
     private String num;
     private String mail;
-    private String nic_Name;
+    private String nicName;
     private String creates;
 
     @Builder
-    private UserSignUpDto(String id, String pw, String name, String sex, String num, String mail, String nic_Name, String creates) {
+    private UserSignUpDto(String id, String pw, String name, String sex, String num, String mail, String nicName, String creates) {
         this.id = id;
         this.pw = pw;
         this.name = name;
         this.sex = sex;
         this.num = num;
         this.mail = mail;
-        this.nic_Name = nic_Name;
+        this.nicName = nicName;
         this.creates = creates;
     }
 
@@ -38,7 +38,7 @@ public class UserSignUpDto {
                 .sex(sex)
                 .num(num)
                 .mail(mail)
-                .nic_Name(nic_Name)
+                .nicName(nicName)
                 .creates(creates)
                 .build();
     }

@@ -13,24 +13,24 @@ import java.util.Date;
 @Entity
 public class Cards {
     @Id
-    private String card_Num;
+    private String cardNum;
 
     @Column(name = "Users_id")
-    private String users_ID;
+    private String usersID;
 
-    private Date card_Period;
-    private Long card_CVC;
-    private Long card_PW;
-    private String card_Val;
+    private Date cardPeriod;
+    private Long cardCVC;
+    private Long cardPW;
+    private String cardVal;
 
     @Builder
-    public Cards (String card_Num, String users_ID, Date card_Period, Long card_CVC, Long card_PW, String card_Val) {
-        this.card_Num = card_Num;
-        this.users_ID = users_ID;
-        this.card_Period = card_Period;
-        this.card_CVC = card_CVC;
-        this.card_PW = card_PW;
-        this.card_Val = card_Val;
+    public Cards (String cardNum, String usersID, Date cardPeriod, Long cardCVC, Long cardPW, String cardVal) {
+        this.cardNum = cardNum;
+        this.usersID = usersID;
+        this.cardPeriod = cardPeriod;
+        this.cardCVC = cardCVC;
+        this.cardPW = cardPW;
+        this.cardVal = cardVal;
     }
 
 

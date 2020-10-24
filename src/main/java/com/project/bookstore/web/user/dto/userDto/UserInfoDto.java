@@ -13,6 +13,6 @@ public class UserInfoDto {
     private String sex;
     private String num;
     private String mail;
-    private String nic_Name;
-    private int total_Sum;
+    private String nicName;
+    private int totalSum;
 }
