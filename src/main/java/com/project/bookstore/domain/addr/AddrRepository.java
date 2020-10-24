@@ -11,10 +11,10 @@ import java.util.Optional;
 public interface AddrRepository extends JpaRepository<Addr, Long> {
 //    Optional<Addr> findById(String id);
 
-    @Query("SELECT a FROM Addr a WHERE a.users_ID = ?1")
-    List<Addr> findAll(String users_ID);
+    @Query("SELECT a FROM Addr a WHERE a.usersID = ?1")
+    List<Addr> findAll(String usersID);
 
     @Modifying
-    @Query("UPDATE Addr a SET a.addr_YN = 'N' WHERE a.addr_YN = 'Y' AND a.users_ID = ?1")
-    void updateAddrYN(String users_ID);
+    @Query("UPDATE Addr a SET a.addrYN = 'N' WHERE a.addrYN = 'Y' AND a.usersID = ?1")
+    void updateAddrYN(String usersID);
 }

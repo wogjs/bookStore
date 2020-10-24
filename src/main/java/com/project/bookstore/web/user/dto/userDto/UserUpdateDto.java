@@ -11,15 +11,15 @@ public class UserUpdateDto {
     private String name;
     private String num;
     private String mail;
-    private String nic_Name;
+    private String nicName;
 
     @Builder
-    public UserUpdateDto(String pw, String name, String num, String mail, String nic_Name) {
+    public UserUpdateDto(String pw, String name, String num, String mail, String nicName) {
         this.pw = pw;
         this.name = name;
         this.num = num;
         this.mail = mail;
-        this.nic_Name = nic_Name;
+        this.nicName = nicName;
     }
 
 }

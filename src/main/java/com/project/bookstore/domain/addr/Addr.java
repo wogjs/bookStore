@@ -13,31 +13,31 @@ import javax.persistence.*;
 public class Addr {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long addr_Code;
+    private Long addrCode;
 
     @Column(name = "Users_id")
-    private String users_ID;
-    private String addr_Name;
-    private Long addr_Zip;
-    private String addr_Bas;
-    private String addr_Det;
-    private String addr_Num;
-    private String addr_YN;
-    private String addr_Nic;
-    private String sec_Num;
+    private String usersID;
+    private String addrName;
+    private Long addrZip;
+    private String addrBas;
+    private String addrDet;
+    private String addrNum;
+    private String addrYN;
+    private String addrNic;
+    private String secNum;
 
     @Builder
-    public Addr (String users_ID, String addr_Name, Long addr_Zip,
-                 String addr_Bas, String addr_Det, String addr_Num, String addr_YN, String addr_Nic, String sec_Num){
-        this.users_ID = users_ID;
-        this.addr_Name = addr_Name;
-        this.addr_Zip = addr_Zip;
-        this.addr_Bas = addr_Bas;
-        this.addr_Det = addr_Det;
-        this.addr_Num = addr_Num;
-        this.addr_YN = addr_YN;
-        this.addr_Nic = addr_Nic;
-        this.sec_Num = sec_Num;
+    public Addr (String usersID, String addrName, Long addrZip,
+                 String addrBas, String addrDet, String addrNum, String addrYN, String addrNic, String secNum){
+        this.usersID = usersID;
+        this.addrName = addrName;
+        this.addrZip = addrZip;
+        this.addrBas = addrBas;
+        this.addrDet = addrDet;
+        this.addrNum = addrNum;
+        this.addrYN = addrYN;
+        this.addrNic = addrNic;
+        this.secNum = secNum;
     }
 
 

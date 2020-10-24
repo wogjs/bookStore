@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CardsRepository extends JpaRepository<Cards, String> {
-    @Query("SELECT c FROM Cards c WHERE c.users_ID = ?1")
-    List<Cards> findAll(String users_ID);
+    @Query("SELECT c FROM Cards c WHERE c.usersID = ?1")
+    List<Cards> findAll(String usersID);
 
 
-    @Query("SELECT c FROM Cards c WHERE c.users_ID = ?1 AND c.card_Num = ?2")
-    List<Cards> findByCard(String users_ID, String card_Num);
+    @Query("SELECT c FROM Cards c WHERE c.usersID = ?1 AND c.cardNum = ?2")
+    List<Cards> findByCard(String usersID, String cardNum);
 }
