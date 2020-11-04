@@ -1,15 +1,14 @@
 package com.project.bookstore.domain.books;
 
+import com.project.bookstore.domain.ordersInfo.OrderInfo;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -41,6 +40,13 @@ public class Books {
         this.bookCov = bookCov;
         this.bookPri = bookPri;
         this.bookGen = bookGen;
+        this.bookDet = bookDet;
+    }
+
+    public void update(String bookTrans, String bookCov, int bookPri, String bookDet) {
+        this.bookTrans = bookTrans;
+        this.bookCov = bookCov;
+        this.bookPri = bookPri;
         this.bookDet = bookDet;
     }
 }

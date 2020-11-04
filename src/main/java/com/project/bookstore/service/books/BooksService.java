@@ -1,8 +1,10 @@
 package com.project.bookstore.service.books;
 
+import com.project.bookstore.domain.books.Books;
 import com.project.bookstore.domain.books.BooksRepository;
 import com.project.bookstore.web.book.dto.BookInsertDto;
 import com.project.bookstore.web.book.dto.BookListDto;
+import com.project.bookstore.web.book.dto.BookUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +45,17 @@ public class BooksService {
         return booksRepository.findByBookAutContaining(searchKey).stream()
                 .map(BookListDto::new)
                 .collect(Collectors.toList());
+    }
+
+    // 책 업데이트
+    @Transactional
+    public Books update (String isbn, BookUpdateDto updateDto){
+        Books books = booksRepository.findById(isbn)
+                .orElseThrow(() -> new IllegalArgumentException("에러"));
+
+        books.update(updateDto.getBookTrans(), updateDto.getBookCov(), updateDto.getBookPri(), updateDto.getBookDet());
+
+        return books;
     }
 
 }

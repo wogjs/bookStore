@@ -3,6 +3,7 @@ package com.project.bookstore.web.book;
 import com.project.bookstore.config.ApiResponse;
 import com.project.bookstore.service.books.BooksService;
 import com.project.bookstore.web.book.dto.BookInsertDto;
+import com.project.bookstore.web.book.dto.BookUpdateDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -35,9 +36,20 @@ public class BookApiController {
             return ResponseEntity.badRequest().body(result);
         }
     }
-//    public String bookInsert(@RequestBody BookInsertDto bookInsertDto) {
-//        return booksService.bookInsert(bookInsertDto);
-//    }
+
+    @ApiOperation(value = "도서 수정")
+    @PutMapping("/update/{isbn}")
+    public ResponseEntity<?> bookUpdate(@PathVariable("isbn") String isbn, @RequestParam BookUpdateDto updateDto) {
+        ApiResponse result = null;
+        try{
+            result = new ApiResponse(true, "성공", booksService.update(isbn, updateDto));
+            return ResponseEntity.ok().body(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = new ApiResponse(true, e.getMessage(), null);
+            return ResponseEntity.badRequest().body(result);
+        }
+    }
 
     @ApiOperation(value = "도서 검색")
     @PostMapping("/bookSearch")
@@ -61,6 +73,5 @@ public class BookApiController {
             return ResponseEntity.badRequest().body(result);
         }
     }
-
 
 }
