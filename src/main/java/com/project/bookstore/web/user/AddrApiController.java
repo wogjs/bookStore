@@ -2,6 +2,7 @@ package com.project.bookstore.web.user;
 
 import com.project.bookstore.config.ApiResponse;
 import com.project.bookstore.service.users.AddrService;
+import com.project.bookstore.session.UserInfo;
 import com.project.bookstore.web.user.dto.addrDto.AddrInsertDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,23 +17,24 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class AddrApiController {
     private final AddrService addrService;
+    private final UserInfo userInfo;
 
     @ApiOperation(value = "주소지 등록")
     @PostMapping("/mypage/addr/{id}")
-    public ResponseEntity<?> addrInsert(@PathVariable("id") String id, @RequestBody AddrInsertDto insertDto) {
+    public ResponseEntity<?> addrInsert(@RequestBody AddrInsertDto insertDto) {
         ApiResponse result = null;
         try {
             if(insertDto.getAddrZip() != null) {
                 System.out.println(insertDto.getAddrYN());
                 if(insertDto.getAddrYN() == null) {
-                    if(addrService.findAddr(id).isEmpty()){
+                    if(addrService.findAddr(userInfo).isEmpty()){
                         insertDto.setAddrYN("Y");
                     } else {
                         insertDto.setAddrYN("N");
                     }
                 } else {
-                    if (!addrService.findAddr(id).isEmpty()){
-                        addrService.addrUpdateYN(id);
+                    if (!addrService.findAddr(userInfo).isEmpty()){
+                        addrService.addrUpdateYN(userInfo);
                     }
                     insertDto.setAddrYN("Y");
                 }
@@ -42,7 +44,7 @@ public class AddrApiController {
                 if (insertDto.getSecNum() == null) {
                     insertDto.setSecNum(null);
                 }
-                insertDto.setUsersID(id);
+                insertDto.setUsers(addrService.findUsers(userInfo));
                 result = new ApiResponse(true, "성공", addrService.addrSave(insertDto));
                 return ResponseEntity.ok().body(result);
             } else {

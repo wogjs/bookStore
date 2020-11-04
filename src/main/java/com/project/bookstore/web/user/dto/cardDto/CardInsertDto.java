@@ -2,6 +2,7 @@ package com.project.bookstore.web.user.dto.cardDto;
 
 import com.project.bookstore.domain.cards.Cards;
 
+import com.project.bookstore.domain.users.Users;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,16 +15,16 @@ import java.util.Date;
 @NoArgsConstructor
 public class CardInsertDto {
     private String cardNum;
-    private String usersID;
+    private Users users;
     private Date cardPeriod;
     private Long cardCVC;
     private Long cardPW;
     private String cardVal;
 
     @Builder
-    private CardInsertDto(String cardNum, String usersID, Date cardPeriod, Long cardCVC, Long cardPW, String cardVal) {
+    private CardInsertDto(String cardNum, Users users, Date cardPeriod, Long cardCVC, Long cardPW, String cardVal) {
         this.cardNum = cardNum;
-        this.usersID = usersID;
+        this.users = users;
         this.cardPeriod = cardPeriod;
         this.cardCVC = cardCVC;
         this.cardPW = cardPW;
@@ -33,7 +34,7 @@ public class CardInsertDto {
     public Cards toEntity() {
         return Cards.builder()
                 .cardNum(cardNum)
-                .usersID(usersID)
+                .users(users)
                 .cardPeriod(cardPeriod)
                 .cardCVC(cardCVC)
                 .cardPW(cardPW)

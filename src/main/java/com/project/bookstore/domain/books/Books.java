@@ -1,6 +1,7 @@
 package com.project.bookstore.domain.books;
 
-import com.project.bookstore.domain.ordersInfo.OrderInfo;
+import com.project.bookstore.domain.basketInfo.BasketInfo;
+import com.project.bookstore.domain.orderInfo.OrderInfo;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,8 +31,15 @@ public class Books {
     private String bookGen;
     private String bookDet;
 
+    @OneToMany(mappedBy = "books")
+    private List<OrderInfo> orderInfo;
+
+    @OneToMany(mappedBy = "books")
+    private List<BasketInfo> basketInfo;
+
     @Builder
-    public Books(String isbn, String bookName, String bookAut, String bookTrans, Date bookDate, String bookCov, int bookPri, String bookGen, String bookDet) {
+    public Books(String isbn, String bookName, String bookAut, String bookTrans, Date bookDate, String bookCov, int bookPri,
+                 String bookGen, String bookDet, List<OrderInfo> orderInfo, List<BasketInfo> basketInfo) {
         this.isbn = isbn;
         this.bookName = bookName;
         this.bookAut = bookAut;
@@ -41,6 +49,8 @@ public class Books {
         this.bookPri = bookPri;
         this.bookGen = bookGen;
         this.bookDet = bookDet;
+        this.orderInfo = orderInfo;
+        this.basketInfo = basketInfo;
     }
 
     public void update(String bookTrans, String bookCov, int bookPri, String bookDet) {

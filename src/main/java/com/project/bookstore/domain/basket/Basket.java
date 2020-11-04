@@ -1,0 +1,36 @@
+package com.project.bookstore.domain.basket;
+
+import com.project.bookstore.domain.basketInfo.BasketInfo;
+import com.project.bookstore.domain.users.Users;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Getter
+@NoArgsConstructor
+@Entity
+public class Basket {
+    @Id
+    @GeneratedValue
+    private Long basCode;
+
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private Users users;
+
+    private String basCre;
+    private Long basSum;
+
+    @OneToMany(mappedBy = "basket")
+    private List<BasketInfo> basketInfo;
+
+    @Builder
+    public Basket (Users users, String basCre, Long basSum) {
+        this.users = users;
+        this.basCre = basCre;
+        this.basSum = basSum;
+    }
+}

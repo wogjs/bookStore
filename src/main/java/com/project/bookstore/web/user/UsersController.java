@@ -4,6 +4,7 @@ import com.project.bookstore.config.ApiResponse2;
 import com.project.bookstore.service.users.AddrService;
 import com.project.bookstore.service.users.CardService;
 import com.project.bookstore.service.users.UsersService;
+import com.project.bookstore.session.UserInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ public class UsersController {
     private final UsersService usersService;
     private final AddrService addrService;
     private final CardService cardService;
+    private final UserInfo userInfo;
 
     @GetMapping("/")
     public String index() {
@@ -41,11 +43,11 @@ public class UsersController {
 //    }
 
     @GetMapping("/users/mypage/{id}")
-    public ResponseEntity<?> mypage(@PathVariable("id") String users_ID) {
+    public ResponseEntity<?> mypage() {
 //        model.addAttribute("userInfo", usersService.findAll(users_id));
         ApiResponse2 result = null;
         try{
-            result = new ApiResponse2(true, "성공", usersService.findById(users_ID), cardService.findCard(users_ID), addrService.findAddr(users_ID));
+            result = new ApiResponse2(true, "성공", usersService.findUsers(userInfo), cardService.findCard(userInfo), addrService.findAddr(userInfo));
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,5 +1,6 @@
 package com.project.bookstore.domain.addr;
 
+import com.project.bookstore.domain.users.Users;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,8 +16,10 @@ public class Addr {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long addrCode;
 
-    @Column(name = "Users_id")
-    private String usersID;
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private Users users;
+
     private String addrName;
     private Long addrZip;
     private String addrBas;
@@ -27,9 +30,9 @@ public class Addr {
     private String secNum;
 
     @Builder
-    public Addr (String usersID, String addrName, Long addrZip,
+    public Addr (Users users, String addrName, Long addrZip,
                  String addrBas, String addrDet, String addrNum, String addrYN, String addrNic, String secNum){
-        this.usersID = usersID;
+        this.users = users;
         this.addrName = addrName;
         this.addrZip = addrZip;
         this.addrBas = addrBas;

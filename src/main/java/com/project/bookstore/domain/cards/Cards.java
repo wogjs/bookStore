@@ -15,8 +15,9 @@ public class Cards {
     @Id
     private String cardNum;
 
-    @Column(name = "Users_id")
-    private String usersID;
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private Users users;
 
     private Date cardPeriod;
     private Long cardCVC;
@@ -24,9 +25,9 @@ public class Cards {
     private String cardVal;
 
     @Builder
-    public Cards (String cardNum, String usersID, Date cardPeriod, Long cardCVC, Long cardPW, String cardVal) {
+    public Cards (String cardNum, Users users, Date cardPeriod, Long cardCVC, Long cardPW, String cardVal) {
         this.cardNum = cardNum;
-        this.usersID = usersID;
+        this.users = users;
         this.cardPeriod = cardPeriod;
         this.cardCVC = cardCVC;
         this.cardPW = cardPW;

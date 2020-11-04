@@ -4,6 +4,7 @@ package com.project.bookstore.service.users;
 import com.project.bookstore.domain.users.Users;
 import com.project.bookstore.domain.users.UsersMapperRepository;
 import com.project.bookstore.domain.users.UsersRepository;
+import com.project.bookstore.session.UserInfo;
 import com.project.bookstore.web.user.dto.userDto.UserInfoDto;
 import com.project.bookstore.web.user.dto.userDto.UserSignInDto;
 import com.project.bookstore.web.user.dto.userDto.UserSignUpDto;
@@ -46,5 +47,10 @@ public class UsersService {
         users.update(updateDto.getPw(), updateDto.getName(), updateDto.getNum(), updateDto.getMail(), updateDto.getNicName());
 
         return users;
+    }
+
+    @Transactional
+    public Users findUsers(UserInfo userInfo){
+        return usersRepository.findById(userInfo.getUserId()).get();
     }
 }

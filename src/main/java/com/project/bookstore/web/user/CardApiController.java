@@ -2,6 +2,7 @@ package com.project.bookstore.web.user;
 
 import com.project.bookstore.config.ApiResponse;
 import com.project.bookstore.service.users.CardService;
+import com.project.bookstore.session.UserInfo;
 import com.project.bookstore.web.user.dto.cardDto.CardInsertDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,15 +18,16 @@ import org.springframework.web.bind.annotation.*;
 public class CardApiController {
 
     private final CardService cardService;
+    private final UserInfo userInfo;
 
     @ApiOperation(value = "카드 등록")
-    @PostMapping("/mypage/cards/{id}")
-    public ResponseEntity<?> cardInsert(@PathVariable("id") String id, @RequestBody CardInsertDto insertDto) {
+    @PostMapping("/mypage/cards")
+    public ResponseEntity<?> cardInsert(@RequestBody CardInsertDto insertDto) {
         ApiResponse result = null;
-        if (cardService.findByCard(id, insertDto.getCardNum()).isEmpty()) {
+        if (cardService.findByCard(userInfo, insertDto.getCardNum()).isEmpty()) {
             try {
                 if(insertDto.getCardNum() != null) {
-                    insertDto.setUsersID(id);
+                    insertDto.setUsers(cardService.findUsers(userInfo));
                     result = new ApiResponse(true, "성공", cardService.cardSave(insertDto));
                     return ResponseEntity.ok().body(result);
                 } else {

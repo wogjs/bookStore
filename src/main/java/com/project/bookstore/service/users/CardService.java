@@ -1,13 +1,16 @@
 package com.project.bookstore.service.users;
 
 import com.project.bookstore.domain.cards.CardsRepository;
+import com.project.bookstore.domain.users.Users;
+import com.project.bookstore.domain.users.UsersRepository;
+import com.project.bookstore.session.UserInfo;
 import com.project.bookstore.web.user.dto.cardDto.CardCheckDto;
 import com.project.bookstore.web.user.dto.cardDto.CardInsertDto;
 import com.project.bookstore.web.user.dto.cardDto.CardListDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,6 +19,12 @@ import java.util.stream.Collectors;
 public class CardService {
 
     private final CardsRepository cardsRepository;
+    private final UsersRepository usersRepository;
+
+    @Transactional(readOnly = true)
+    public Users findUsers(UserInfo userInfo) {
+        return usersRepository.findById(userInfo.getUserId()).get();
+    }
 
     // 카드 등록
     @Transactional
@@ -25,16 +34,16 @@ public class CardService {
 
     // 카드 중복 검사
     @Transactional
-    public List<CardCheckDto> findByCard(String id, String cardNum) {
-        return cardsRepository.findByCard(id, cardNum).stream()
+    public List<CardCheckDto> findByCard(UserInfo userInfo, String cardNum) {
+        return cardsRepository.findByCard(userInfo, cardNum).stream()
                 .map(CardCheckDto::new)
                 .collect(Collectors.toList());
     }
 
     // 카드 조회
     @Transactional
-    public List<CardListDto> findCard(String usersID){
-        return cardsRepository.findAll(usersID).stream()
+    public List<CardListDto> findCard(UserInfo userInfo){
+        return cardsRepository.findAll(userInfo).stream()
                 .map(CardListDto::new)
                 .collect(Collectors.toList());
     }

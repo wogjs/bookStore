@@ -1,6 +1,7 @@
 package com.project.bookstore.web.user.dto.addrDto;
 
 import com.project.bookstore.domain.addr.Addr;
+import com.project.bookstore.domain.users.Users;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import javax.persistence.Column;
 @Getter
 @NoArgsConstructor
 public class AddrInsertDto {
-    private String usersID;
+    private Users users;
     private String addrName;
     private Long addrZip;
     private String addrBas;
@@ -23,9 +24,9 @@ public class AddrInsertDto {
     private String secNum;
 
     @Builder
-    public AddrInsertDto (String usersID, String addrName, Long addrZip,
+    public AddrInsertDto (Users users, String addrName, Long addrZip,
                  String addrBas, String addrDet, String addrNum, String addrYN, String addrNic, String secNum){
-        this.usersID = usersID;
+        this.users = users;
         this.addrName = addrName;
         this.addrZip = addrZip;
         this.addrBas = addrBas;
@@ -38,7 +39,7 @@ public class AddrInsertDto {
 
     public Addr toEntity() {
         return Addr.builder()
-                .usersID(usersID)
+                .users(users)
                 .addrName(addrName)
                 .addrZip(addrZip)
                 .addrBas(addrBas)
