@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 import java.util.Optional;
 
-public interface AddrRepository extends JpaRepository<Addr, Long> {
+public interface AddrRepository extends JpaRepository<Addr, String> {
 //    Optional<Addr> findById(String id);
 
-    @Query("SELECT a FROM Addr a WHERE a.users = ?1")
-    List<Addr> findAll(UserInfo userInfo);
+    List<Addr> findAllByUsers_Id(String userid);
 
-    @Modifying
-    @Query("UPDATE Addr a SET a.addrYN = 'N' WHERE a.addrYN = 'Y' AND a.users = ?1")
-    void updateAddrYN(UserInfo userInfo);
+    @Query("SELECT a FROM Addr a WHERE a.addrYN = 'Y'")
+    List<Addr> findAllDesc();
+
+    List<Addr> findByUsers_IdAndAddrYN(String userid, String YN);
 }

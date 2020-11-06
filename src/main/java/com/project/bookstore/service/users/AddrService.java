@@ -1,5 +1,6 @@
 package com.project.bookstore.service.users;
 
+import com.project.bookstore.domain.addr.Addr;
 import com.project.bookstore.domain.addr.AddrRepository;
 import com.project.bookstore.domain.users.Users;
 import com.project.bookstore.domain.users.UsersRepository;
@@ -7,6 +8,7 @@ import com.project.bookstore.session.UserInfo;
 import com.project.bookstore.web.user.dto.addrDto.AddrInsertDto;
 import com.project.bookstore.web.user.dto.addrDto.AddrListDto;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +21,7 @@ public class AddrService {
 
     private final AddrRepository addrRepository;
     private final UsersRepository usersRepository;
+
 
     @Transactional(readOnly = true)
     public Users findUsers(UserInfo userInfo){
@@ -34,14 +37,26 @@ public class AddrService {
     // 주소 조회
     @Transactional
     public List<AddrListDto> findAddr(UserInfo userInfo) {
-        return addrRepository.findAll(userInfo).stream()
+        return addrRepository.findAllByUsers_Id(userInfo.getUserId()).stream()
                 .map(AddrListDto::new)
                 .collect(Collectors.toList());
     }
 
     // 기본 배송지 변경
     @Transactional
-    public void addrUpdateYN(UserInfo userInfo) {
-        addrRepository.updateAddrYN(userInfo);
+    public List<AddrListDto> YN(UserInfo userInfo) {
+        return addrRepository.findByUsers_IdAndAddrYN(userInfo.getUserId(),"Y").stream()
+                .map(AddrListDto::new)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public Addr addrUpdateYN(UserInfo userInfo){
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+        Addr addr = addrRepository.findByUsers_IdAndAddrYN(userInfo.getUserId(), "Y").get(0);
+        addr.setAddrYN("N");
+        System.out.println(addr.getAddrYN());
+        addr.update(addr.getAddrCode(), addr.getAddrYN());
+        return addr;
     }
 }

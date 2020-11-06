@@ -19,13 +19,13 @@ public class Cards {
     @JoinColumn(name = "users_id")
     private Users users;
 
-    private Date cardPeriod;
+    private String cardPeriod;
     private Long cardCVC;
     private Long cardPW;
     private String cardVal;
 
     @Builder
-    public Cards (String cardNum, Users users, Date cardPeriod, Long cardCVC, Long cardPW, String cardVal) {
+    public Cards (String cardNum, Users users, String cardPeriod, Long cardCVC, Long cardPW, String cardVal) {
         this.cardNum = cardNum;
         this.users = users;
         this.cardPeriod = cardPeriod;

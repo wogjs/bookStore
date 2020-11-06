@@ -1,11 +1,13 @@
 package com.project.bookstore.web.user.dto.addrDto;
 
 import com.project.bookstore.domain.addr.Addr;
+import com.project.bookstore.domain.users.Users;
 import lombok.Getter;
 
 @Getter
 public class AddrListDto {
     private String addrName;
+    private Users users;
     private Long addrZip;
     private String addrBas;
     private String addrDet;
@@ -16,6 +18,7 @@ public class AddrListDto {
 
     public AddrListDto(Addr entity) {
         this.addrName = entity.getAddrName();
+        this.users = entity.getUsers();
         this.addrZip = entity.getAddrZip();
         this.addrBas = entity.getAddrBas();
         this.addrDet = entity.getAddrDet();

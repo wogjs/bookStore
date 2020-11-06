@@ -4,11 +4,13 @@ import com.project.bookstore.domain.users.Users;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
 public class Addr {
@@ -41,6 +43,11 @@ public class Addr {
         this.addrYN = addrYN;
         this.addrNic = addrNic;
         this.secNum = secNum;
+    }
+
+    public void update(Long addrCode, String addrYN){
+        this.addrCode = addrCode;
+        this.addrYN = addrYN;
     }
 
 
