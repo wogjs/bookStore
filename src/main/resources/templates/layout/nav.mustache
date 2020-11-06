@@ -4,7 +4,14 @@
         <a class="p-2 text-dark" href="#">Features</a>
         <a class="p-2 text-dark" href="#">Enterprise</a>
         <a class="p-2 text-dark" href="#">Support</a>
-        <a class="p-2 text-dark" href="/users/signUp">Pricing</a>
+        {{#userid}}
+            <a class="p-2 text-dark" href="/users/mypage">마이페이지</a>
+        {{/userid}}
     </nav>
-    <a class="btn btn-outline-primary" href="/users/login" role="button" class="btn btn-primary">Sign in</a>
+    {{^userid}}
+        <a class="btn btn-outline-primary" href="/users/login" role="button" class="btn btn-primary">로그인</a>
+    {{/userid}}
+    {{#userid}}
+        <a class="btn btn-outline-danger" href="/users/logout" role="button" class="btn btn-danger">로그아웃</a>
+    {{/userid}}
 </div>

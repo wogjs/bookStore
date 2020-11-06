@@ -24,7 +24,7 @@ public class CardApiController {
     @PostMapping("/mypage/cards")
     public ResponseEntity<?> cardInsert(@RequestBody CardInsertDto insertDto) {
         ApiResponse result = null;
-        if (cardService.findByCard(userInfo, insertDto.getCardNum()).isEmpty()) {
+        if (insertDto.getCardNum() != null) {
             try {
                 if(insertDto.getCardNum() != null) {
                     insertDto.setUsers(cardService.findUsers(userInfo));

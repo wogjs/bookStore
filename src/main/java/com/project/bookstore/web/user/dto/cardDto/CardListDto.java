@@ -8,7 +8,7 @@ import java.util.Date;
 @Getter
 public class CardListDto {
     private String cardNum;
-    private Date cardPeriod;
+    private String cardPeriod;
     private String cardVal;
 
     public CardListDto(Cards entity) {

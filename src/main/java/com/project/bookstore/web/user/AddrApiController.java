@@ -20,13 +20,13 @@ public class AddrApiController {
     private final UserInfo userInfo;
 
     @ApiOperation(value = "주소지 등록")
-    @PostMapping("/mypage/addr/{id}")
+    @PostMapping("/addr")
     public ResponseEntity<?> addrInsert(@RequestBody AddrInsertDto insertDto) {
         ApiResponse result = null;
+        System.out.println(insertDto.getAddrYN());
         try {
             if(insertDto.getAddrZip() != null) {
-                System.out.println(insertDto.getAddrYN());
-                if(insertDto.getAddrYN() == null) {
+                if(insertDto.getAddrYN() != "Y") {
                     if(addrService.findAddr(userInfo).isEmpty()){
                         insertDto.setAddrYN("Y");
                     } else {
@@ -39,7 +39,7 @@ public class AddrApiController {
                     insertDto.setAddrYN("Y");
                 }
                 if (insertDto.getAddrNic() == null) {
-                    insertDto.setAddrNic(null);
+                    insertDto.setAddrNic(insertDto.getAddrName());
                 }
                 if (insertDto.getSecNum() == null) {
                     insertDto.setSecNum(null);

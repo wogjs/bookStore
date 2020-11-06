@@ -1,0 +1,70 @@
+{{>layout/header}}
+{{>layout/nav}}
+<div class="col-md-12">
+    <div class="col-md-4">
+        <table>
+            <thead>
+                <tr>
+                    <th>카드 번호</th>
+                    <th>유효 기간</th>
+                    <th>카드 종류</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#cardInfo}}
+                <tr>
+                    <td>{{cardNum}}</td>
+                    <td>{{cardPeriod}}</td>
+                    <td>{{cardVal}}</td>
+                    <td>
+                        <button></button>
+                    </td>
+                </tr>
+            {{/cardInfo}}
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td colspan="3">내용~</td>
+                    <td><a target="_blank" id="addr" href="/users/addr">배송지 추가</a></td>
+                </tr>
+                <br>
+                <tr>
+                    <th>배송지</th>
+                    <th>주소</th>
+                    <th>연락처</th>
+                    <th>수정 삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#addrInfo}}
+                <tr>
+                    <td>
+                        {{addrNic}}<br>
+                        {{addrName}}<br>
+                        {{addrYN}}
+                    </td>
+                    <td>
+                        {{addrZip}}<br>
+                        {{addrBas}}<br>
+                        {{addrDet}}
+                    </td>
+                    <td>
+                        {{addrNum}}<br>
+
+                    </td>
+                    <td>
+                        <button>수정</button>
+                        <button>삭제</button>
+                    </td>
+                </tr>
+                {{/addrInfo}}
+            </tbody>
+        </table>
+    </div>
+</div>
+{{>layout/footer}}

@@ -16,13 +16,13 @@ import java.util.Date;
 public class CardInsertDto {
     private String cardNum;
     private Users users;
-    private Date cardPeriod;
+    private String cardPeriod;
     private Long cardCVC;
     private Long cardPW;
     private String cardVal;
 
     @Builder
-    private CardInsertDto(String cardNum, Users users, Date cardPeriod, Long cardCVC, Long cardPW, String cardVal) {
+    private CardInsertDto(String cardNum, Users users, String cardPeriod, Long cardCVC, Long cardPW, String cardVal) {
         this.cardNum = cardNum;
         this.users = users;
         this.cardPeriod = cardPeriod;

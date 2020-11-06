@@ -32,18 +32,18 @@ public class CardService {
         return cardsRepository.save(insertDto.toEntity()).getCardNum();
     }
 
-    // 카드 중복 검사
-    @Transactional
-    public List<CardCheckDto> findByCard(UserInfo userInfo, String cardNum) {
-        return cardsRepository.findByCard(userInfo, cardNum).stream()
-                .map(CardCheckDto::new)
-                .collect(Collectors.toList());
-    }
+//    // 카드 중복 검사
+//    @Transactional
+//    public List<CardCheckDto> findByCard(UserInfo userInfo, String cardNum) {
+//        return cardsRepository.findByCard(userInfo, cardNum).stream()
+//                .map(CardCheckDto::new)
+//                .collect(Collectors.toList());
+//    }
 
     // 카드 조회
     @Transactional
     public List<CardListDto> findCard(UserInfo userInfo){
-        return cardsRepository.findAll(userInfo).stream()
+        return cardsRepository.findAllByUsers_Id(userInfo.getUserId()).stream()
                 .map(CardListDto::new)
                 .collect(Collectors.toList());
     }

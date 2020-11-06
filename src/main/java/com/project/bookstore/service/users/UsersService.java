@@ -34,8 +34,9 @@ public class UsersService {
     }
 
     // 로그인
-    public UserInfoDto signIn(UserSignInDto signInDto) {
-        return usersMapperRepository.signIn(signInDto);
+    @Transactional
+    public Boolean signIn(UserSignInDto signInDto) {
+        return usersRepository.getOne(signInDto.getId()).getPw().equals(signInDto.getPw());
     }
 
     // 개인 정보 변경

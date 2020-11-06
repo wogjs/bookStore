@@ -9,6 +9,10 @@ var main = {
             _this.login();
         })
 
+        $('#btn-addrSave').on('click', function() {
+            _this.addrSave();
+        })
+
 //        $('#btn-update').on('click', function () {
 //            _this.update();
 //        });
@@ -67,7 +71,39 @@ var main = {
             console.log(error)
             alert(JSON.stringify(error));
         });
+    },
+
+    addrSave : function() {
+        var YNchecked = document.getElementById('addrYN').getAttribute("checked")
+        console.log(YNchecked);
+        var data = {
+            addrNic: $('#addrNic').val(),
+            addrName: $('#addrName').val(),
+            addrZip: $('#addrZip').val(),
+            addrBas: $('#addrBas').val(),
+            addrDet: $('#addrDet').val(),
+            addrNum: $('#addrNum').val(),
+            secNum: $('#secNum').val(),
+            addrYN: $('#addrYN').val()
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/users/addr',
+            dataType: 'JSON',
+            contentType:'application/json; charset=UTF-8',
+            data: JSON.stringify(data)
+        }).done(function() {
+            alert('추가되었습니다.');
+//            opener.location.href='/users/mypage';
+//            window.location.href = '/users/mypage';
+//            window.close();
+        }).fail(function (error) {
+            console.log(error)
+            alert(JSON.stringify(error));
+        });
     }
+
 //    update : function () {
 //        var data = {
 //            title: $('#title').val(),
