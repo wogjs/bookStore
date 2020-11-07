@@ -6,6 +6,7 @@ import lombok.Getter;
 
 @Getter
 public class AddrListDto {
+    private Long addrCode;
     private String addrName;
     private Users users;
     private Long addrZip;
@@ -14,9 +15,9 @@ public class AddrListDto {
     private String addrNum;
     private String addrYN;
     private String addrNic;
-    private String secNum;
 
     public AddrListDto(Addr entity) {
+        this.addrCode = entity.getAddrCode();
         this.addrName = entity.getAddrName();
         this.users = entity.getUsers();
         this.addrZip = entity.getAddrZip();
@@ -25,6 +26,5 @@ public class AddrListDto {
         this.addrNum = entity.getAddrNum();
         this.addrYN = entity.getAddrYN();
         this.addrNic = entity.getAddrNic();
-        this.secNum = entity.getSecNum();
     }
 }

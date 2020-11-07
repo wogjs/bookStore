@@ -29,11 +29,10 @@ public class Addr {
     private String addrNum;
     private String addrYN;
     private String addrNic;
-    private String secNum;
 
     @Builder
     public Addr (Users users, String addrName, Long addrZip,
-                 String addrBas, String addrDet, String addrNum, String addrYN, String addrNic, String secNum){
+                 String addrBas, String addrDet, String addrNum, String addrYN, String addrNic){
         this.users = users;
         this.addrName = addrName;
         this.addrZip = addrZip;
@@ -42,13 +41,21 @@ public class Addr {
         this.addrNum = addrNum;
         this.addrYN = addrYN;
         this.addrNic = addrNic;
-        this.secNum = secNum;
     }
 
-    public void update(Long addrCode, String addrYN){
+    public void YNupdate(Long addrCode, String addrYN){
         this.addrCode = addrCode;
         this.addrYN = addrYN;
     }
 
+    public void update(String addrName, Long addrZip, String addrBas, String addrDet, String addrNum, String addrYN, String addrNic) {
+        this.addrName = addrName;
+        this.addrZip = addrZip;
+        this.addrBas = addrBas;
+        this.addrDet = addrDet;
+        this.addrNum = addrNum;
+        this.addrYN = addrYN;
+        this.addrNic = addrNic;
+    }
 
 }

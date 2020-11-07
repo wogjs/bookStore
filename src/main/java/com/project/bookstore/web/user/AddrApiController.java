@@ -41,11 +41,44 @@ public class AddrApiController {
                 if (insertDto.getAddrNic() == null) {
                     insertDto.setAddrNic(insertDto.getAddrName());
                 }
-                if (insertDto.getSecNum() == null) {
-                    insertDto.setSecNum(null);
-                }
                 insertDto.setUsers(addrService.findUsers(userInfo));
                 result = new ApiResponse(true, "성공", addrService.addrSave(insertDto));
+                return ResponseEntity.ok().body(result);
+            } else {
+                result = new ApiResponse(false, "실패", null);
+                return ResponseEntity.badRequest().body(result);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = new ApiResponse(false, e.getMessage(), null);
+            return ResponseEntity.badRequest().body(result);
+        }
+    }
+
+    @ApiOperation(value = "주소지 수정")
+    @PutMapping("/addr/update/{addrCode}")
+    public ResponseEntity<?> addrUpdate(@PathVariable String addrCode, @RequestBody AddrInsertDto insertDto) {
+        ApiResponse result = null;
+        System.out.println(insertDto);
+        try {
+            if (insertDto.getAddrZip() != null) {
+                if (!insertDto.getAddrYN().equals("Y")) {
+                    if (addrService.findAddr(userInfo).isEmpty()) {
+                        insertDto.setAddrYN("Y");
+                    } else {
+                        insertDto.setAddrYN("N");
+                    }
+                } else {
+                    if (!addrService.findAddr(userInfo).isEmpty()) {
+                        addrService.addrUpdateYN(userInfo);
+                    }
+                    insertDto.setAddrYN("Y");
+                }
+                if (insertDto.getAddrNic() == null) {
+                    insertDto.setAddrNic(insertDto.getAddrName());
+                }
+                insertDto.setUsers(addrService.findUsers(userInfo));
+                result = new ApiResponse(true, "성공", addrService.addrUpdate(addrCode, insertDto));
                 return ResponseEntity.ok().body(result);
             } else {
                 result = new ApiResponse(false, "실패", null);

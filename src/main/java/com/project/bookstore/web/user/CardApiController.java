@@ -21,7 +21,7 @@ public class CardApiController {
     private final UserInfo userInfo;
 
     @ApiOperation(value = "카드 등록")
-    @PostMapping("/mypage/cards")
+    @PostMapping("/card")
     public ResponseEntity<?> cardInsert(@RequestBody CardInsertDto insertDto) {
         ApiResponse result = null;
         if (insertDto.getCardNum() != null) {

@@ -49,14 +49,23 @@ public class AddrService {
                 .map(AddrListDto::new)
                 .collect(Collectors.toList());
     }
-
     @Transactional
     public Addr addrUpdateYN(UserInfo userInfo){
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++");
         Addr addr = addrRepository.findByUsers_IdAndAddrYN(userInfo.getUserId(), "Y").get(0);
         addr.setAddrYN("N");
         System.out.println(addr.getAddrYN());
-        addr.update(addr.getAddrCode(), addr.getAddrYN());
+        addr.YNupdate(addr.getAddrCode(), addr.getAddrYN());
+        return addr;
+    }
+
+    @Transactional
+    public Addr addrUpdate(String addrCode,AddrInsertDto insertDto) {
+        Addr addr = addrRepository.findById(addrCode)
+                .orElseThrow(() -> new IllegalArgumentException("에러"));
+
+        addr.update(insertDto.getAddrName(), insertDto.getAddrZip(), insertDto.getAddrBas(), insertDto.getAddrDet(), insertDto.getAddrNum(), insertDto.getAddrYN(),
+                insertDto.getAddrNic());
+
         return addr;
     }
 }

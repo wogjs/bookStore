@@ -1,0 +1,30 @@
+<form action="/users/addr" method="post">
+    <div class="form-group">
+        <label for="addrNic">배송지명</label>
+        <input type="text" class="form-control" id="addrNic" value="{{addrNic}}" placeholder="배송지명">
+    </div>
+    <div class="form-group">
+        <label for="addrName">수령인</label>
+        <input type="text" class="form-control" id="addrName" value="{{addrName}}" placeholder="수령인">
+    </div>
+    <div class="form-group">
+        <label for="addrZip">우편번호</label>
+        <input type="text" class="form-control" id="addrZip" value="{{addrZip}}" placeholder="우편번호">
+    </div>
+    <div class="form-group">
+        <label for="addrBas">기본주소</label>
+        <input type="text" class="form-control" id="addrBas" value="{{addrBas}}" placeholder="기본주소">
+    </div>
+    <div class="form-group">
+        <label for="addrDet">상세주소</label>
+        <input type="text" class="form-control" id="addrDet" value="{{addrDet}}" placeholder="상세주소">
+    </div>
+    <div class="form-group">
+        <label for="addrNum">연락처</label>
+        <input type="text" class="form-control" id="addrNum" value="{{addrNum}}" placeholder="연락처">
+    </div>
+    <div>
+        <label for="addrYN">기본배송지</label>
+        <input type="checkbox" onload="setCheckBox('{{addrYN}}')" class="form-control" id="addrYN" name="addrYN"> 기본 배송지로 설정
+    </div>
+</form>

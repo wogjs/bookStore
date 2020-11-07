@@ -16,5 +16,18 @@
         .bar{ display:inline-block; width:1px; height:12px; text-indent:-999em; background:#e4e4e5; vertical-align:bottom}
     </style>
 
+    <script type="text/javascript">
+        function setCheckBox(type) {
+            console.log("들어왔냐");
+            if("Y" == type){
+                $("input:checkbox[id='addrYN']").prop("checked", true); //체크하기
+                console.log("YYYYYYYYYYYYYYYYYYYYY");
+            }else{
+                $("input:checkbox[id='addrYN']").prop("checked", false) //체크해제하기
+                console.log("NNNNNNNNNNNNNNNNNNNNN");
+            }
+        }
+    </script>
+
 </head>
 <body>

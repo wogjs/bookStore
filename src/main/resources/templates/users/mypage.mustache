@@ -1,15 +1,38 @@
 {{>layout/header}}
 {{>layout/nav}}
-<div class="col-md-12">
+<div class="container">
     <div class="col-md-4">
-        <table>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cardModal">
+            카드 추가
+        </button>
+        <div class="modal fade" id="cardModal" tabindex="-1" role="dialog" aria-labelledby="cardModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cardModalLabel">카드 추가</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{>users/card}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btn-cardSave">저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table">
             <thead>
-                <tr>
-                    <th>카드 번호</th>
-                    <th>유효 기간</th>
-                    <th>카드 종류</th>
-                    <th>삭제</th>
-                </tr>
+            <tr>
+                <th scope="col">카드 번호</th>
+                <th scope="col">유효 기간</th>
+                <th scope="col">카드 종류</th>
+                <th scope="col">삭제</th>
+            </tr>
             </thead>
             <tbody>
             {{#cardInfo}}
@@ -17,48 +40,34 @@
                     <td>{{cardNum}}</td>
                     <td>{{cardPeriod}}</td>
                     <td>{{cardVal}}</td>
-                    <td>
-                        <button></button>
-                    </td>
+                    <form method="post" action="/users/cards/delete/{{cardNum}}">
+                        <td>
+                            <input type="submit" class="btn btn-danger" value="삭제"/>
+                        </td>
+                    </form>
                 </tr>
             {{/cardInfo}}
             </tbody>
         </table>
     </div>
     <div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            배송지 추가
-        </button>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">배송지 정보</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        {{>users/addr}}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="btn-addrSave">저장</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <table>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addrModal">배송지 추가</button>
+        {{>users/addr/ModalHead}}
+        {{>users/addr/addr}}
+        {{>users/addr/ModalMid}}
+        <button type="button" class="btn btn-primary" id="btn-addrSave">저장</button>
+        {{>users/addr/ModalFooter}}
+        <table class="table">
             <thead>
-                <tr>
-                    <th>배송지</th>
-                    <th>주소</th>
-                    <th>연락처</th>
-                    <th>수정 삭제</th>
-                </tr>
+            <tr>
+                <th scope="col">배송지</th>
+                <th scope="col">주소</th>
+                <th scope="col">연락처</th>
+                <th scope="col">수정 삭제</th>
+            </tr>
             </thead>
             <tbody>
-                {{#addrInfo}}
+            {{#addrInfo}}
                 <tr>
                     <td>
                         {{addrNic}}<br>
@@ -71,15 +80,38 @@
                         {{addrDet}}
                     </td>
                     <td>
-                        {{addrNum}}<br>
-
+                        {{addrNum}}
                     </td>
                     <td>
-                        <button>수정</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addrUpdate{{addrCode}}Modal">수정
+                        </button>
+                        <div class="modal fade" id="addrUpdate{{addrCode}}Modal" tabindex="-1" role="dialog"
+                             aria-labelledby="addrUpdate{{addrCode}}ModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="addrUpdate{{addrCode}}ModalLabel">배송지 정보</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{>users/addr/addrUpdate}}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                        <button type="button" class="btn btn-primary" id="btn-addrUpdate"
+                                                value="{{addrCode}}">저장
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <button>삭제</button>
                     </td>
                 </tr>
-                {{/addrInfo}}
+            {{/addrInfo}}
             </tbody>
         </table>
     </div>

@@ -21,11 +21,10 @@ public class AddrInsertDto {
     private String addrNum;
     private String addrYN;
     private String addrNic;
-    private String secNum;
 
     @Builder
     public AddrInsertDto (Users users, String addrName, Long addrZip,
-                 String addrBas, String addrDet, String addrNum, String addrYN, String addrNic, String secNum){
+                 String addrBas, String addrDet, String addrNum, String addrYN, String addrNic){
         this.users = users;
         this.addrName = addrName;
         this.addrZip = addrZip;
@@ -34,7 +33,6 @@ public class AddrInsertDto {
         this.addrNum = addrNum;
         this.addrYN = addrYN;
         this.addrNic = addrNic;
-        this.secNum = secNum;
     }
 
     public Addr toEntity() {
@@ -47,7 +45,6 @@ public class AddrInsertDto {
                 .addrNum(addrNum)
                 .addrYN(addrYN)
                 .addrNic(addrNic)
-                .secNum(secNum)
                 .build();
     }
 }
