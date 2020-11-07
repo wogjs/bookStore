@@ -74,8 +74,7 @@ var main = {
     },
 
     addrSave : function() {
-        var YNchecked = document.getElementById('addrYN').getAttribute("checked")
-        console.log(YNchecked);
+        var YNchecked = $("input:checkbox[name='addrYN']").is(":checked");
         var data = {
             addrNic: $('#addrNic').val(),
             addrName: $('#addrName').val(),
@@ -84,9 +83,14 @@ var main = {
             addrDet: $('#addrDet').val(),
             addrNum: $('#addrNum').val(),
             secNum: $('#secNum').val(),
-            addrYN: $('#addrYN').val()
+            addrYN: $('YNvalue').val()
         };
-
+        if(!YNchecked) {
+            data.addrYN = "N";
+        } else {
+            data.addrYN = "Y";
+        }
+        console.log(data.addrYN);
         $.ajax({
             type: 'POST',
             url: '/users/addr',
@@ -95,9 +99,7 @@ var main = {
             data: JSON.stringify(data)
         }).done(function() {
             alert('추가되었습니다.');
-//            opener.location.href='/users/mypage';
-//            window.location.href = '/users/mypage';
-//            window.close();
+            window.location.href = '/users/mypage';
         }).fail(function (error) {
             console.log(error)
             alert(JSON.stringify(error));

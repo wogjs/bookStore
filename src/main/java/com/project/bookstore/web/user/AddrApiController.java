@@ -26,7 +26,7 @@ public class AddrApiController {
         System.out.println(insertDto.getAddrYN());
         try {
             if(insertDto.getAddrZip() != null) {
-                if(insertDto.getAddrYN() != "Y") {
+                if(!insertDto.getAddrYN().equals("Y")) {
                     if(addrService.findAddr(userInfo).isEmpty()){
                         insertDto.setAddrYN("Y");
                     } else {
