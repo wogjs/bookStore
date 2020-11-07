@@ -52,11 +52,26 @@
     </div>
     <div>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addrModal">배송지 추가</button>
-        {{>users/addr/ModalHead}}
-        {{>users/addr/addr}}
-        {{>users/addr/ModalMid}}
-        <button type="button" class="btn btn-primary" id="btn-addrSave">저장</button>
-        {{>users/addr/ModalFooter}}
+        <div class="modal fade" id="addrModal" tabindex="-1" role="dialog" aria-labelledby="addrModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addrModalLabel">배송지 정보</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{>users/addr/addr}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btn-addrSave">저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <table class="table">
             <thead>
             <tr>
@@ -83,7 +98,8 @@
                         {{addrNum}}
                     </td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addrUpdate{{addrCode}}Modal">수정
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#addrUpdate{{addrCode}}Modal">수정
                         </button>
                         <div class="modal fade" id="addrUpdate{{addrCode}}Modal" tabindex="-1" role="dialog"
                              aria-labelledby="addrUpdate{{addrCode}}ModalLabel" aria-hidden="true">
