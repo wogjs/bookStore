@@ -12,6 +12,8 @@
         <a class="btn btn-outline-primary" href="/users/login" role="button" class="btn btn-primary">로그인</a>
     {{/userid}}
     {{#userid}}
-        <a class="btn btn-outline-danger" href="/users/logout" role="button" class="btn btn-danger">로그아웃</a>
+        <form action="/users/logout" method="post">
+            <button class="btn btn-outline-danger" type="submit" class="btn btn-danger">로그아웃</button>
+        </form>
     {{/userid}}
 </div>
