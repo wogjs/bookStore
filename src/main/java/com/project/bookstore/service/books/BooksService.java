@@ -25,8 +25,8 @@ public class BooksService {
 
     // 책 리스트 출력
     @Transactional
-    public List<BookListDto> findAllDesc() {
-        return  booksRepository.findAllDesc().stream()
+    public List<BookListDto> findAll() {
+        return booksRepository.findAll().stream()
                 .map(BookListDto::new)
                 .collect(Collectors.toList());
     }

@@ -2,6 +2,7 @@ package com.project.bookstore.web.book;
 
 import com.project.bookstore.config.ApiResponse;
 import com.project.bookstore.service.books.BooksService;
+import com.project.bookstore.session.UserInfo;
 import com.project.bookstore.web.book.dto.BookInsertDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Controller
 public class BookController {
     private final BooksService booksService;
+    private final UserInfo userInfo;
+
+    @GetMapping("/")
+    public String index(Model model) {
+        model.addAttribute("userid", userInfo.getUserId());
+        model.addAttribute("bookInfo", booksService.findAll());
+        return "index";
+    }
 
     @GetMapping("/books/bookInsert")
     public String booksInsert() {
@@ -29,7 +38,7 @@ public class BookController {
     public ResponseEntity<?> bookInfo(Model model) {
         ApiResponse result = null;
         try {
-            result = new ApiResponse(true, "성공", booksService.findAllDesc());
+            result = new ApiResponse(true, "성공", booksService.findAll());
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
             e.printStackTrace();

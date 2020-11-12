@@ -1,5 +1,6 @@
 package com.project.bookstore.web.user;
 
+import com.project.bookstore.service.books.BooksService;
 import com.project.bookstore.service.users.AddrService;
 import com.project.bookstore.service.users.CardService;
 import com.project.bookstore.service.users.UsersService;
@@ -13,16 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class UsersController {
 
-    private final UsersService usersService;
     private final AddrService addrService;
     private final CardService cardService;
     private final UserInfo userInfo;
-
-    @GetMapping("/")
-    public String index(Model model) {
-        model.addAttribute("userid", userInfo.getUserId());
-        return "index";
-    }
 
     @GetMapping("/users/signUp")
     public String signUp() {

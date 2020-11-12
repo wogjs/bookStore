@@ -1,4 +1,23 @@
 {{>layout/header}}
 {{>layout/nav}}
 <h1>메인</h1>
-{{>layout/footer}}
+<a class="btn btn-outline-primary" href="/books/bookInsert"  class="btn btn-primary">도서등록</a>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ISBN</th>
+        <th scope="col">도서 명</th>
+        <th scope="col">가격</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#bookInfo}}
+        <tr onclick="location.href='/books/bookInfo'">
+            <td>{{isbn}}</td>
+            <td>{{bookName}}</td>
+            <td>{{bookPri}}</td>
+        </tr>
+    {{/bookInfo}}
+    </tbody>
+</table>
+{{>layout/footerUser}}
