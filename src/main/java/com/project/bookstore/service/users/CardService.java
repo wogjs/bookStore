@@ -1,5 +1,6 @@
 package com.project.bookstore.service.users;
 
+import com.project.bookstore.domain.cards.Cards;
 import com.project.bookstore.domain.cards.CardsRepository;
 import com.project.bookstore.domain.users.Users;
 import com.project.bookstore.domain.users.UsersRepository;
@@ -46,5 +47,14 @@ public class CardService {
         return cardsRepository.findAllByUsers_Id(userInfo.getUserId()).stream()
                 .map(CardListDto::new)
                 .collect(Collectors.toList());
+    }
+
+    // 카드삭제
+    @Transactional
+    public void cardDelete(String cardNum) {
+        Cards cards = cardsRepository.findById(cardNum)
+                .orElseThrow(() -> new IllegalArgumentException("삭제에 실패했습니다."));
+
+        cardsRepository.delete(cards);
     }
 }

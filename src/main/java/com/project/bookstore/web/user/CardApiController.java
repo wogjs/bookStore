@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Api(value = "카드", description = "카드 관리", tags = { "카드" })
 @RequestMapping("/users")
@@ -43,5 +44,13 @@ public class CardApiController {
             result = new ApiResponse(false,"이미 등록된 카드입니다.", null);
             return ResponseEntity.badRequest().body(result);
         }
+    }
+
+    @ApiOperation(value = "카드 삭제")
+    @PostMapping("/card/delete/{cardNum}")
+    public RedirectView cardDelete(@PathVariable String cardNum) {
+        cardService.cardDelete(cardNum);
+        return new RedirectView("/users/mypage");
+
     }
 }
