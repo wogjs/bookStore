@@ -1,6 +1,7 @@
 var main = {
     init : function () {
         var _this = this;
+
         $('#btn-save').on('click', function () {
             _this.save();
         });
@@ -17,9 +18,9 @@ var main = {
             _this.addrSave();
         });
 
-        $('#btn-addrUpdate').on('click', function () {
-            _this.addrUpdate();
-        });
+//        $('#btn-addrUpdate').on('click', function () {
+//            _this.addrUpdate();
+//        });
     },
     save : function () {
         var data = {
@@ -109,9 +110,9 @@ var main = {
             addrYN: $('YNvalue').val()
         };
         if(!YNchecked) {
-            data.addrYN = "N";
-        } else {
             data.addrYN = "Y";
+        } else {
+            data.addrYN = "N";
         }
         console.log(data.addrYN);
         $.ajax({
@@ -129,37 +130,37 @@ var main = {
         });
     },
 
-    addrUpdate : function () {
-        var YNchecked = $("input:checkbox[name='addrYN']").is(":checked");
-        var addrCode = document.getElementById("btn-addrUpdate").value;
-        var data = {
-            addrNic: $('#addrNic').val(),
-            addrName: $('#addrName').val(),
-            addrZip: $('#addrZip').val(),
-            addrBas: $('#addrBas').val(),
-            addrDet: $('#addrDet').val(),
-            addrNum: $('#addrNum').val(),
-            addrYN: $('YNvalue').val()
-        };
-        if(!YNchecked) {
-            data.addrYN = "N";
-        } else {
-            data.addrYN = "Y";
-        }
-        console.log(data.addrYN);
-        $.ajax({
-            type: 'PUT',
-            url: '/users/addr/update/'+addrCode,
-            dataType: 'JSON',
-            contentType:'application/json; charset=UTF-8',
-            data: JSON.stringify(data)
-        }).done(function() {
-            alert('추가되었습니다.');
-            window.location.href = '/users/mypage';
-        }).fail(function (error) {
-            console.log(error)
-            alert(JSON.stringify(error));
-        });
-    }
+//    addrUpdate : function () {
+//        var YNchecked = $("input:checkbox[name='addrYNUp']").is(":checked");
+//        var addrCode = document.getElementById("btn-addrUpdate").value;
+//        var data = {
+//            addrNic: $('#addrNicUp').val(),
+//            addrName: $('#addrNameUp').val(),
+//            addrZip: $('#addrZipUp').val(),
+//            addrBas: $('#addrBasUp').val(),
+//            addrDet: $('#addrDetUp').val(),
+//            addrNum: $('#addrNumUp').val(),
+//            addrYN: $('YNvalueUp').val()
+//        };
+//        if(!YNchecked) {
+//            data.addrYN = "N";
+//        } else {
+//            data.addrYN = "Y";
+//        }
+//        console.log(data);
+//        $.ajax({
+//            type: 'POST',
+//            url: '/users/addr/update/'+addrCode,
+//            dataType: 'JSON',
+//            contentType:'application/json; charset=UTF-8',
+//            data: JSON.stringify(data)
+//        }).done(function() {
+//            alert('수정되었습니다.');
+//            window.location.href = '/users/mypage';
+//        }).fail(function (error) {
+//            console.log(error)
+//            alert(JSON.stringify(error));
+//        });
+//    }
 };
 main.init();

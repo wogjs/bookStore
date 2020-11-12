@@ -52,20 +52,28 @@ public class AddrService {
     @Transactional
     public Addr addrUpdateYN(UserInfo userInfo){
         Addr addr = addrRepository.findByUsers_IdAndAddrYN(userInfo.getUserId(), "Y").get(0);
-        addr.setAddrYN("N");
+        addr.setAddrYN(null);
         System.out.println(addr.getAddrYN());
         addr.YNupdate(addr.getAddrCode(), addr.getAddrYN());
         return addr;
     }
 
     @Transactional
-    public Addr addrUpdate(String addrCode,AddrInsertDto insertDto) {
+    public void addrUpdate(Long addrCode,AddrInsertDto insertDto) {
         Addr addr = addrRepository.findById(addrCode)
                 .orElseThrow(() -> new IllegalArgumentException("에러"));
 
         addr.update(insertDto.getAddrName(), insertDto.getAddrZip(), insertDto.getAddrBas(), insertDto.getAddrDet(), insertDto.getAddrNum(), insertDto.getAddrYN(),
                 insertDto.getAddrNic());
+    }
 
-        return addr;
+    // 주소 삭제
+    @Transactional
+    public void addrDelete(Long addrCode) {
+        Addr addr = addrRepository.findById(addrCode)
+                .orElseThrow(() -> new IllegalArgumentException("삭제에 실패했습니다."));
+
+        addrRepository.delete(addr);
+
     }
 }

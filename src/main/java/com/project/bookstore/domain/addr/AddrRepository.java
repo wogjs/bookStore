@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 import java.util.Optional;
 
-public interface AddrRepository extends JpaRepository<Addr, String> {
+public interface AddrRepository extends JpaRepository<Addr, Long> {
 //    Optional<Addr> findById(String id);
 
     List<Addr> findAllByUsers_Id(String userid);
