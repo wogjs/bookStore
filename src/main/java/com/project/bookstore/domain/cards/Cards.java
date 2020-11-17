@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Getter
 @NoArgsConstructor
@@ -25,7 +24,7 @@ public class Cards {
     private String cardVal;
 
     @Builder
-    public Cards (String cardNum, Users users, String cardPeriod, Long cardCVC, Long cardPW, String cardVal) {
+    public Cards(String cardNum, Users users, String cardPeriod, Long cardCVC, Long cardPW, String cardVal) {
         this.cardNum = cardNum;
         this.users = users;
         this.cardPeriod = cardPeriod;
@@ -33,6 +32,5 @@ public class Cards {
         this.cardPW = cardPW;
         this.cardVal = cardVal;
     }
-
 
 }

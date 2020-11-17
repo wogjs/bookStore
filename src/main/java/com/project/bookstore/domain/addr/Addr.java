@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
 
@@ -31,8 +30,8 @@ public class Addr {
     private String addrNic;
 
     @Builder
-    public Addr (Users users, String addrName, Long addrZip,
-                 String addrBas, String addrDet, String addrNum, String addrYN, String addrNic){
+    public Addr(Users users, String addrName, Long addrZip, String addrBas, String addrDet, String addrNum,
+            String addrYN, String addrNic) {
         this.users = users;
         this.addrName = addrName;
         this.addrZip = addrZip;
@@ -43,12 +42,13 @@ public class Addr {
         this.addrNic = addrNic;
     }
 
-    public void YNupdate(Long addrCode, String addrYN){
+    public void YNupdate(Long addrCode, String addrYN) {
         this.addrCode = addrCode;
         this.addrYN = addrYN;
     }
 
-    public void update(String addrName, Long addrZip, String addrBas, String addrDet, String addrNum, String addrYN, String addrNic) {
+    public void update(String addrName, Long addrZip, String addrBas, String addrDet, String addrNum, String addrYN,
+            String addrNic) {
         this.addrName = addrName;
         this.addrZip = addrZip;
         this.addrBas = addrBas;

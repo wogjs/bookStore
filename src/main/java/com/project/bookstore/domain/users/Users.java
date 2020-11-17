@@ -1,21 +1,20 @@
 package com.project.bookstore.domain.users;
 
+import com.project.bookstore.domain.BaseTimeEntity;
 import com.project.bookstore.domain.addr.Addr;
 import com.project.bookstore.domain.basket.Basket;
 import com.project.bookstore.domain.cards.Cards;
 import com.project.bookstore.domain.orders.Orders;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-public class Users {
+public class Users extends BaseTimeEntity {
 
     @Id
     private String id;
@@ -29,9 +28,9 @@ public class Users {
     private String nicName;
     private String mem = "B";
     private int totalSum = 0;
-    private String creates;
-//    private String nonuser;
-//    private String snslogin;
+
+    // private String nonuser;
+    // private String snslogin;
 
     @OneToMany(mappedBy = "users")
     private List<Cards> cards;
@@ -45,10 +44,9 @@ public class Users {
     @OneToMany(mappedBy = "users")
     private List<Basket> basket;
 
-
     @Builder
-    public Users(String id, String pw, String name, String sex, String num, String mail,
-                 String nicName, String creates, List<Cards> cards, List<Addr> addr, List<Basket> basket) {
+    public Users(String id, String pw, String name, String sex, String num, String mail, String nicName,
+            List<Cards> cards, List<Addr> addr, List<Basket> basket) {
         this.id = id;
         this.pw = pw;
         this.name = name;
@@ -56,7 +54,6 @@ public class Users {
         this.num = num;
         this.mail = mail;
         this.nicName = nicName;
-        this.creates = creates;
         this.cards = cards;
         this.addr = addr;
         this.basket = basket;
