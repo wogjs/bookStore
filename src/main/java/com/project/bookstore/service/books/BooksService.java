@@ -31,6 +31,13 @@ public class BooksService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
+    public List<BookListDto> findBook(String isbn) {
+        return booksRepository.findById(isbn).stream()
+                .map(BookListDto::new)
+                .collect(Collectors.toList());
+    }
+
     // 책 이름으로 검색
     @Transactional
     public List<BookListDto> bookName(String searchKey) {
@@ -53,7 +60,7 @@ public class BooksService {
         Books books = booksRepository.findById(isbn)
                 .orElseThrow(() -> new IllegalArgumentException("에러"));
 
-        books.update(updateDto.getBookTrans(), updateDto.getBookCov(), updateDto.getBookPri(), updateDto.getBookDet());
+        books.update(updateDto.getBookTrans(), updateDto.getBookCov(), updateDto.getBookPri(), updateDto.getBookDet(), updateDto.getBookSto());
 
         return books;
     }

@@ -41,18 +41,19 @@ public class UsersController {
         return "users/addr";
     }
 
-//    @GetMapping("/users/mypage/{id}")
-//    public ResponseEntity<?> mypage() {
-////        model.addAttribute("userInfo", usersService.findAll(users_id));
-//        ApiResponse2 result = null;
-//        try{
-//            result = new ApiResponse2(true, "성공", usersService.findUsers(userInfo), cardService.findCard(userInfo), addrService.findAddr(userInfo));
-//            return ResponseEntity.ok().body(result);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            result = new ApiResponse2(false, e.getMessage(), null,null, null);
-//            return  ResponseEntity.badRequest().body(result);
-//        }
-//    }
+    // @GetMapping("/users/mypage/{id}")
+    // public ResponseEntity<?> mypage() {
+    //// model.addAttribute("userInfo", usersService.findAll(users_id));
+    // ApiResponse2 result = null;
+    // try{
+    // result = new ApiResponse2(true, "성공", usersService.findUsers(userInfo),
+    // cardService.findCard(userInfo), addrService.findAddr(userInfo));
+    // return ResponseEntity.ok().body(result);
+    // } catch (Exception e) {
+    // e.printStackTrace();
+    // result = new ApiResponse2(false, e.getMessage(), null,null, null);
+    // return ResponseEntity.badRequest().body(result);
+    // }
+    // }
 
 }

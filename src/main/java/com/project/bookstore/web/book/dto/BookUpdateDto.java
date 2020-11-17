@@ -11,12 +11,14 @@ public class BookUpdateDto {
     private String bookCov;
     private int bookPri;
     private String bookDet;
+    private int bookSto;
 
     @Builder
-    public BookUpdateDto(String bookTrans, String bookCov, int bookPri, String bookDet){
+    public BookUpdateDto(String bookTrans, String bookCov, int bookPri, String bookDet, int bookSto){
         this.bookTrans = bookTrans;
         this.bookCov = bookCov;
         this.bookPri = bookPri;
         this.bookDet = bookDet;
+        this.bookSto = bookSto;
     }
 }

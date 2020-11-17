@@ -16,10 +16,9 @@ public class UserSignUpDto {
     private String num;
     private String mail;
     private String nicName;
-    private String creates;
 
     @Builder
-    private UserSignUpDto(String id, String pw, String name, String sex, String num, String mail, String nicName, String creates) {
+    private UserSignUpDto(String id, String pw, String name, String sex, String num, String mail, String nicName) {
         this.id = id;
         this.pw = pw;
         this.name = name;
@@ -27,19 +26,9 @@ public class UserSignUpDto {
         this.num = num;
         this.mail = mail;
         this.nicName = nicName;
-        this.creates = creates;
     }
 
     public Users toEntity() {
-        return Users.builder()
-                .id(id)
-                .pw(pw)
-                .name(name)
-                .sex(sex)
-                .num(num)
-                .mail(mail)
-                .nicName(nicName)
-                .creates(creates)
-                .build();
+        return Users.builder().id(id).pw(pw).name(name).sex(sex).num(num).mail(mail).nicName(nicName).build();
     }
 }
