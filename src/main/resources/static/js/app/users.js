@@ -21,6 +21,7 @@ var main = {
 //        $('#btn-addrUpdate').on('click', function () {
 //            _this.addrUpdate();
 //        });
+        
     },
     save : function () {
         var data = {

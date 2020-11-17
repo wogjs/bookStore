@@ -14,6 +14,7 @@ var main = {
             bookAut: $('#bookAut').val(),
             bookTrans: $('#bookTrans').val(),
             bookDate: $('#bookDate').val(),
+            bookHouse: $('#bookHouse').val(),
             bookCov: $('#bookCov').val(),
             bookPri: $('#bookPri').val(),
             bookGen: $('#bookGen').val(),
