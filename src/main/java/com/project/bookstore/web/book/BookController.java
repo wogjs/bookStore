@@ -31,38 +31,38 @@ public class BookController {
     }
 
     @GetMapping("/books/bookInfo/{isbn}")
-    public String bookInfo (@PathVariable String isbn, Model model) {
+    public String bookInfo(@PathVariable String isbn, Model model) {
         model.addAttribute("userid", userInfo.getUserId());
         model.addAttribute("bookInfo", booksService.findBook(isbn));
-
         return "books/bookInfo";
     }
-//    public ResponseEntity<?> bookInfo(Model model) {
-//        ApiResponse result = null;
-//        try {
-//            result = new ApiResponse(true, "성공", booksService.findAll());
-//            return ResponseEntity.ok().body(result);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            result = new ApiResponse(false, e.getMessage(), null);
-//            return ResponseEntity.badRequest().body(result);
-//        }
-//    }
+    // public ResponseEntity<?> bookInfo(Model model) {
+    // ApiResponse result = null;
+    // try {
+    // result = new ApiResponse(true, "성공", booksService.findAll());
+    // return ResponseEntity.ok().body(result);
+    // } catch (Exception e) {
+    // e.printStackTrace();
+    // result = new ApiResponse(false, e.getMessage(), null);
+    // return ResponseEntity.badRequest().body(result);
+    // }
+    // }
 
-//    public ResponseEntity<?> bookInsert(@RequestBody BookInsertDto bookInsertDto) {
-//        ApiResponse result = null;
-//        try {
-//            if(bookInsertDto.getIsbn() != null) {
-//                result = new ApiResponse(true, "성공", booksService.bookInsert(bookInsertDto));
-//                return ResponseEntity.ok().body(result);
-//            } else {
-//                result = new ApiResponse(false, "실패", null);
-//                return ResponseEntity.badRequest().body(result);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            result = new ApiResponse(false, e.getMessage(), null);
-//            return ResponseEntity.badRequest().body(result);
-//        }
-//    }
+    // public ResponseEntity<?> bookInsert(@RequestBody BookInsertDto bookInsertDto)
+    // {
+    // ApiResponse result = null;
+    // try {
+    // if(bookInsertDto.getIsbn() != null) {
+    // result = new ApiResponse(true, "성공", booksService.bookInsert(bookInsertDto));
+    // return ResponseEntity.ok().body(result);
+    // } else {
+    // result = new ApiResponse(false, "실패", null);
+    // return ResponseEntity.badRequest().body(result);
+    // }
+    // } catch (Exception e) {
+    // e.printStackTrace();
+    // result = new ApiResponse(false, e.getMessage(), null);
+    // return ResponseEntity.badRequest().body(result);
+    // }
+    // }
 }
