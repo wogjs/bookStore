@@ -18,19 +18,21 @@ public class BasketInfo implements Serializable {
 
     private Long basAmount;
 
-    @MapsId("basCode")
+    @MapsId("bas_code")
     @ManyToOne
     @JoinColumn(name = "bas_code")
     private Basket basket;
 
-    @MapsId("isbn")
+    @MapsId("book_isbn")
     @ManyToOne
     @JoinColumn(name = "book_isbn")
     private Books books;
 
     @Builder
-    public BasketInfo(MultiId multiId, Long basAmount) {
+    public BasketInfo(MultiId multiId, Long basAmount, Basket basket, Books books) {
         this.multiId = multiId;
         this.basAmount = basAmount;
+        this.basket = basket;
+        this.books = books;
     }
 }

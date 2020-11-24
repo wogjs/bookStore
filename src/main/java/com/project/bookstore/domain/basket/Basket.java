@@ -18,6 +18,8 @@ public class Basket extends BaseTimeEntity {
     @GeneratedValue
     private Long basCode;
 
+    private String modifytime;
+
     @ManyToOne
     @JoinColumn(name = "users_id")
     private Users users;

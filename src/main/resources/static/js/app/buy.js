@@ -17,16 +17,25 @@ var main = {
       orderSum: $('#amount').val(),
     };
 
+    window.location.href = '/orders?isbn=' + data.isbn + '&os=' + data.orderSum;
+  },
+
+  basket: function () {
+    var data = {
+      isbn: $('#isbn').text(),
+      orderSum: $('#amount').val(),
+    };
+
     $.ajax({
       type: 'POST',
-      url: '/orders/' + data.isbn,
-      dataType: 'JSON',
+      url: '/basket/' + data.isbn,
+      dataType: 'TEXT',
       contentType: 'application/json; charset=UTF-8',
       data: JSON.stringify(data),
     })
       .done(function () {
         alert('추가되었습니다.');
-        window.location.href = '/orders/' + isbn;
+        window.location.href = '/basket/' + data.isbn;
       })
       .fail(function (error) {
         console.log(error);

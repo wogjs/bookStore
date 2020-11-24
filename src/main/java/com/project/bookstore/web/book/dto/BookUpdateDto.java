@@ -14,7 +14,7 @@ public class BookUpdateDto {
     private int bookSto;
 
     @Builder
-    public BookUpdateDto(String bookTrans, String bookCov, int bookPri, String bookDet, int bookSto){
+    public BookUpdateDto(String bookTrans, String bookCov, int bookPri, String bookDet, int bookSto) {
         this.bookTrans = bookTrans;
         this.bookCov = bookCov;
         this.bookPri = bookPri;
