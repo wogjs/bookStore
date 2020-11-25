@@ -3,8 +3,6 @@ package com.project.bookstore.web.user.dto.cardDto;
 import com.project.bookstore.domain.cards.Cards;
 import lombok.Getter;
 
-import java.util.Date;
-
 @Getter
 public class CardListDto {
     private String cardNum;

@@ -3,8 +3,6 @@ package com.project.bookstore.web.book.dto;
 import com.project.bookstore.domain.books.Books;
 import lombok.*;
 
-import java.util.Date;
-
 @Getter
 @NoArgsConstructor
 public class BookInsertDto {
@@ -22,8 +20,8 @@ public class BookInsertDto {
     private int bookSto;
 
     @Builder
-    private BookInsertDto(String isbn, String bookName, String bookAut, String bookTrans, String bookDate, String bookHouse,
-                          String bookCov, int bookPri, String bookGen, String bookDet, int bookSto) {
+    private BookInsertDto(String isbn, String bookName, String bookAut, String bookTrans, String bookDate,
+            String bookHouse, String bookCov, int bookPri, String bookGen, String bookDet, int bookSto) {
         this.isbn = isbn;
         this.bookName = bookName;
         this.bookAut = bookAut;
@@ -38,18 +36,8 @@ public class BookInsertDto {
     }
 
     public Books toEntity() {
-        return Books.builder()
-                .isbn(isbn)
-                .bookName(bookName)
-                .bookAut(bookAut)
-                .bookTrans(bookTrans)
-                .bookDate(bookDate)
-                .bookHouse(bookHouse)
-                .bookCov(bookCov)
-                .bookPri(bookPri)
-                .bookGen(bookGen)
-                .bookDet(bookDet)
-                .bookSto(bookSto)
-                .build();
+        return Books.builder().isbn(isbn).bookName(bookName).bookAut(bookAut).bookTrans(bookTrans).bookDate(bookDate)
+                .bookHouse(bookHouse).bookCov(bookCov).bookPri(bookPri).bookGen(bookGen).bookDet(bookDet)
+                .bookSto(bookSto).build();
     }
 }

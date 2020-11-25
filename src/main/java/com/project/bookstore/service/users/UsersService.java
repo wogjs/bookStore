@@ -5,7 +5,6 @@ import com.project.bookstore.domain.users.Users;
 import com.project.bookstore.domain.users.UsersMapperRepository;
 import com.project.bookstore.domain.users.UsersRepository;
 import com.project.bookstore.session.UserInfo;
-import com.project.bookstore.web.user.dto.userDto.UserInfoDto;
 import com.project.bookstore.web.user.dto.userDto.UserSignInDto;
 import com.project.bookstore.web.user.dto.userDto.UserSignUpDto;
 import com.project.bookstore.web.user.dto.userDto.UserUpdateDto;
@@ -42,16 +41,16 @@ public class UsersService {
     // 개인 정보 변경
     @Transactional
     public Users update(String id, UserUpdateDto updateDto) {
-        Users users = usersRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("에러"));
+        Users users = usersRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("에러"));
 
-        users.update(updateDto.getPw(), updateDto.getName(), updateDto.getNum(), updateDto.getMail(), updateDto.getNicName());
+        users.update(updateDto.getPw(), updateDto.getName(), updateDto.getNum(), updateDto.getMail(),
+                updateDto.getNicName());
 
         return users;
     }
 
     @Transactional
-    public Users findUsers(UserInfo userInfo){
+    public Users findUsers(UserInfo userInfo) {
         return usersRepository.findById(userInfo.getUserId()).get();
     }
 }

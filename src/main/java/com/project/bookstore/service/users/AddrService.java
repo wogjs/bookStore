@@ -8,7 +8,6 @@ import com.project.bookstore.session.UserInfo;
 import com.project.bookstore.web.user.dto.addrDto.AddrInsertDto;
 import com.project.bookstore.web.user.dto.addrDto.AddrListDto;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,9 +21,8 @@ public class AddrService {
     private final AddrRepository addrRepository;
     private final UsersRepository usersRepository;
 
-
     @Transactional(readOnly = true)
-    public Users findUsers(UserInfo userInfo){
+    public Users findUsers(UserInfo userInfo) {
         return usersRepository.findById(userInfo.getUserId()).get();
     }
 
@@ -37,20 +35,19 @@ public class AddrService {
     // 주소 조회
     @Transactional
     public List<AddrListDto> findAddr(UserInfo userInfo) {
-        return addrRepository.findAllByUsers_Id(userInfo.getUserId()).stream()
-                .map(AddrListDto::new)
+        return addrRepository.findAllByUsers_Id(userInfo.getUserId()).stream().map(AddrListDto::new)
                 .collect(Collectors.toList());
     }
 
     // 기본 배송지 변경
     @Transactional
     public List<AddrListDto> YN(UserInfo userInfo) {
-        return addrRepository.findByUsers_IdAndAddrYN(userInfo.getUserId(),"Y").stream()
-                .map(AddrListDto::new)
+        return addrRepository.findByUsers_IdAndAddrYN(userInfo.getUserId(), "Y").stream().map(AddrListDto::new)
                 .collect(Collectors.toList());
     }
+
     @Transactional
-    public Addr addrUpdateYN(UserInfo userInfo){
+    public Addr addrUpdateYN(UserInfo userInfo) {
         Addr addr = addrRepository.findByUsers_IdAndAddrYN(userInfo.getUserId(), "Y").get(0);
         addr.setAddrYN(null);
         System.out.println(addr.getAddrYN());
@@ -59,19 +56,17 @@ public class AddrService {
     }
 
     @Transactional
-    public void addrUpdate(Long addrCode,AddrInsertDto insertDto) {
-        Addr addr = addrRepository.findById(addrCode)
-                .orElseThrow(() -> new IllegalArgumentException("에러"));
+    public void addrUpdate(Long addrCode, AddrInsertDto insertDto) {
+        Addr addr = addrRepository.findById(addrCode).orElseThrow(() -> new IllegalArgumentException("에러"));
 
-        addr.update(insertDto.getAddrName(), insertDto.getAddrZip(), insertDto.getAddrBas(), insertDto.getAddrDet(), insertDto.getAddrNum(), insertDto.getAddrYN(),
-                insertDto.getAddrNic());
+        addr.update(insertDto.getAddrName(), insertDto.getAddrZip(), insertDto.getAddrBas(), insertDto.getAddrDet(),
+                insertDto.getAddrNum(), insertDto.getAddrYN(), insertDto.getAddrNic());
     }
 
     // 주소 삭제
     @Transactional
     public void addrDelete(Long addrCode) {
-        Addr addr = addrRepository.findById(addrCode)
-                .orElseThrow(() -> new IllegalArgumentException("삭제에 실패했습니다."));
+        Addr addr = addrRepository.findById(addrCode).orElseThrow(() -> new IllegalArgumentException("삭제에 실패했습니다."));
 
         addrRepository.delete(addr);
 

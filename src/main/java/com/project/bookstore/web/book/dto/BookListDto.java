@@ -3,8 +3,6 @@ package com.project.bookstore.web.book.dto;
 import com.project.bookstore.domain.books.Books;
 import lombok.Getter;
 
-import java.util.Date;
-
 @Getter
 public class BookListDto {
     private String isbn;

@@ -5,7 +5,6 @@ import com.project.bookstore.domain.cards.CardsRepository;
 import com.project.bookstore.domain.users.Users;
 import com.project.bookstore.domain.users.UsersRepository;
 import com.project.bookstore.session.UserInfo;
-import com.project.bookstore.web.user.dto.cardDto.CardCheckDto;
 import com.project.bookstore.web.user.dto.cardDto.CardInsertDto;
 import com.project.bookstore.web.user.dto.cardDto.CardListDto;
 import lombok.RequiredArgsConstructor;
@@ -33,27 +32,25 @@ public class CardService {
         return cardsRepository.save(insertDto.toEntity()).getCardNum();
     }
 
-//    // 카드 중복 검사
-//    @Transactional
-//    public List<CardCheckDto> findByCard(UserInfo userInfo, String cardNum) {
-//        return cardsRepository.findByCard(userInfo, cardNum).stream()
-//                .map(CardCheckDto::new)
-//                .collect(Collectors.toList());
-//    }
+    // // 카드 중복 검사
+    // @Transactional
+    // public List<CardCheckDto> findByCard(UserInfo userInfo, String cardNum) {
+    // return cardsRepository.findByCard(userInfo, cardNum).stream()
+    // .map(CardCheckDto::new)
+    // .collect(Collectors.toList());
+    // }
 
     // 카드 조회
     @Transactional
-    public List<CardListDto> findCard(UserInfo userInfo){
-        return cardsRepository.findAllByUsers_Id(userInfo.getUserId()).stream()
-                .map(CardListDto::new)
+    public List<CardListDto> findCard(UserInfo userInfo) {
+        return cardsRepository.findAllByUsers_Id(userInfo.getUserId()).stream().map(CardListDto::new)
                 .collect(Collectors.toList());
     }
 
     // 카드삭제
     @Transactional
     public void cardDelete(String cardNum) {
-        Cards cards = cardsRepository.findById(cardNum)
-                .orElseThrow(() -> new IllegalArgumentException("삭제에 실패했습니다."));
+        Cards cards = cardsRepository.findById(cardNum).orElseThrow(() -> new IllegalArgumentException("삭제에 실패했습니다."));
 
         cardsRepository.delete(cards);
     }

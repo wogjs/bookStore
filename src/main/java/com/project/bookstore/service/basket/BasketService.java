@@ -1,8 +1,5 @@
 package com.project.bookstore.service.basket;
 
-import java.util.List;
-
-import com.project.bookstore.domain.basket.Basket;
 import com.project.bookstore.domain.basket.BasketRepository;
 import com.project.bookstore.domain.basketInfo.BasketInfoRepository;
 import com.project.bookstore.domain.basketInfo.MultiId;

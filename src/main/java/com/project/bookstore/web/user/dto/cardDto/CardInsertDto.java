@@ -8,8 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -32,13 +30,7 @@ public class CardInsertDto {
     }
 
     public Cards toEntity() {
-        return Cards.builder()
-                .cardNum(cardNum)
-                .users(users)
-                .cardPeriod(cardPeriod)
-                .cardCVC(cardCVC)
-                .cardPW(cardPW)
-                .cardVal(cardVal)
-                .build();
+        return Cards.builder().cardNum(cardNum).users(users).cardPeriod(cardPeriod).cardCVC(cardCVC).cardPW(cardPW)
+                .cardVal(cardVal).build();
     }
 }

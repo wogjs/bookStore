@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-
 @Setter
 @Getter
 @NoArgsConstructor
@@ -23,8 +21,8 @@ public class AddrInsertDto {
     private String addrNic;
 
     @Builder
-    public AddrInsertDto (Users users, String addrName, Long addrZip,
-                 String addrBas, String addrDet, String addrNum, String addrYN, String addrNic){
+    public AddrInsertDto(Users users, String addrName, Long addrZip, String addrBas, String addrDet, String addrNum,
+            String addrYN, String addrNic) {
         this.users = users;
         this.addrName = addrName;
         this.addrZip = addrZip;
@@ -36,15 +34,7 @@ public class AddrInsertDto {
     }
 
     public Addr toEntity() {
-        return Addr.builder()
-                .users(users)
-                .addrName(addrName)
-                .addrZip(addrZip)
-                .addrBas(addrBas)
-                .addrDet(addrDet)
-                .addrNum(addrNum)
-                .addrYN(addrYN)
-                .addrNic(addrNic)
-                .build();
+        return Addr.builder().users(users).addrName(addrName).addrZip(addrZip).addrBas(addrBas).addrDet(addrDet)
+                .addrNum(addrNum).addrYN(addrYN).addrNic(addrNic).build();
     }
 }

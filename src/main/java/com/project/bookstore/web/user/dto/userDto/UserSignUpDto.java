@@ -4,8 +4,6 @@ package com.project.bookstore.web.user.dto.userDto;
 import com.project.bookstore.domain.users.Users;
 import lombok.*;
 
-import java.util.Date;
-
 @Getter
 @NoArgsConstructor
 public class UserSignUpDto {
