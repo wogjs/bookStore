@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Api(value = "주문", description = "주문 관리", tags = { "주문" })
 @RequestMapping("/orders")
 @CrossOrigin("*")
-@RequiredArgsConstructor
 @RestController
-public class OrderAipController {
+public class OrderApiController {
 
     @ApiOperation(value = "주문")
     @PostMapping("/{isbn}")
-    public RedirectView orders(@PathVariable("isbn") String isbn, @RequestBody SumDto sumDto) {
-        System.out.println("들어왔는가");
-        return new RedirectView("/orders/" + isbn);
+    public String orders(@PathVariable("isbn") String isbn, @RequestBody SumDto sumDto) {
+        System.out.println(sumDto.getOrderSum());
+        sumDto.setOrderSum(sumDto.getOrderSum());
+        return null;
     }
 
 }

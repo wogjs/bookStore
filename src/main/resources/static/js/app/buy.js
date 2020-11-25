@@ -23,7 +23,7 @@ var main = {
   basket: function () {
     var data = {
       isbn: $('#isbn').text(),
-      orderSum: $('#amount').val(),
+      basAmount: $('#amount').val(),
     };
 
     $.ajax({
@@ -35,7 +35,7 @@ var main = {
     })
       .done(function () {
         alert('추가되었습니다.');
-        window.location.href = '/basket/' + data.isbn;
+        window.location.href = '/';
       })
       .fail(function (error) {
         console.log(error);
