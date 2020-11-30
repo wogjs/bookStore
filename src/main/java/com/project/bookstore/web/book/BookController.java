@@ -16,6 +16,11 @@ public class BookController {
 
     @GetMapping("/")
     public String index(Model model) {
+        if(userInfo.getUserId() != null) {
+            if(userInfo.getUserId().equals("master")) {
+                model.addAttribute("master", userInfo.getUserId());
+            } 
+        }
         model.addAttribute("userid", userInfo.getUserId());
         model.addAttribute("bookInfo", booksService.findAll());
         return "index";
@@ -28,9 +33,21 @@ public class BookController {
 
     @GetMapping("/books/bookInfo/{isbn}")
     public String bookInfo(@PathVariable String isbn, Model model) {
+        if(userInfo.getUserId() != null) {
+            if(userInfo.getUserId().equals("master")) {
+                model.addAttribute("master", userInfo.getUserId());
+            } 
+        }
         model.addAttribute("userid", userInfo.getUserId());
         model.addAttribute("bookInfo", booksService.findBook(isbn));
         return "books/bookInfo";
+    }
+
+    @GetMapping("/books/update/{isbn}")
+    public String bookUpdate(@PathVariable String isbn, Model model) {
+        model.addAttribute("userid", userInfo.getUserId());
+        model.addAttribute("bookInfo", booksService.findBook(isbn));
+        return "books/bookUpdate";
     }
     // public ResponseEntity<?> bookInfo(Model model) {
     // ApiResponse result = null;

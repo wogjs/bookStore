@@ -34,11 +34,9 @@ public class BasketApiController {
         ApiResponse result = null;
         try {
             if (basketService.basketFind(userInfo) == false) {
-                System.out.println("여기왔는가fjdksla;fjkl;adsfj;adklsfjsa");
                 basketInsertDto.setUsers(basketService.findUsers(userInfo));
                 basketService.basInsert(basketInsertDto);
             }
-            System.out.println("333333333333333333333333333333");
             System.out.println(insertDto.getBasAmount());
             result = new ApiResponse(true, "성공", basketService.infoInsert(isbn, insertDto));
             return ResponseEntity.ok().body(result);

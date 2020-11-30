@@ -53,7 +53,7 @@ public class BooksService {
     public Books update(String isbn, BookUpdateDto updateDto) {
         Books books = booksRepository.findById(isbn).orElseThrow(() -> new IllegalArgumentException("에러"));
 
-        books.update(updateDto.getBookTrans(), updateDto.getBookCov(), updateDto.getBookPri(), updateDto.getBookDet(),
+        books.update(updateDto.getBookAut() ,updateDto.getBookTrans(), updateDto.getBookCov(), updateDto.getBookPri(), updateDto.getBookDet(),
                 updateDto.getBookSto());
 
         return books;

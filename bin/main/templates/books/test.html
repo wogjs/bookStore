@@ -1,14 +1,61 @@
-<!doctype html>
-<html lang="ko">
+<!-- <!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>JavaScript | .setAttribute()</title>
+    <title>스프링부트 웹서비스</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        .find_info .bar { margin:0 3px }
+        .bar{ display:inline-block; width:1px; height:12px; text-indent:-999em; background:#e4e4e5; vertical-align:bottom}
+    </style>
 </head>
 <body>
-<p><a id="abc" href="#">CODING FACTORY</a></p>
-<bu
-<script>
-      document.getElementById( 'abc' ).setAttribute( 'href', 'https://www.codingfactory.net' );
-    </script>
+<body>
+<div class="container">
+    <h1>메인</h1>
+    <a class="btn btn-outline-primary" href="/books/bookInsert"  class="btn btn-primary">도서등록</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">제목</th>
+            <th scope="col">가격</th>
+            <th scope="col">수량</th>
+            <th scope="col">합계</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{^basInfo}}
+        <tr>
+            <td colspan="5" style="text-align:center"><h4>장바구니에 담은 책이 없습니다.</h4></td>
+        </tr>
+        {{/basInfo}}
+        {{#basInfo}}
+        <tr>
+            <td><input type="checkbox" name="{{books.isbn}}" id="{{books.isbn}}"></td>
+            <td>{{books.bookName}}</td>
+            <td>{{books.bookPri}}</td>
+            <td>
+                <input id="amount" type="number" value="{{basAmount}}" style="width:60px; border:none; text-align:center;">
+            </td>
+            <td>
+                <script>
+                        var count = {{books.bookPri}}*{{basAmount}};
+                        document.write(count.toString());
+                    </script>
+            </td>
+        </tr>
+        {{/basInfo}}
+        </tbody>
+    </table>
+</div>
 </body>
-</html>
+</html> -->

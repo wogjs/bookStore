@@ -29,6 +29,7 @@ public class OrderController {
         model.addAttribute("bookInfo", booksService.findBook(isbn));
         model.addAttribute("cardInfo", cardService.findCard(userInfo));
         model.addAttribute("addrInfo", addrService.findAddr(userInfo));
+        model.addAttribute("userid", usersService.findUsers(userInfo));
         model.addAttribute("order", os);
         System.out.println(os);
         return "orders/orders";

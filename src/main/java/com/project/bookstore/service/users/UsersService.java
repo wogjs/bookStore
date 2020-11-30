@@ -10,8 +10,7 @@ import com.project.bookstore.web.user.dto.userDto.UserSignUpDto;
 import com.project.bookstore.web.user.dto.userDto.UserUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -49,8 +48,12 @@ public class UsersService {
         return users;
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public Users findUsers(UserInfo userInfo) {
-        return usersRepository.findById(userInfo.getUserId()).get();
+        if(userInfo.getUserId() == null) {
+            return null;
+        } else {
+            return usersRepository.findById(userInfo.getUserId()).get();
+        }
     }
 }

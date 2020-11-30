@@ -43,7 +43,8 @@ public class CardService {
     // 카드 조회
     @Transactional
     public List<CardListDto> findCard(UserInfo userInfo) {
-        return cardsRepository.findAllByUsers_Id(userInfo.getUserId()).stream().map(CardListDto::new)
+        return cardsRepository.findAllByUsers_Id(userInfo.getUserId()).stream()
+                .map(CardListDto::new)
                 .collect(Collectors.toList());
     }
 

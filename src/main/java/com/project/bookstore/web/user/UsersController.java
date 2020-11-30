@@ -1,9 +1,7 @@
 package com.project.bookstore.web.user;
 
-import com.project.bookstore.service.books.BooksService;
 import com.project.bookstore.service.users.AddrService;
 import com.project.bookstore.service.users.CardService;
-import com.project.bookstore.service.users.UsersService;
 import com.project.bookstore.session.UserInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

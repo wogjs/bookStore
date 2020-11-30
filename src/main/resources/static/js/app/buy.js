@@ -6,6 +6,10 @@ var main = {
       _this.buy();
     });
 
+    $('#btn-nonbuy').on('click',function() {
+      _this.nonbuy();
+    })
+
     $('#btn-basket').on('click', function () {
       _this.basket();
     });
@@ -18,6 +22,11 @@ var main = {
     };
 
     window.location.href = '/orders?isbn=' + data.isbn + '&os=' + data.orderSum;
+  },
+
+  nonbuy: function(){
+    alert("로그인이 필요합니다.");
+    window.location.href = '/users/login'
   },
 
   basket: function () {

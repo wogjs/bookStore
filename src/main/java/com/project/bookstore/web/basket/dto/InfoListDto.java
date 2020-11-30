@@ -7,23 +7,19 @@ import com.project.bookstore.domain.books.Books;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Getter
-@Setter
 @NoArgsConstructor
-public class InfoInsertDto {
+public class InfoListDto {
     private MultiId multiId;
     private Long basAmount;
-    private Books books;
     private Basket basket;
+    private Books books;
 
-    public BasketInfo toEntity() {
-        return BasketInfo.builder()
-            .multiId(multiId)
-            .basAmount(basAmount)
-            .books(books)
-            .basket(basket)
-            .build();
+    public InfoListDto(BasketInfo entity) {
+        this.multiId = entity.getMultiId();
+        this.basAmount = entity.getBasAmount();
+        this.basket = entity.getBasket();
+        this.books = entity.getBooks();
     }
 }

@@ -57,7 +57,8 @@ public class Books {
         this.bookSto = bookSto;
     }
 
-    public void update(String bookTrans, String bookCov, int bookPri, String bookDet, int bookSto) {
+    public void update(String bookAut, String bookTrans, String bookCov, int bookPri, String bookDet, int bookSto) {
+        this.bookAut = bookAut;
         this.bookTrans = bookTrans;
         this.bookCov = bookCov;
         this.bookPri = bookPri;

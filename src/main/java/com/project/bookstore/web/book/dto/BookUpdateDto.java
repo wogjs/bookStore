@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class BookUpdateDto {
+    private String bookAut;
     private String bookTrans;
     private String bookCov;
     private int bookPri;
@@ -14,7 +15,8 @@ public class BookUpdateDto {
     private int bookSto;
 
     @Builder
-    public BookUpdateDto(String bookTrans, String bookCov, int bookPri, String bookDet, int bookSto) {
+    public BookUpdateDto(String bookAut, String bookTrans, String bookCov, int bookPri, String bookDet, int bookSto) {
+        this.bookAut = bookAut;
         this.bookTrans = bookTrans;
         this.bookCov = bookCov;
         this.bookPri = bookPri;

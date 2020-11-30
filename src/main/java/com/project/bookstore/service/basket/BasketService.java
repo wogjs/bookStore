@@ -1,5 +1,8 @@
 package com.project.bookstore.service.basket;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.project.bookstore.domain.basket.BasketRepository;
 import com.project.bookstore.domain.basketInfo.BasketInfoRepository;
 import com.project.bookstore.domain.basketInfo.MultiId;
@@ -9,6 +12,7 @@ import com.project.bookstore.domain.users.UsersRepository;
 import com.project.bookstore.session.UserInfo;
 import com.project.bookstore.web.basket.dto.BasketInsertDto;
 import com.project.bookstore.web.basket.dto.InfoInsertDto;
+import com.project.bookstore.web.basket.dto.InfoListDto;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,18 +30,19 @@ public class BasketService {
 
     @Transactional(readOnly = true)
     public Users findUsers(UserInfo userInfo) {
-        return usersRepository.findById(userInfo.getUserId()).get();
+        if(userInfo.getUserId() == null) {
+            return null;
+        } else {
+            return usersRepository.findById(userInfo.getUserId()).get();
+        }
     }
 
     // 장바구니 유뮤 확인
     @Transactional
     public Boolean basketFind(UserInfo userInfo) {
-        System.out.println("fjdsaklfjasdk;lfjasdkl;fjasl;dkfj;aslkdfj");
         if (basketRepository.findByUsers_Id(userInfo.getUserId()) == null) {
-            System.out.println("여기왔는가222222222222");
             return false;
         } else {
-            System.out.println("여기왔는가33333333333333333333");
             return true;
         }
     }
@@ -59,5 +64,18 @@ public class BasketService {
         insertDto.setBasket(basketRepository.findByUsers_Id(userInfo.getUserId()));
         System.out.println(insertDto.getMultiId());
         return infoRepository.save(insertDto.toEntity()).getMultiId().getBas_code();
+    }
+
+    // 장바구니 리스트 출력
+    @Transactional
+    public List<InfoListDto> infoList() {
+        System.out.println(userInfo.getUserId());
+        if(userInfo.getUserId() == null) {
+            return null;
+        } else {
+            return infoRepository.findByBasket(basketRepository.findByUsers_Id(userInfo.getUserId())).stream()
+                    .map(InfoListDto::new)
+                    .collect(Collectors.toList());
+        }
     }
 }

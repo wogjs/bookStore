@@ -1,0 +1,44 @@
+{{>layout/header}}
+{{>layout/nav}}
+<div class="container">
+    <h1>메인</h1>
+    <div>
+        <input type="checkbox" name="checkAll" id="checkAll"> 전체 선택
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">제목</th>
+            <th scope="col">가격</th>
+            <th scope="col">수량</th>
+            <th scope="col">합계</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{^basInfo}}
+            <tr>
+                <td colspan="5" style="text-align:center"><h4>장바구니에 담은 책이 없습니다.</h4></td>                
+            </tr>
+        {{/basInfo}}
+        {{#basInfo}}
+            <tr>
+                <td><input type="checkbox" name="{{books.isbn}}" id="{{books.isbn}}"></td>
+                <td>{{books.bookName}}</td>
+                <td>{{books.bookPri}}</td>
+                <td>
+                    <input id="amount" type="number" value="{{basAmount}}" style="width:60px; border:none; text-align:center;">
+                </td>
+                <td>
+                    <script>
+                        var count = {{books.bookPri}}*{{basAmount}};
+                        document.write(count.toString());
+                    </script>
+                </td>
+            </tr>
+        {{/basInfo}}
+        </tbody>
+    </table>
+</div>
+
+{{>layout/footerUser}}

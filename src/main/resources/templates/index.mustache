@@ -1,23 +1,27 @@
 {{>layout/header}}
 {{>layout/nav}}
-<h1>메인</h1>
-<a class="btn btn-outline-primary" href="/books/bookInsert"  class="btn btn-primary">도서등록</a>
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">ISBN</th>
-        <th scope="col">도서 명</th>
-        <th scope="col">가격</th>
-    </tr>
-    </thead>
-    <tbody>
-    {{#bookInfo}}
-        <tr onclick="location.href='/books/bookInfo/{{isbn}}'">
-            <td>{{isbn}}</td>
-            <td>{{bookName}}</td>
-            <td>{{bookPri}}</td>
+<div class="container">
+    <h1>메인</h1>
+    {{#master}}
+        <a class="btn btn-outline-primary" href="/books/bookInsert"  class="btn btn-primary">도서등록</a>
+    {{/master}}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ISBN</th>
+            <th scope="col">도서 명</th>
+            <th scope="col">가격</th>
         </tr>
-    {{/bookInfo}}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        {{#bookInfo}}
+            <tr onclick="location.href='/books/bookInfo/{{isbn}}'">
+                <td>{{isbn}}</td>
+                <td>{{bookName}}</td>
+                <td>{{bookPri}}</td>
+            </tr>
+        {{/bookInfo}}
+        </tbody>
+    </table>
+</div>
 {{>layout/footerUser}}
