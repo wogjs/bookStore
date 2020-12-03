@@ -5,7 +5,7 @@
     <div>
         <input type="checkbox" name="checkAll" id="checkAll"> 전체 선택
     </div>
-    <table class="table">
+    <table class="table" id="table">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -27,12 +27,16 @@
                 <td>{{books.bookName}}</td>
                 <td>{{books.bookPri}}</td>
                 <td>
-                    <input id="amount" type="number" value="{{basAmount}}" style="width:60px; border:none; text-align:center;">
+                    <input id="amount" type="number" value="{{basAmount}}" min="1" max="{{books.bookSto}}" style="width:60px; border:none; text-align:center;">
                 </td>
                 <td>
                     <script>
-                        var count = {{books.bookPri}}*{{basAmount}};
-                        document.write(count.toString());
+                        var price = document.getElementById("amount");
+                        var amount = document.getElementById("amount").value;
+                        var count = {{books.bookPri}}*amount;
+                        price.addEventListener('change', function(event){
+                            document.write({{books.bookPri}}*amount.toString());
+                        })
                     </script>
                 </td>
             </tr>
@@ -41,4 +45,4 @@
     </table>
 </div>
 
-{{>layout/footerUser}}
+{{>layout/footerBasket}}
