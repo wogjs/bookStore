@@ -1,11 +1,12 @@
 {{>layout/header}}
 {{>layout/nav}}
+<script src="/js/app/basket.js"></script>
 <div class="container">
     <h1>메인</h1>
     <div>
         <input type="checkbox" name="checkAll" id="checkAll"> 전체 선택
     </div>
-    <table class="table" id="table">
+    <table class="table" name="books" id="books">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -31,16 +32,19 @@
                 </td>
                 <td>
                     <script>
-                        var price = document.getElementById("amount");
-                        var amount = document.getElementById("amount").value;
-                        var count = {{books.bookPri}}*amount;
-                        price.addEventListener('change', function(event){
-                            document.write({{books.bookPri}}*amount.toString());
-                        })
+                        var count = {{books.bookPri}}*{{basAmount}};
+                        document.write(count.toString(z));
                     </script>
                 </td>
             </tr>
         {{/basInfo}}
+        <tr id="total">
+            <td>
+                <script>
+                    totalPriceSet();
+                </script>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>

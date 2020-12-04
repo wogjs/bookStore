@@ -21,7 +21,7 @@ var main = {
       orderSum: $('#amount').val(),
     };
 
-    window.location.href = '/orders?isbn=' + data.isbn + '&os=' + data.orderSum;
+    window.location.href = '/orders/orderPay?isbn=' + data.isbn + '&os=' + data.orderSum;
   },
 
   nonbuy: function(){

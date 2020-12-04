@@ -5,6 +5,7 @@ import com.project.bookstore.web.orders.dto.SumDto;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
@@ -19,10 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class OrderApiController {
 
     @ApiOperation(value = "주문")
-    @PostMapping("/{isbn}")
-    public String orders(@PathVariable("isbn") String isbn, @RequestBody SumDto sumDto) {
-        System.out.println(sumDto.getOrderSum());
-        sumDto.setOrderSum(sumDto.getOrderSum());
+    @PostMapping("/orderPay")
+    public String orders(@RequestParam("isbn") String isbn, @RequestParam("os") String os) {
+        
         return null;
     }
 

@@ -24,7 +24,7 @@ public class OrderController {
     private final BooksService booksService;
     private final UserInfo userInfo;
 
-    @GetMapping("/orders")
+    @GetMapping("/orders/orderPay")
     public String orderBook(@RequestParam("isbn") String isbn, @RequestParam("os") Long os, Model model) {
         model.addAttribute("bookInfo", booksService.findBook(isbn));
         model.addAttribute("cardInfo", cardService.findCard(userInfo));

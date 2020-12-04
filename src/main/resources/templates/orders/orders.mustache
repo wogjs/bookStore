@@ -1,4 +1,67 @@
 {{>layout/header}}
 {{>layout/nav}}
-<div>fdsa</div>
+<script src="/js/app/basket.js"></script>
+<div class="container">
+    <div class="d-flex flex-row">
+        <div class="d-flex flex-column flex-grow-1">상품
+            <div class="p-2">
+                <table class="table" id="books">
+                    <thead>
+                        <tr>
+                            <th>표지</th>
+                            <th>이름</th>
+                            <th>가격</th>
+                            <th>수량</th>
+                            <th>합계</th>
+                        </tr>
+                    </thead>
+                    {{#bookInfo}}
+                    <tbody>
+                        <tr>
+                            <td>{{bookCov}}</td>
+                            <td>{{bookName}}</td>
+                            <td>{{bookPri}}</td>
+                            <td>{{order}}</td>
+                            <td>
+                            <script>
+                                document.write({{bookPri}}*{{order}});
+                            </script>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {{/bookInfo}}
+                </table>
+            </div>
+            <div>배송주소
+                <select class="custom-select" id="addr">
+                    <option selected value="0">선택해주세요</option>
+                    {{#addrInfo}}
+                        <option value="{{addrCode}}">{{addrName}} / {{addrZip}} / {{addrBas}} {{addrDet}}</option>
+                    {{/addrInfo}}
+                </select>
+            </div>
+            <div>카드
+                <select class="custom-select" id="card">
+                    <option selected>선택해주세요</option>
+                    {{#cardInfo}}
+                        <option value="{{cardNum}}">{{cardNum}} / {{cardVal}}</option>
+                    {{/cardInfo}}
+                </select>
+            </div>
+        </div>
+        <div class="d-flex flex-column">
+            <div>
+                <div id="total">
+                    <script>
+                        totalPriceSet();
+                    </script>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-outline-primary" href="/users/login" id="btn-buy"class="btn btn-primary">결제하기</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/app/orders.js"></script>
 {{>layout/footerOrder}}
