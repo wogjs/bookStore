@@ -30,7 +30,7 @@ public class Books {
     private int bookPri;
     private String bookGen;
     private String bookDet;
-    private int bookSto;
+    private Long bookSto;
 
     @OneToMany(mappedBy = "books")
     private List<OrderInfo> orderInfo;
@@ -40,7 +40,7 @@ public class Books {
 
     @Builder
     public Books(String isbn, String bookName, String bookAut, String bookTrans, String bookDate, String bookHouse,
-            String bookCov, int bookPri, String bookGen, String bookDet, int bookSto, List<OrderInfo> orderInfo,
+            String bookCov, int bookPri, String bookGen, String bookDet, Long bookSto, List<OrderInfo> orderInfo,
             List<BasketInfo> basketInfo) {
         this.isbn = isbn;
         this.bookName = bookName;
@@ -57,12 +57,16 @@ public class Books {
         this.bookSto = bookSto;
     }
 
-    public void update(String bookAut, String bookTrans, String bookCov, int bookPri, String bookDet, int bookSto) {
+    public void update(String bookAut, String bookTrans, String bookCov, int bookPri, String bookDet, Long bookSto) {
         this.bookAut = bookAut;
         this.bookTrans = bookTrans;
         this.bookCov = bookCov;
         this.bookPri = bookPri;
         this.bookDet = bookDet;
+        this.bookSto = bookSto;
+    }
+
+    public void updateSto(Long bookSto) {
         this.bookSto = bookSto;
     }
 }

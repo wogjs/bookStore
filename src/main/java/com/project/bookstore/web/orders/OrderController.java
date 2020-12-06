@@ -25,13 +25,13 @@ public class OrderController {
     private final UserInfo userInfo;
 
     @GetMapping("/orders/orderPay")
-    public String orderBook(@RequestParam("isbn") String isbn, @RequestParam("os") Long os, Model model) {
+    public String orderBook(@RequestParam("isbn") String isbn, @RequestParam("oa") Long oa, Model model) {
         model.addAttribute("bookInfo", booksService.findBook(isbn));
         model.addAttribute("cardInfo", cardService.findCard(userInfo));
         model.addAttribute("addrInfo", addrService.findAddr(userInfo));
         model.addAttribute("userid", usersService.findUsers(userInfo));
-        model.addAttribute("order", os);
-        System.out.println(os);
+        model.addAttribute("order", oa);
+        System.out.println(oa);
         return "orders/orders";
     }
 

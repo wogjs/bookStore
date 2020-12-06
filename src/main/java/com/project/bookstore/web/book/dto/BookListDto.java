@@ -15,7 +15,7 @@ public class BookListDto {
     private int bookPri;
     private String bookGen;
     private String bookDet;
-    private int bookSto;
+    private Long bookSto;
 
     public BookListDto(Books entity) {
         this.isbn = entity.getIsbn();

@@ -47,6 +47,12 @@ public class CardService {
                 .map(CardListDto::new)
                 .collect(Collectors.toList());
     }
+    
+    // 카드 번호로 조회
+    @Transactional(readOnly = true)
+    public Cards findCardNum(String cardNum) {
+        return cardsRepository.findById(cardNum).get();
+    }
 
     // 카드삭제
     @Transactional

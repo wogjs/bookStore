@@ -18,10 +18,10 @@ var main = {
   buy: function () {
     var data = {
       isbn: $('#isbn').text(),
-      orderSum: $('#amount').val(),
+      orderAmount: $('#amount').val(),
     };
 
-    window.location.href = '/orders/orderPay?isbn=' + data.isbn + '&os=' + data.orderSum;
+    window.location.href = '/orders/orderPay?isbn=' + data.isbn + '&oa=' + data.orderAmount;
   },
 
   nonbuy: function(){

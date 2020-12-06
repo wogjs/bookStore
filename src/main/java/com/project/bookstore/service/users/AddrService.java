@@ -39,6 +39,12 @@ public class AddrService {
                 .collect(Collectors.toList());
     }
 
+    // 주소코드로 조회
+    @Transactional(readOnly = true)
+    public Addr findAddrCode(Long addrCode) {
+        return addrRepository.findById(addrCode).get();
+    }
+
     // 기본 배송지 변경
     @Transactional
     public List<AddrListDto> YN(UserInfo userInfo) {

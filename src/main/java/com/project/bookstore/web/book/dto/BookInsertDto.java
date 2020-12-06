@@ -17,11 +17,11 @@ public class BookInsertDto {
     private int bookPri;
     private String bookGen;
     private String bookDet;
-    private int bookSto;
+    private Long bookSto;
 
     @Builder
     private BookInsertDto(String isbn, String bookName, String bookAut, String bookTrans, String bookDate,
-            String bookHouse, String bookCov, int bookPri, String bookGen, String bookDet, int bookSto) {
+            String bookHouse, String bookCov, int bookPri, String bookGen, String bookDet, Long bookSto) {
         this.isbn = isbn;
         this.bookName = bookName;
         this.bookAut = bookAut;

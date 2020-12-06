@@ -7,8 +7,8 @@ import com.project.bookstore.web.book.dto.BookListDto;
 import com.project.bookstore.web.book.dto.BookUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,9 +29,10 @@ public class BooksService {
         return booksRepository.findAll().stream().map(BookListDto::new).collect(Collectors.toList());
     }
 
+    // 책 isbn 찾기 
     @Transactional
-    public List<BookListDto> findBook(String isbn) {
-        return booksRepository.findById(isbn).stream().map(BookListDto::new).collect(Collectors.toList());
+    public Books findBook(String isbn) {
+        return booksRepository.findById(isbn).get();
     }
 
     // 책 이름으로 검색
@@ -57,6 +58,13 @@ public class BooksService {
                 updateDto.getBookSto());
 
         return books;
+    }
+
+    @Transactional
+    public void updateSto(String isbn, Long updateSto) {
+        Books books = booksRepository.findById(isbn).orElseThrow(() -> new IllegalArgumentException("에러"));
+
+        books.updateSto(updateSto);
     }
 
 }
