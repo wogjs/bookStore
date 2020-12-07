@@ -28,25 +28,21 @@
                 <td>{{books.bookName}}</td>
                 <td>{{books.bookPri}}</td>
                 <td>
-                    <input id="amount" type="number" value="{{basAmount}}" min="1" max="{{books.bookSto}}" style="width:60px; border:none; text-align:center;">
+                    <input id="amount" name="amount" type="number" value="{{basAmount}}" min="1" max="{{books.bookSto}}" style="width:40px; border:none; text-align:center;">
+                    <a href="javascript:count_change()" style="font-size:0.7em; color:#c2c2c2">변경</a>
                 </td>
-                <td>
-                    <script>
-                        var count = {{books.bookPri}}*{{basAmount}};
-                        document.write(count.toString(z));
-                    </script>
+                <td class="total" id="total">
+                    
                 </td>
             </tr>
         {{/basInfo}}
-        <tr id="total">
-            <td>
-                <script>
-                    totalPriceSet();
-                </script>
-            </td>
-        </tr>
         </tbody>
     </table>
+    <div id="totalPri">
+        <script>
+            totalPriceSet();
+        </script>
+    </div>
 </div>
 
 {{>layout/footerBasket}}

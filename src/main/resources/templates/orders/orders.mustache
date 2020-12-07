@@ -21,11 +21,9 @@
                             <td>{{bookCov}}</td>
                             <td>{{bookName}}</td>
                             <td>{{bookPri}}</td>
-                            <td>{{order}}</td>
-                            <td>
-                            <script>
-                                document.write({{bookPri}}*{{order}});
-                            </script>
+                            <td><input id="amount" name="amount" type="text" value="{{order}}" disabled style="width:60px; border:none; text-align:center; background-color: #FFF"></td>
+                            <td class="total" id="total">
+                                
                             </td>
                         </tr>
                     </tbody>
@@ -51,7 +49,7 @@
         </div>
         <div class="d-flex flex-column">
             <div>
-                <div id="total">
+                <div id="totalPri">
                     <script>
                         totalPriceSet();
                     </script>

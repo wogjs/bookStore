@@ -11,7 +11,7 @@ var main = {
         var data = {
             addrCode: $("#addr option:selected").val(),
             cardNum: $("#card option:selected").val(),
-            orderSum : document.getElementById("total").children[0].children[0].innerHTML*1
+            orderSum : document.getElementById("totalPri").innerHTML*1
         };
 
         if(data.addrCode === "0" || data.cardNum === "0"){
