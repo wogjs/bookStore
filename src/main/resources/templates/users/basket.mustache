@@ -4,7 +4,7 @@
 <div class="container">
     <h1>메인</h1>
     <div>
-        <input type="checkbox" name="checkAll" id="checkAll"> 전체 선택
+        <input type="checkbox" name="checkAll" id="checkAll" onClick="checkAll()"> 전체 선택
     </div>
     <table class="table" name="books" id="books">
         <thead>
@@ -24,24 +24,25 @@
         {{/basInfo}}
         {{#basInfo}}
             <tr>
-                <td><input type="checkbox" name="{{books.isbn}}" id="{{books.isbn}}"></td>
+                <td><input type="checkbox" name="check" id="{{books.isbn}}" onClick="isChecked()"></td>
                 <td>{{books.bookName}}</td>
                 <td>{{books.bookPri}}</td>
                 <td>
                     <input id="amount" name="amount" type="number" value="{{basAmount}}" min="1" max="{{books.bookSto}}" style="width:40px; border:none; text-align:center;">
                     <a href="javascript:count_change()" style="font-size:0.7em; color:#c2c2c2">변경</a>
                 </td>
-                <td class="total" id="total">
-                    
-                </td>
+                <td class="total" id="total"></td>
             </tr>
         {{/basInfo}}
         </tbody>
     </table>
+    <div>
+        <button id="delete" onClick="delChecked()">삭제</button>
+    </div>
     <div id="totalPri">
-        <script>
+        {{! <script>
             totalPriceSet();
-        </script>
+        </script> }}
     </div>
 </div>
 

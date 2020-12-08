@@ -1,18 +1,27 @@
 package com.project.bookstore.web.basket;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import com.project.bookstore.config.ApiResponse;
 import com.project.bookstore.service.basket.BasketService;
 import com.project.bookstore.session.UserInfo;
 import com.project.bookstore.web.basket.dto.BasketInsertDto;
 import com.project.bookstore.web.basket.dto.InfoInsertDto;
+import com.project.bookstore.web.basket.dto.InfoListDto;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -45,6 +54,19 @@ public class BasketApiController {
             result = new ApiResponse(false, e.getMessage(), null);
             return ResponseEntity.badRequest().body(result);
         }
+    }
+
+    @ApiOperation(value = "장바구니 추가")
+    @GetMapping("/delete")
+    public RedirectView delete(@RequestParam("isbn") List<String> isbn) {
+        InfoListDto listDto = new InfoListDto();
+        listDto = basketService.infoList().get(0);
+        for(int i = 0; i < isbn.size(); i++) {
+            if(!isbn.get(i).equals("")) {
+                basketService.basketBookDel(listDto.getMultiId().getBas_code(), isbn.get(i));
+            }
+        }
+        return new RedirectView("/basket");
     }
 
 }

@@ -15,7 +15,7 @@ import java.util.List;
 @Entity
 public class Basket extends BaseTimeEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long basCode;
 
     private String modifytime;
