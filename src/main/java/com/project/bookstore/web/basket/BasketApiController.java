@@ -62,11 +62,22 @@ public class BasketApiController {
         InfoListDto listDto = new InfoListDto();
         listDto = basketService.infoList().get(0);
         for(int i = 0; i < isbn.size(); i++) {
-            if(!isbn.get(i).equals("")) {
-                basketService.basketBookDel(listDto.getMultiId().getBas_code(), isbn.get(i));
-            }
+            basketService.basketBookDel(listDto.getMultiId().getBas_code(), isbn.get(i));
         }
         return new RedirectView("/basket");
+    }
+    
+    @ApiOperation(value = "테스트")
+    @GetMapping("/order")
+    public void orderPush(@RequestParam("isbn") List<String> isbn, @RequestParam("oa") List<Integer> oa) {
+        for(int i = 0; i < isbn.size(); i++) {
+            System.out.print("ISBN : ");
+            System.out.println(isbn.get(i));
+            System.out.print("oa : ");
+            System.out.println(oa.get(i));
+        }
+        
+        // return new RedirectView("/basket");
     }
 
 }

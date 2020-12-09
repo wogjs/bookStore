@@ -1,5 +1,7 @@
 package com.project.bookstore.web.orders;
 
+import java.util.List;
+
 import com.project.bookstore.service.books.BooksService;
 import com.project.bookstore.service.orders.OrderService;
 import com.project.bookstore.service.users.AddrService;
@@ -25,8 +27,8 @@ public class OrderController {
     private final UserInfo userInfo;
 
     @GetMapping("/orders/orderPay")
-    public String orderBook(@RequestParam("isbn") String isbn, @RequestParam("oa") Long oa, Model model) {
-        model.addAttribute("bookInfo", booksService.findBook(isbn));
+    public String orderBook(@RequestParam("isbn") List<String> isbn, @RequestParam("oa") List<Integer> oa, Model model) { 
+        model.addAttribute("bookInfo", booksService.findBookList(isbn));
         model.addAttribute("cardInfo", cardService.findCard(userInfo));
         model.addAttribute("addrInfo", addrService.findAddr(userInfo));
         model.addAttribute("userid", usersService.findUsers(userInfo));
@@ -34,5 +36,4 @@ public class OrderController {
         System.out.println(oa);
         return "orders/orders";
     }
-
 }

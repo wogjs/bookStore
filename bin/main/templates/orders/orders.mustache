@@ -15,19 +15,19 @@
                             <th>합계</th>
                         </tr>
                     </thead>
-                    {{#bookInfo}}
                     <tbody>
+                    {{#bookInfo}}
                         <tr>
                             <td>{{bookCov}}</td>
                             <td>{{bookName}}</td>
                             <td>{{bookPri}}</td>
-                            <td><input id="amount" name="amount" type="text" value="{{order}}" disabled style="width:60px; border:none; text-align:center; background-color: #FFF"></td>
+                            <td><input id="amount" name="amount" type="text" value="" disabled style="width:60px; border:none; text-align:center; background-color: #FFF"></td>
                             <td class="total" id="total">
                                 
                             </td>
                         </tr>
-                    </tbody>
                     {{/bookInfo}}
+                    </tbody>
                 </table>
             </div>
             <div>배송주소
@@ -50,9 +50,7 @@
         <div class="d-flex flex-column">
             <div>
                 <div id="totalPri">
-                    <script>
-                        totalPriceSet();
-                    </script>
+                    
                 </div>
             </div>
             <div>

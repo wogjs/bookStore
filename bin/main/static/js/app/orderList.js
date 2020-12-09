@@ -1,3 +1,14 @@
+window.onload = () => {
+    let oa = document.getElementsByName("amount")
+    var j = 0;
+    oa.forEach((item, index) => {
+        console.log(item.value);
+        j = index*2;
+        item.value = searchParam("oa")[j];
+    })
+    totalPriceSet()
+}
+
 let totalPriceSet = () => {
     let total = document.getElementsByClassName("total");
     let totalPrice = document.getElementById("totalPri");
@@ -10,7 +21,7 @@ let totalPriceSet = () => {
         let count = amount[index].value*1;
         let sum = price*count;
         totalSum = totalSum + sum;
-        total[index].innerHTML = '<span id="sum" value="'+sum+'">'+sum+'</span>';
+        total[index].innerHTML = '<span name="sum" value="'+sum+'">'+sum+'</span>';
     })
     totalPrice.innerHTML = totalSum;
 }
@@ -18,4 +29,9 @@ let totalPriceSet = () => {
 let count_change = () => {
     totalPriceSet()
     return false;
+}
+
+
+function searchParam(key) {
+    return new URLSearchParams(location.search).get(key);
 }

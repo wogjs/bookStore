@@ -35,6 +35,17 @@ public class BooksService {
         return booksRepository.findById(isbn).get();
     }
 
+    // 주문 list
+    @Transactional
+    public Books[] findBookList(List<String> isbn) {
+        Books[] listDto = new Books[isbn.size()];
+        for (int i = 0; i < isbn.size(); i++) {
+            listDto[i] = booksRepository.findById(isbn.get(i)).get();
+            System.out.println(listDto[i].getIsbn());
+        }
+        return listDto;
+    }
+
     // 책 이름으로 검색
     @Transactional
     public List<BookListDto> bookName(String searchKey) {
