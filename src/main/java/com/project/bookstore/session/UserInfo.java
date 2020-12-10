@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Component
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 @ToString
+@SuppressWarnings("serial")
 public class UserInfo implements Serializable {
     private String userId;
 }

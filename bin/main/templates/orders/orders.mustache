@@ -21,7 +21,7 @@
                             <td>{{bookCov}}</td>
                             <td>{{bookName}}</td>
                             <td>{{bookPri}}</td>
-                            <td><input id="amount" name="amount" type="text" value="" disabled style="width:60px; border:none; text-align:center; background-color: #FFF"></td>
+                            <td><input name="amount" type="text" value="" disabled style="width:60px; border:none; text-align:center; background-color: #FFF"></td>
                             <td class="total" id="total">
                                 
                             </td>
@@ -54,10 +54,10 @@
                 </div>
             </div>
             <div>
-                <button class="btn btn-outline-primary" href="/users/login" id="btn-buy"class="btn btn-primary">결제하기</button>
+                <button class="btn btn-outline-primary" href="/users/login" id="btn-order"class="btn btn-primary">결제하기</button>
             </div>
         </div>
     </div>
 </div>
 <script src="/js/app/orders.js"></script>
-{{>layout/footerOrder}}
+{{>layout/footer}}

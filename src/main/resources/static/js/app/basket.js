@@ -131,5 +131,5 @@ let order = () => {
         oaList : oaList
     };
     
-    window.location.href = '/orders/orderPay?isbn='+data.isbnList+"&oa="+data.oaList;
+    window.location.href = '/orders/cart/Pay?isbn='+data.isbnList+"&oa="+data.oaList;
 }

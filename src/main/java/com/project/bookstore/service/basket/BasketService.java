@@ -48,11 +48,6 @@ public class BasketService {
         }
     }
 
-    // @Transactional
-    // public List<InfoListDto> infoFind() {
-        
-    // }
-
     // 장바구니 생성
     @Transactional
     public Long basInsert(BasketInsertDto insertDto) {
@@ -83,6 +78,12 @@ public class BasketService {
                     .map(InfoListDto::new)
                     .collect(Collectors.toList());
         }
+    }
+
+    // 장바구니 번호 출력
+    @Transactional
+    public Long basCode() {
+        return basketRepository.findByUsers_IdOrderByBasCodeDesc(userInfo.getUserId()).getBasCode();
     }
 
     // 장바구니 삭제

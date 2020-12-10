@@ -2,7 +2,6 @@
 package com.project.bookstore.service.users;
 
 import com.project.bookstore.domain.users.Users;
-import com.project.bookstore.domain.users.UsersMapperRepository;
 import com.project.bookstore.domain.users.UsersRepository;
 import com.project.bookstore.session.UserInfo;
 import com.project.bookstore.web.user.dto.userDto.UserSignInDto;
@@ -17,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class UsersService {
 
     private final UsersRepository usersRepository;
-    private final UsersMapperRepository usersMapperRepository;
 
     // 회원가입
     @Transactional

@@ -16,7 +16,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        {{>users/card}}
+                        {{>users/mypage/card}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -63,7 +63,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        {{>users/addr/addr}}
+                        {{>users/mypage/addr}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -99,32 +99,6 @@
                         {{addrNum}}
                     </td>
                     <td>
-<!--                        <button type="button" class="btn btn-primary" data-toggle="modal"-->
-<!--                                data-target="#addrUpdate{{addrCode}}Modal">수정-->
-<!--                        </button>-->
-<!--                        <div class="modal fade" id="addrUpdate{{addrCode}}Modal" tabindex="-1" role="dialog"-->
-<!--                             aria-labelledby="addrUpdate{{addrCode}}ModalLabel" aria-hidden="true">-->
-<!--                            <div class="modal-dialog" role="document">-->
-<!--                                <div class="modal-content">-->
-<!--                                    <div class="modal-header">-->
-<!--                                        <h5 class="modal-title" id="addrUpdate{{addrCode}}ModalLabel">배송지 정보</h5>-->
-<!--                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                                            <span aria-hidden="true">&times;</span>-->
-<!--                                        </button>-->
-<!--                                    </div>-->
-<!--                                    <div class="modal-body">-->
-<!--                                        {{>users/addr/addrUpdate}}-->
-<!--                                    </div>-->
-<!--                                    <div class="modal-footer">-->
-<!--                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close-->
-<!--                                        </button>-->
-<!--                                        <button type="button" class="btn btn-primary" id="btn-addrUpdat{{addrCode}}"-->
-<!--                                                value="{{addrCode}}">저장-->
-<!--                                        </button>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
                         <form method="post" action="/users/addr/delete/{{addrCode}}" >
                             <input type="submit" class="btn btn-danger" value="삭제"/>
                         </form>
@@ -135,4 +109,5 @@
         </table>
     </div>
 </div>
-{{>layout/footerUser}}
+<script src="/js/app/users.js"></script>
+{{>layout/footer}}
