@@ -2,7 +2,6 @@ window.onload = () => {
     let oa = document.getElementsByName("amount")
     var j = 0;
     oa.forEach((item, index) => {
-        console.log(item.value);
         j = index*2;
         item.value = searchParam("oa")[j];
     })

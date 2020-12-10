@@ -8,6 +8,7 @@ import lombok.Data;
 
 @Data
 @Embeddable
+@SuppressWarnings("serial")
 public class MultiId implements Serializable {
 
     private Long orderCode;

@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Getter
 @NoArgsConstructor
 @Entity
+@SuppressWarnings("serial")
 public class OrderInfo implements Serializable {
     @EmbeddedId
     private MultiId multiId;

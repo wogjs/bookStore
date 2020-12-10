@@ -2,8 +2,6 @@ package com.project.bookstore.web.basket;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.project.bookstore.config.ApiResponse;
 import com.project.bookstore.service.basket.BasketService;
 import com.project.bookstore.session.UserInfo;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -56,13 +53,12 @@ public class BasketApiController {
         }
     }
 
-    @ApiOperation(value = "장바구니 추가")
+    @ApiOperation(value = "장바구니 삭제")
     @GetMapping("/delete")
     public RedirectView delete(@RequestParam("isbn") List<String> isbn) {
-        InfoListDto listDto = new InfoListDto();
-        listDto = basketService.infoList().get(0);
+        Long basCode = basketService.basCode();
         for(int i = 0; i < isbn.size(); i++) {
-            basketService.basketBookDel(listDto.getMultiId().getBas_code(), isbn.get(i));
+            basketService.basketBookDel(basCode, isbn.get(i));
         }
         return new RedirectView("/basket");
     }
