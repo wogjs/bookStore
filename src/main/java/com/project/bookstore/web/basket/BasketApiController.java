@@ -7,7 +7,6 @@ import com.project.bookstore.service.basket.BasketService;
 import com.project.bookstore.session.UserInfo;
 import com.project.bookstore.web.basket.dto.BasketInsertDto;
 import com.project.bookstore.web.basket.dto.InfoInsertDto;
-import com.project.bookstore.web.basket.dto.InfoListDto;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
