@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.bookstore.domain.orderInfo.OrderInfoMapperRepository">
+    <select id="getOrderList" resultType="com.project.bookstore.web.orders.dto.OrderListDto">
+        select o.order_code, o.order_sum, oi.book_isbn, oi.order_amount
+        from orders o, order_info oi 
+        WHERE o.order_code = oi.order_code AND o.order_code = #{order_code};
+    </select>
+
+
+</mapper>

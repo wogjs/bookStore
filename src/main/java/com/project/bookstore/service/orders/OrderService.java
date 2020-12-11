@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.project.bookstore.domain.orderInfo.MultiId;
-import com.project.bookstore.domain.orderInfo.OrderInfo;
+// import com.project.bookstore.domain.orderInfo.OrderInfo;
+import com.project.bookstore.domain.orderInfo.OrderInfoMapperRepository;
 import com.project.bookstore.domain.orderInfo.OrderInfoRepository;
 import com.project.bookstore.domain.orders.Orders;
 import com.project.bookstore.domain.orders.OrdersRepository;
@@ -23,6 +24,7 @@ import lombok.RequiredArgsConstructor;
 public class OrderService {
     private final OrdersRepository ordersRepository;
     private final OrderInfoRepository infoRepository;
+    private final OrderInfoMapperRepository mapperRepository;
 
     private final UserInfo userInfo;
 
@@ -46,23 +48,16 @@ public class OrderService {
     // 주문 리스트
     @Transactional
     public List<OrderListDto> listRead() {
-       List<OrderListDto> listDto = new ArrayList<OrderListDto>();
-       List<Orders> orders = ordersRepository.findByUsers_IdOrderByOrderCodeDesc(userInfo.getUserId());
-
-       int i = 0;
-        for(Orders order: orders) {
-            OrderListDto dto = new OrderListDto();
-            dto.setOrderCode(order.getOrderCode());
-            dto.setOrderSum(order.getOrderSum());
+        List<OrderListDto> orderListDto = new ArrayList<OrderListDto>();
+        List<Orders> orders = ordersRepository.findByUsers_IdOrderByOrderCodeDesc(userInfo.getUserId());
+        for (int i =0; i < orders.size(); i++) {
+            List<OrderListDto> listDto = mapperRepository.getOrderList(orders.get(i).getOrderCode());
             
-            OrderInfo orderInfo = infoRepository.findByOrders(orders.get(i));
-            dto.setIsbn(orderInfo.getMultiId().getIsbn());
-            dto.setOrderAmount(orderInfo.getOrderAmount());
-            i++;
-            listDto.add(dto);
+            for (OrderListDto orderListDto2 : listDto) {
+                orderListDto.add(orderListDto2);
+            }
         }
-
-        return listDto;
+        return orderListDto;
     }
     
 }

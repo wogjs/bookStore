@@ -1,19 +1,17 @@
 package com.project.bookstore.web.orders.dto;
 
-import java.util.Date;
-
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
+@Data
+@AllArgsConstructor
 @NoArgsConstructor
-@Setter
 public class OrderListDto {
-    private Long orderCode;
-    private String isbn;
-    private Long orderAmount;
-    private Long orderSum;
+    private Long order_code;
+    private String book_isbn;
+    private Long order_amount;
+    private Long order_sum;
     
     // private LocalDateTime createdDate;
     // private String name;

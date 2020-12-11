@@ -1,5 +1,6 @@
 {{>layout/header}}
 {{>layout/nav}}
+<script src="/js/app/mypage.js"></script>
 <div class="container">
     <div>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cardModal">
@@ -109,7 +110,7 @@
         </table>
     </div>
     <div class="orderList">
-        <table class="table">
+        <table class="table" id="orderList">
             <thead>
                 <tr>
                     <th>주문번호</th>
@@ -122,15 +123,18 @@
             <tbody>
             {{#orderList}}
                 <tr>
-                    <td>{{orderCode}}</td>
+                    <td>{{order_code}}</td>
                     <td></td>
-                    <td></td>
-                    <td>{{orderSum}}</td>
+                    <td>{{book_isbn}}</td>
+                    <td>{{order_sum}}</td>
                     <td></td>
                 </tr>
             {{/orderList}}
             </tbody>
         </table>
+        <script>
+            orderListSet()
+        </script>  
     </div>
 </div>
 <script src="/js/app/users.js"></script>
