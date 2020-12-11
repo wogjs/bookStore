@@ -108,6 +108,30 @@
             </tbody>
         </table>
     </div>
+    <div class="orderList">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>주문번호</th>
+                    <th>주문일자</th>
+                    <th>주문내역</th>
+                    <th>주문금액</th>
+                    <th>주문자</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#orderList}}
+                <tr>
+                    <td>{{orderCode}}</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{orderSum}}</td>
+                    <td></td>
+                </tr>
+            {{/orderList}}
+            </tbody>
+        </table>
+    </div>
 </div>
 <script src="/js/app/users.js"></script>
 {{>layout/footer}}

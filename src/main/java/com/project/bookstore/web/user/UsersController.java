@@ -1,5 +1,6 @@
 package com.project.bookstore.web.user;
 
+import com.project.bookstore.service.orders.OrderService;
 import com.project.bookstore.service.users.AddrService;
 import com.project.bookstore.service.users.CardService;
 import com.project.bookstore.session.UserInfo;
@@ -14,6 +15,7 @@ public class UsersController {
 
     private final AddrService addrService;
     private final CardService cardService;
+    private final OrderService orderService;
     private final UserInfo userInfo;
 
     @GetMapping("/users/signUp")
@@ -31,6 +33,7 @@ public class UsersController {
         model.addAttribute("userid", userInfo.getUserId());
         model.addAttribute("cardInfo", cardService.findCard(userInfo));
         model.addAttribute("addrInfo", addrService.findAddr(userInfo));
+        model.addAttribute("orderList", orderService.listRead());
         return "users/mypage";
     }
 
