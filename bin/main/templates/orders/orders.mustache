@@ -1,0 +1,77 @@
+{{>layout/header}}
+{{>layout/nav}}
+<script src="/js/app/orderList.js"></script>
+<div class="container">
+    <div class="d-flex flex-row">
+        <div class="d-flex flex-column flex-grow-1">상품
+            <div class="p-2">
+                <table class="table" id="books">
+                    <thead>
+                        <tr>
+                            <th>표지</th>
+                            <th>이름</th>
+                            <th>가격</th>
+                            <th>수량</th>
+                            <th>합계</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {{#bookInfo}}
+                        <tr>
+                            <td>{{bookCov}}</td>
+                            <td>{{bookName}}</td>
+                            <td>{{bookPri}}</td>
+                            <td><input name="amount" type="text" value="" disabled style="width:60px; border:none; text-align:center; background-color: #FFF"></td>
+                            <td class="total" id="total">
+                                
+                            </td>
+                        </tr>
+                    {{/bookInfo}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="border border-dark rounded d-flex justify-content-center mt-3">
+                <div class="p-3">
+                    총 상품가격
+                    <em id="productPri" style="font: 700 17px/17px caption;"></em>
+                    원
+                    +
+                    총 배송비
+                    <em id="deliveryPri" style="font: 700 17px/17px caption;">fdsa</em>
+                    원
+                    =
+                    총 가격
+                    <em name="totalPri" style="font: 700 17px/17px caption;"></em>
+                </div>
+            </div>
+            <div>배송주소
+                <select class="custom-select" id="addr">
+                    <option selected value="0">선택해주세요</option>
+                    {{#addrInfo}}
+                        <option value="{{addrCode}}">{{addrName}} / {{addrZip}} / {{addrBas}} {{addrDet}}</option>
+                    {{/addrInfo}}
+                </select>
+            </div>
+            <div>카드
+                <select class="custom-select" id="card">
+                    <option selected value="0">선택해주세요</option>
+                    {{#cardInfo}}
+                        <option value="{{cardNum}}">{{cardNum}} / {{cardVal}}</option>
+                    {{/cardInfo}}
+                </select>
+            </div>
+        </div>
+        <div class="d-flex flex-column">
+            <div>
+                <div name="totalPri">
+                    
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-outline-primary" href="/users/login" id="btn-order"class="btn btn-primary">결제하기</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/app/orders.js"></script>
+{{>layout/footer}}

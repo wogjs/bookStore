@@ -1,0 +1,91 @@
+{{>layout/header}}
+{{>layout/nav}}
+
+
+{{#bookInfo}}
+    <div class="container">
+        {{#master}}
+            <div class="text-right">
+                <button class="btn btn-primary btn-sm flex-fill" onclick="location.href='/books/update/{{isbn}}'">도서 수정</button>
+            </div>
+        {{/master}}
+        <div class="d-flex flex-row justify-content-start">
+            <div class="p-2 bd-highlight" style="width:30%; background-color: beige">
+                {{bookCov}}
+            </div>
+
+            <div class="d-flex flex-column flex-grow-1" style="margin-left: 1%;">
+                <div class="p-2 bd-highlight" >
+                    <div>
+                        {{bookName}}
+                    </div>
+                    <div>
+                        {{bookAut}} 저 | {{#bookTrans}}{{bookTrans}} 옮{{/bookTrans}} | {{bookHouse}} | <span class="day">{{bookDate}}</span>
+                    </div>
+                    <div>
+                        별점
+                    </div>
+                </div>
+                <div class="d-flex flex-row" style="margin-top: 3%; border-top: 1px solid #e3f2fd">
+                    <div class="flex-grow-1" >
+                        <table class="table table-borderless">
+                            <tbody>
+                            <tr>
+                                <td>정가</td>
+                                <td>{{bookPri}}</td>
+                            </tr>
+                            <tr>
+                                <td>판매가</td>
+                                <th id="bkprice">{{bookPri}}</th>
+                            </tr>
+                            <tr>
+                                <td>포인트</td>
+                                <th>X</th>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-left:1%; background-color: #e3f2fd">
+                        <div>
+                            <p>수량 : 
+                                <button class="btn btn-light btn-sm" id="downB" style="background-color: #b3e5fc"><</button>
+                                <input id="amount" type="text" max="{{bookSto}}" value="1" style="width:60px; background-color: #e3f2fd; border:none; text-align:center;">
+                                <button class="btn btn-light btn-sm" id="upB" style="background-color: #b3e5fc">></button>
+                            </p>
+                        </div>
+                        <div id="total">
+                            <span id="value">{{bookPri}}</span>
+                            <span> 원</span>
+                        </div>
+                        <div class="d-flex flex-column">
+                            {{#userid}}
+                                <button class="btn btn-primary btn-sm flex-fill" type="button" id="btn-buy">주문하기</button>
+                            {{/userid}}
+                            {{^userid}}
+                                <button class="btn btn-primary btn-sm flex-fill" type="button" id="btn-nonbuy">주문하기</button>
+                            {{/userid}}
+                            <button class="btn btn-info btn-sm  flex-fill" style="margin-top:1%" id="btn-basket">장바구니</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top:3%">
+        <table class="table">
+            <tr>
+                <td class="table-active" style="width:30%;">ISBN10</td>
+                <td id="isbn">{{isbn}}</td>
+            </tr>
+            <tr>
+                <td class="table-active">출간일</td>
+                <td class="day">{{bookDate}}</td>
+            </tr>
+        </table>
+    </div>
+{{/bookInfo}}
+
+<script src="/js/app/count.js"></script>
+<script src="/js/app/orders.js"></script>
+<script src="/js/app/books.js"></script>
+{{>layout/footer}}

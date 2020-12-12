@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Getter
 @NoArgsConstructor
@@ -15,23 +14,23 @@ public class Cards {
     @Id
     private String cardNum;
 
-    @Column(name = "Users_id")
-    private String usersID;
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private Users users;
 
-    private Date cardPeriod;
+    private String cardPeriod;
     private Long cardCVC;
     private Long cardPW;
     private String cardVal;
 
     @Builder
-    public Cards (String cardNum, String usersID, Date cardPeriod, Long cardCVC, Long cardPW, String cardVal) {
+    public Cards(String cardNum, Users users, String cardPeriod, Long cardCVC, Long cardPW, String cardVal) {
         this.cardNum = cardNum;
-        this.usersID = usersID;
+        this.users = users;
         this.cardPeriod = cardPeriod;
         this.cardCVC = cardCVC;
         this.cardPW = cardPW;
         this.cardVal = cardVal;
     }
-
 
 }

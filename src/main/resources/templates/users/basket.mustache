@@ -1,0 +1,66 @@
+{{>layout/header}}
+{{>layout/nav}}
+<script src="/js/app/basket.js"></script>
+<div class="container">
+    <h1>장바구니</h1>
+    <div class="d-flex flex-column">
+        <div class="d-flex flex-column">
+            <div>
+                <input type="checkbox" name="checkAll" id="checkAll" onClick="checkAll()"> 전체 선택
+            </div>
+            <table class="table table-bordered" name="books" id="books" style="text-align:center">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">가격</th>
+                    <th scope="col">수량</th>
+                    <th scope="col">합계</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{^basInfo}}
+                    <tr>
+                        <td colspan="5" style="text-align:center"><h4>장바구니에 담은 책이 없습니다.</h4></td>                
+                    </tr>
+                {{/basInfo}}
+                {{#basInfo}}
+                    <tr>
+                        <td><input type="checkbox" name="check" id="{{books.isbn}}" onClick="isChecked()"></td>
+                        <td onClick="location.href='/books/bookInfo/{{books.isbn}}'">{{books.bookName}}</td>
+                        <td>{{books.bookPri}}</td>
+                        <td>
+                            <input id="amount" name="amount" type="number" value="{{basAmount}}" min="1" max="{{books.bookSto}}" style="width:40px; border:none; text-align:center;">
+                            <a href="javascript:count_change()" style="font-size:0.7em; color:#c2c2c2">변경</a>
+                        </td>
+                        <td class="total" id="total"></td>
+                    </tr>
+                {{/basInfo}}
+                </tbody>
+            </table>
+            <div>
+                <button type="button" class="btn btn-sm btn-outline-danger" id="delete" onClick="delChecked()">삭제</button>
+            </div>
+        </div>
+        <div class="border border-dark rounded d-flex justify-content-center mt-3">
+            <div class="p-3">
+                총 상품가격
+                <em id="productPri" style="font: 700 17px/17px caption;"></em>
+                원
+                +
+                총 배송비
+                <em id="deliveryPri" style="font: 700 17px/17px caption;">fdsa</em>
+                원
+                =
+                총 가격
+                <em id="totalPri" style="font: 700 17px/17px caption;"></em>
+            </div>
+        </div>
+        <div class="order d-flex flex-row justify-content-center mt-3">
+            <button type="button" class="btn btn-outline-primary mr-3" onClick="location.href='/'">계속 쇼핑하기</button>
+            <button type="button" class="btn btn-primary" onClick="order()">주문하기</button>
+        </div>
+    </div>
+</div>
+
+{{>layout/footer}}

@@ -1,0 +1,30 @@
+<form action="/users/addr/update/{{addrCode}}" method="post">
+    <div class="form-group">
+        <label for="addrNicUp">배송지명</label>
+        <input type="text" class="form-control" id="addrNicUp" value="{{addrNic}}" placeholder="배송지명">
+    </div>
+    <div class="form-group">
+        <label for="addrNameUp">수령인</label>
+        <input type="text" class="form-control" id="addrNameUp" value="{{addrName}}" placeholder="수령인">
+    </div>
+    <div class="form-group">
+        <label for="addrZipUp">우편번호</label>
+        <input type="text" class="form-control" id="addrZipUp" value="{{addrZip}}" placeholder="우편번호">
+    </div>
+    <div class="form-group">
+        <label for="addrBasUp">기본주소</label>
+        <input type="text" class="form-control" id="addrBasUp" value="{{addrBas}}" placeholder="기본주소">
+    </div>
+    <div class="form-group">
+        <label for="addrDetUp">상세주소</label>
+        <input type="text" class="form-control" id="addrDetUp" value="{{addrDet}}" placeholder="상세주소">
+    </div>
+    <div class="form-group">
+        <label for="addrNumUp">연락처</label>
+        <input type="text" class="form-control" id="addrNumUp" value="{{addrNum}}" placeholder="연락처">
+    </div>
+    <div>
+        <label for="addrYNUp">기본배송지</label>
+        <input type="checkbox" class="form-control" id="addrYNUp" name="addrYNUp"> 기본 배송지로 설정
+    </div>
+</form>

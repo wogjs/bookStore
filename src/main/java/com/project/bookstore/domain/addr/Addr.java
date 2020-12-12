@@ -1,13 +1,15 @@
 package com.project.bookstore.domain.addr;
 
+import com.project.bookstore.domain.users.Users;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GeneratorType;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
 public class Addr {
@@ -15,8 +17,10 @@ public class Addr {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long addrCode;
 
-    @Column(name = "Users_id")
-    private String usersID;
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private Users users;
+
     private String addrName;
     private Long addrZip;
     private String addrBas;
@@ -24,12 +28,11 @@ public class Addr {
     private String addrNum;
     private String addrYN;
     private String addrNic;
-    private String secNum;
 
     @Builder
-    public Addr (String usersID, String addrName, Long addrZip,
-                 String addrBas, String addrDet, String addrNum, String addrYN, String addrNic, String secNum){
-        this.usersID = usersID;
+    public Addr(Users users, String addrName, Long addrZip, String addrBas, String addrDet, String addrNum,
+            String addrYN, String addrNic) {
+        this.users = users;
         this.addrName = addrName;
         this.addrZip = addrZip;
         this.addrBas = addrBas;
@@ -37,8 +40,22 @@ public class Addr {
         this.addrNum = addrNum;
         this.addrYN = addrYN;
         this.addrNic = addrNic;
-        this.secNum = secNum;
     }
 
+    public void YNupdate(Long addrCode, String addrYN) {
+        this.addrCode = addrCode;
+        this.addrYN = addrYN;
+    }
+
+    public void update(String addrName, Long addrZip, String addrBas, String addrDet, String addrNum, String addrYN,
+            String addrNic) {
+        this.addrName = addrName;
+        this.addrZip = addrZip;
+        this.addrBas = addrBas;
+        this.addrDet = addrDet;
+        this.addrNum = addrNum;
+        this.addrYN = addrYN;
+        this.addrNic = addrNic;
+    }
 
 }

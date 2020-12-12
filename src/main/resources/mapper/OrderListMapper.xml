@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.bookstore.domain.orderInfo.OrderInfoMapperRepository">
+    <select id="getOrderList" resultType="com.project.bookstore.web.orders.dto.OrderListDto">
+        select o.order_code, o.order_sum, group_concat(b.book_name separator ', ') as book_name, group_concat(oi.order_amount separator ', ')  as order_amount
+        from orders o, order_info oi, books b
+        WHERE o.order_code = oi.order_code AND oi.book_isbn = b.isbn AND o.order_code = #{order_code};
+    </select>
+
+
+</mapper>

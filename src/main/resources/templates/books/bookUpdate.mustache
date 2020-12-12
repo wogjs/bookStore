@@ -1,0 +1,43 @@
+{{>layout/header}}
+{{>layout/nav}}
+{{#bookInfo}}
+<h1>도서 수정</h1>
+<div class="col-md-12">
+    <div class="col-md-4">
+        <form action="/books/bookInsert" method="post">
+            <div class="form-group">
+                <label for="isbn">ISBN</label>
+                <input type="text" class="form-control" id="isbn" value="{{isbn}}" disabled>
+            </div>
+            <div class="form-group">
+                <label for="bookAut"> 저자 </label>
+                <input type="text" class="form-control" id="bookAut" value="{{isbn}}">
+            </div>
+            <div class="form-group">
+                <label for="bookTrans"> 옮긴이 </label>
+                <input type="text" class="form-control" id="bookTrans" value="{{bookTrans}}">
+            </div>
+            <div class="form-group">
+                <label for="bookCov"> 표지 </label>
+                <input type="email" class="form-control" id="bookCov" value="{{bookCov}}">
+            </div>
+            <div class="form-group">
+                <label for="bookPri"> 가격 </label>
+                <input type="text" class="form-control" id="bookPri" value="{{bookPri}}">
+            </div>
+            <div class="form-group">
+                <label for="bookDet"> 상세내용 </label>
+                <input type="textarea" class="form-control" id="bookDet" value="{{bookDet}}">
+            </div>
+            <div class="form-group">
+                <label for="bookSto"> 제고 </label>
+                <input type="textarea" class="form-control" id="bookSto" value="{{bookSto}}">
+            </div>
+        </form>
+        <a href="/books/bookInfo/{{isbn}}" role="button" class="btn btn-secondary">취소</a>
+        <button type="button" class="btn btn-primary" id="btn-update">도서 수정</button>
+    </div>
+</div>
+{{/bookInfo}}
+<script src="/js/app/books.js"></script>
+{{>layout/footer}}

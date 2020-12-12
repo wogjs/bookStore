@@ -1,29 +1,22 @@
 package com.project.bookstore.web.user;
 
-import com.project.bookstore.config.ApiResponse;
-import com.project.bookstore.config.ApiResponse2;
-import com.project.bookstore.service.users.UsersService;
-import com.project.bookstore.web.user.dto.cardDto.CardInsertDto;
+import com.project.bookstore.service.orders.OrderService;
+import com.project.bookstore.service.users.AddrService;
+import com.project.bookstore.service.users.CardService;
+import com.project.bookstore.session.UserInfo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
 public class UsersController {
 
-    private final UsersService usersService;
-
-    @GetMapping("/")
-    public String index() {
-        return "index";
-    }
+    private final AddrService addrService;
+    private final CardService cardService;
+    private final OrderService orderService;
+    private final UserInfo userInfo;
 
     @GetMapping("/users/signUp")
     public String signUp() {
@@ -35,25 +28,33 @@ public class UsersController {
         return "users/signIn";
     }
 
-//    @GetMapping("/users/mypage/{id}")
-//    public String mypage(@PathVariable("id") String users_id, Model model) {
-//        model.addAttribute("userInfo", usersService.findAll(users_id));
-//
-//        return "users/mypage";
-//    }
-
-    @GetMapping("/users/mypage/{id}")
-    public ResponseEntity<?> mypage(@PathVariable("id") String users_ID) {
-//        model.addAttribute("userInfo", usersService.findAll(users_id));
-        ApiResponse2 result = null;
-        try{
-            result = new ApiResponse2(true, "성공", usersService.findById(users_ID), usersService.findCard(users_ID), usersService.findAddr(users_ID));
-            return ResponseEntity.ok().body(result);
-        } catch (Exception e) {
-            e.printStackTrace();
-            result = new ApiResponse2(false, e.getMessage(), null,null, null);
-            return  ResponseEntity.badRequest().body(result);
-        }
+    @GetMapping("/users/mypage")
+    public String mypage(Model model) {
+        model.addAttribute("userid", userInfo.getUserId());
+        model.addAttribute("cardInfo", cardService.findCard(userInfo));
+        model.addAttribute("addrInfo", addrService.findAddr(userInfo));
+        model.addAttribute("orderList", orderService.listRead());
+        return "users/mypage";
     }
+
+    @GetMapping("/users/addr")
+    public String addr() {
+        return "users/addr";
+    }
+
+    // @GetMapping("/users/mypage/{id}")
+    // public ResponseEntity<?> mypage() {
+    //// model.addAttribute("userInfo", usersService.findAll(users_id));
+    // ApiResponse2 result = null;
+    // try{
+    // result = new ApiResponse2(true, "성공", usersService.findUsers(userInfo),
+    // cardService.findCard(userInfo), addrService.findAddr(userInfo));
+    // return ResponseEntity.ok().body(result);
+    // } catch (Exception e) {
+    // e.printStackTrace();
+    // result = new ApiResponse2(false, e.getMessage(), null,null, null);
+    // return ResponseEntity.badRequest().body(result);
+    // }
+    // }
 
 }
