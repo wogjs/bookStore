@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OrderListDto {
     private Long order_code;
-    private String book_isbn;
-    private Long order_amount;
+    private String book_name;
+    private String order_amount;
     private Long order_sum;
     
     // private LocalDateTime createdDate;

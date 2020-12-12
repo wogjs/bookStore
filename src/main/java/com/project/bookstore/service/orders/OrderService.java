@@ -53,9 +53,7 @@ public class OrderService {
         for (int i =0; i < orders.size(); i++) {
             List<OrderListDto> listDto = mapperRepository.getOrderList(orders.get(i).getOrderCode());
             
-            for (OrderListDto orderListDto2 : listDto) {
-                orderListDto.add(orderListDto2);
-            }
+            orderListDto.add(listDto.get(0));
         }
         return orderListDto;
     }
