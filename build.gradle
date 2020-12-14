@@ -54,7 +54,7 @@ dependencies {
 	// MySQL
 	runtimeOnly 'com.h2database:h2'											// 인메모리 관계형 디비
 //	compile 'mysql:mysql-connector-java'
-	compile('org.springframework.session:spring-session-jdbc')  // 세션 저장소를 데이터베이스 jdbc를 사용하는 의존성 추가
+//	compile('org.springframework.session:spring-session-jdbc')  // 세션 저장소를 데이터베이스 jdbc를 사용하는 의존성 추가
 	runtimeOnly 'mysql:mysql-connector-java'
 
 	annotationProcessor 'org.projectlombok:lombok'
