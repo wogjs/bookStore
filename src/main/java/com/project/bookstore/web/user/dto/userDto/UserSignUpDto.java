@@ -5,6 +5,7 @@ import com.project.bookstore.domain.users.Users;
 import lombok.*;
 
 @Getter
+@Setter
 @NoArgsConstructor
 public class UserSignUpDto {
     private String id;
