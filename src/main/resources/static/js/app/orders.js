@@ -60,7 +60,7 @@ var main = {
         var data = {
             addrCode: $("#addr option:selected").val(),
             cardNum: $("#card option:selected").val(),
-            orderSum: document.getElementById("totalPri").innerHTML * 1
+            orderSum: document.getElementById("total").innerHTML * 1
         };
 
         let orderUrl = window.location.pathname;
