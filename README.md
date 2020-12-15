@@ -15,7 +15,6 @@ Springboot와 Mustache, Jpa, MyBatis를 이용한 온라인 서점 개발
     + JavaScript
 * Databse
     + Mysql
-    + AWS RDS
 * ORM Framework
     + JPA
     + MyBatis
