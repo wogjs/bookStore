@@ -18,7 +18,7 @@ public class UsersController {
     private final OrderService orderService;
     private final UserInfo userInfo;
 
-    @GetMapping("/users/signUp")
+    @GetMapping("/users/signup")
     public String signUp() {
         return "users/SignUp";
     }
