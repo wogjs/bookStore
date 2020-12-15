@@ -20,7 +20,7 @@ public class UsersController {
 
     @GetMapping("/users/signup")
     public String signUp() {
-        return "users/Signup";
+        return "users/signup";
     }
 
     @GetMapping("/users/login")
