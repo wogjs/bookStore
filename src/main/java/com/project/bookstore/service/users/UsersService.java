@@ -1,6 +1,7 @@
 
 package com.project.bookstore.service.users;
 
+import com.project.bookstore.config.PasswordEncoding;
 import com.project.bookstore.domain.users.Users;
 import com.project.bookstore.domain.users.UsersRepository;
 import com.project.bookstore.session.UserInfo;
@@ -8,6 +9,7 @@ import com.project.bookstore.web.user.dto.userDto.UserSignInDto;
 import com.project.bookstore.web.user.dto.userDto.UserSignUpDto;
 import com.project.bookstore.web.user.dto.userDto.UserUpdateDto;
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,9 +19,12 @@ public class UsersService {
 
     private final UsersRepository usersRepository;
 
+    PasswordEncoding passwordEncoding = new PasswordEncoding();
+
     // 회원가입
     @Transactional
     public String save(UserSignUpDto requestDto) {
+        requestDto.setPw(passwordEncoding.encode(requestDto.getPw()));
         return usersRepository.save(requestDto.toEntity()).getId();
     }
 
@@ -32,7 +37,9 @@ public class UsersService {
     // 로그인
     @Transactional
     public Boolean signIn(UserSignInDto signInDto) {
-        return usersRepository.getOne(signInDto.getId()).getPw().equals(signInDto.getPw());
+        String pw = usersRepository.getOne(signInDto.getId()).getPw();
+        String bodyPw = signInDto.getPw();
+        return passwordEncoding.matches(bodyPw, pw);
     }
 
     // 개인 정보 변경
