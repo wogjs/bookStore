@@ -2,8 +2,7 @@
 SpringBoot, JPA 개인공부 toy Project
 
 ## 프로젝트 
-Springboot와 Mustache, Jpa, MyBatis를 이용한 온라인 서점 개발
-개발 진행중
+Springboot와 Mustache, Jpa, MyBatis를 이용한 온라인 서점 개발 진행중
 
 
 ## 사용기술 :sunny:
