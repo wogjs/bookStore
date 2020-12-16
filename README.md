@@ -16,4 +16,5 @@ Springboot와 Mustache, Jpa, MyBatis를 이용한 온라인 서점 개발 진행
     + Mysql
 * ORM Framework
     + JPA
+* Persistence Framework
     + MyBatis
