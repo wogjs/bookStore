@@ -40,7 +40,6 @@ deploy:
     
     bucket: springboot-bookstore
     key: springboot-bookstore.zip
-
     bundle_type: zip
     application: springboot-bookstore
 
