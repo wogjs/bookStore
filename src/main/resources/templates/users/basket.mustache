@@ -28,12 +28,12 @@
                     <tr>
                         <td><input type="checkbox" name="check" id="{{books.isbn}}" onClick="isChecked()"></td>
                         <td onClick="location.href='/books/bookInfo/{{books.isbn}}'">{{books.bookName}}</td>
-                        <td>{{books.bookPri}}</td>
+                        <td name="money">{{books.bookPri}}</td>
                         <td>
                             <input id="amount" name="amount" type="number" value="{{basAmount}}" min="1" max="{{books.bookSto}}" style="width:40px; border:none; text-align:center;">
                             <a href="javascript:count_change()" style="font-size:0.7em; color:#c2c2c2">변경</a>
                         </td>
-                        <td class="total" id="total"></td>
+                        <td class="total" id="total" name="money"></td>
                     </tr>
                 {{/basInfo}}
                 </tbody>
@@ -45,15 +45,13 @@
         <div class="border border-dark rounded d-flex justify-content-center mt-3">
             <div class="p-3">
                 총 상품가격
-                <em id="productPri" style="font: 700 17px/17px caption;"></em>
-                원
+                <em id="productPri" name="money" style="font: 700 17px/17px caption;"></em>
                 +
                 총 배송비
-                <em id="deliveryPri" style="font: 700 17px/17px caption;">fdsa</em>
-                원
+                <em id="deliveryPri" name="money" style="font: 700 17px/17px caption;"></em>
                 =
                 총 가격
-                <em id="totalPri" style="font: 700 17px/17px caption;"></em>
+                <em id="totalPri" name="money" style="font: 700 17px/17px caption;"></em>
             </div>
         </div>
         <div class="order d-flex flex-row justify-content-center mt-3">

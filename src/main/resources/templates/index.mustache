@@ -1,11 +1,12 @@
 {{>layout/header}}
 {{>layout/nav}}
 <div class="container">
-    <h1>메인 ver.2</h1>
-    {{#master}}
-        <a class="btn btn-outline-primary" href="/books/bookInsert"  class="btn btn-primary">도서등록</a>
-    {{/master}}
-    <table class="table">
+    <div class="d-flex flex-row justify-content-end">
+        {{#master}}
+            <a class="btn btn-outline-primary" href="/books/bookInsert"  class="btn btn-primary">도서등록</a>
+        {{/master}}
+    </div>
+    <table class="table text-align-center mt-3" style="text-align:center">
         <thead>
         <tr>
             <th scope="col">ISBN</th>
@@ -18,10 +19,16 @@
             <tr onclick="location.href='/books/bookInfo/{{isbn}}'">
                 <td>{{isbn}}</td>
                 <td>{{bookName}}</td>
-                <td>{{bookPri}}</td>
+                <td name="money">{{bookPri}}</td>
             </tr>
         {{/bookInfo}}
         </tbody>
     </table>
 </div>
+<script>
+    let money = document.getElementsByName("money");
+    Array.from(money).forEach((item,index) => {
+        item.innerHTML = item.innerHTML.replace(/\B(?=(\d{3})+(?!\d))/g, ",")+"원";
+    })
+</script>
 {{>layout/footer}}

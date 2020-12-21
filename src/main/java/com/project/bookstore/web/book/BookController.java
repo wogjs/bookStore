@@ -41,7 +41,8 @@ public class BookController {
     }
 
     @GetMapping("/books/bookInsert")
-    public String booksInsert() {
+    public String booksInsert(Model model) {
+        model.addAttribute("userid", userInfo.getUserId());
         return "books/bookInsert";
     }
 

@@ -3,9 +3,12 @@
 <script src="/js/app/mypage.js"></script>
 <div class="container">
     <div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cardModal">
-            카드 추가
-        </button>
+        <div class="d-flex flex-row justify-content-between">
+            <h4>카드 정보</h4>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cardModal">
+                카드 추가
+            </button>
+        </div>
         <div class="modal fade" id="cardModal" tabindex="-1" role="dialog" aria-labelledby="cardModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -26,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <table class="table">
+        <table class="table table-hover mt-3 text-center">
             <thead>
             <tr>
                 <th scope="col">카드 번호</th>
@@ -36,6 +39,11 @@
             </tr>
             </thead>
             <tbody>
+            {{^cardInfo}}
+                <tr>
+                    <td colspan="4"><h4>등록된 카드가 없습니다.</h4></td>
+                </tr>
+            {{/cardInfo}}
             {{#cardInfo}}
                 <tr>
                     <td>{{cardNum}}</td>
@@ -52,7 +60,10 @@
         </table>
     </div>
     <div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addrModal">배송지 추가</button>
+        <div class="d-flex flex-row justify-content-between">
+            <h4>배송지 정보</h4>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addrModal">배송지 추가</button>
+        </div>
         <div class="modal fade" id="addrModal" tabindex="-1" role="dialog" aria-labelledby="addrModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -73,9 +84,9 @@
                 </div>
             </div>
         </div>
-        <table class="table">
+        <table class="table table-hover mt-3">
             <thead>
-            <tr>
+            <tr class="text-center">
                 <th scope="col">배송지</th>
                 <th scope="col">주소</th>
                 <th scope="col">연락처</th>
@@ -83,8 +94,13 @@
             </tr>
             </thead>
             <tbody>
+            {{^addrInfo}}
+                <tr class="text-center">
+                    <td colspan="4"><h4>등록된 주소지가 없습니다.</h4></td>
+                </tr>
+            {{/addrInfo}}
             {{#addrInfo}}
-                <tr>
+                <tr >
                     <td>
                         {{addrNic}}<br>
                         {{addrName}}<br>
@@ -99,7 +115,7 @@
                     <td>
                         {{addrNum}}
                     </td>
-                    <td>
+                    <td class="text-center">
                         <form method="post" action="/users/addr/delete/{{addrCode}}" >
                             <input type="submit" class="btn btn-danger" value="삭제"/>
                         </form>
@@ -109,8 +125,8 @@
             </tbody>
         </table>
     </div>
-    <div class="orderList">
-        <table class="table" id="orderList" style="text-align:center">
+    <div class="orderList mt-5">
+        <table class="table table-hover text-center" id="orderList">
             <thead>
                 <tr>
                     <th>주문번호</th>
@@ -121,6 +137,11 @@
                 </tr>
             </thead>
             <tbody>
+            {{^orderList}}
+                <tr>
+                    <td colspan="5"><h4>구매내역이 없습니다.</h4></td>
+                </tr>
+            {{/orderList}}
             {{#orderList}}
                 <tr>
                     <td>{{order_code}}</td>
