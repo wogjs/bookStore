@@ -50,28 +50,4 @@ public class BookApiController {
             return ResponseEntity.badRequest().body(result);
         }
     }
-
-    @ApiOperation(value = "도서 검색")
-    @PostMapping("/bookSearch")
-    public ResponseEntity<?> bookSearch(@RequestParam("searchWhat") String searchWhat, @RequestParam("searchKey") String searchKey) {
-        ApiResponse result = null;
-        System.out.println(searchWhat);
-        try{
-            if (searchWhat.equals("bookName")) {
-                result = new ApiResponse(true, "성공", booksService.bookName(searchKey));
-                return ResponseEntity.ok().body(result);
-            } else if (searchWhat.equals("bookAuthor")) {
-                result = new ApiResponse(true, "성공", booksService.bookAuthor(searchKey));
-                return ResponseEntity.ok().body(result);
-            } else {
-                result = new ApiResponse(false, "실패", null);
-                return ResponseEntity.badRequest().body(result);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            result = new ApiResponse(false, e.getMessage(), null);
-            return ResponseEntity.badRequest().body(result);
-        }
-    }
-
 }

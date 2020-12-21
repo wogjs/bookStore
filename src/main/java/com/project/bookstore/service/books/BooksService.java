@@ -49,14 +49,17 @@ public class BooksService {
     // 책 이름으로 검색
     @Transactional
     public List<BookListDto> bookName(String searchKey) {
-        return booksRepository.findByBookNameContaining(searchKey).stream().map(BookListDto::new)
+        System.out.println("서비스에 들어왔나");
+        return booksRepository.findByBookNameIgnoreCaseContaining(searchKey).stream()
+                .map(BookListDto::new)
                 .collect(Collectors.toList());
     }
 
     // 책 저자로 검색
     @Transactional
     public List<BookListDto> bookAuthor(String searchKey) {
-        return booksRepository.findByBookAutContaining(searchKey).stream().map(BookListDto::new)
+        return booksRepository.findByBookAutIgnoreCaseContaining(searchKey).stream()
+                .map(BookListDto::new)
                 .collect(Collectors.toList());
     }
 

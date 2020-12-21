@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RequiredArgsConstructor
 @Controller
@@ -23,6 +24,19 @@ public class BookController {
         }
         model.addAttribute("userid", userInfo.getUserId());
         model.addAttribute("bookInfo", booksService.findAll());
+        return "index";
+    }
+
+    @GetMapping("/bookSearch")
+    public String bookSearch(@RequestParam("searchWhat") String searchWhat, @RequestParam("searchKey") String searchKey, Model model) {
+        System.out.println("드렁왔는가");
+        System.out.println(searchWhat);
+        System.out.println(searchKey);
+        if (searchWhat.equals("bookName")) {
+            model.addAttribute("bookInfo", booksService.bookName(searchKey));
+        } else if (searchWhat.equals("bookAuthor")) {
+            model.addAttribute("bookInfo", booksService.bookAuthor(searchKey));
+        } 
         return "index";
     }
 

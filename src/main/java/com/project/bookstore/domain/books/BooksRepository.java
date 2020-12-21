@@ -12,8 +12,8 @@ public interface BooksRepository extends JpaRepository<Books, String> {
 
     // 도서 검색
     // Like문 정리 || Like "A" || Contaning "%A%" || StartingWith "A%" || EndingWith "%A"
-    List<Books> findByBookNameContaining(String bookName);
+    List<Books> findByBookNameIgnoreCaseContaining(String bookName);
 
-    List<Books> findByBookAutContaining(String bookAut);
+    List<Books> findByBookAutIgnoreCaseContaining(String bookAut);
 
 }
