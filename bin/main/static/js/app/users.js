@@ -24,15 +24,27 @@ var main = {
         
     },
     save : function () {
+        let number = document.getElementsByName("num");
+        let sex = document.getElementsByName("sex");
+
+        number = number[0].value + number[1].value + number[2].value;
+        if(!sex[0].checked && !sex[1].checked){
+            alert('성별을 체크해주세요');
+            return null;
+        } else if(sex[0].checked) {
+            sex = sex[0].value;
+        } else{
+            sex = sex[1].value;
+        }
+
         var data = {
             id: $('#id').val(),
             pw: $('#pw').val(),
             name: $('#name').val(),
-            sex: $('#sex').val(),
-            num: $('#num').val(),
+            sex: sex,
+            num: number,
             mail: $('#mail').val(),
-            nic_Name: $('#nic_Name').val()
-
+            nicName: $('#nic_Name').val()
         };
 
         $.ajax({

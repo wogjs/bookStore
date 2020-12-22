@@ -1,5 +1,7 @@
 package com.project.bookstore.web.orders.dto;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,8 +14,7 @@ public class OrderListDto {
     private String book_name;
     private String order_amount;
     private Long order_sum;
-    
-    // private LocalDateTime createdDate;
+    private LocalDateTime created_date;
     // private String name;
     
 }

@@ -5,6 +5,10 @@ var main = {
         $('#btn-save').on('click', function() {
             _this.save();
         });
+
+        $('#btn-search').on('click', function () {
+            _this.search();
+        })
     },
 
     save : function() {
@@ -34,6 +38,25 @@ var main = {
             console.log(error);
             alert(JSON.stringify(error));
         });
+    },
+
+    search : function() {
+        var what = $("#searchWhat option:selected").val();
+
+        console.log(what);
+
+        var data = {
+            searchWhat: what,
+            searchKey: $('#searchKey').val()
+        };
+        
+        if(what == "no") {
+            alert("검색방법을 선택해주세요");
+            return null;
+        } else{
+            window.location.href="/bookSearch?searchWhat="+data.searchWhat+"&searchKey="+data.searchKey;
+        }
+
     }
 
 };

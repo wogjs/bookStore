@@ -32,11 +32,11 @@
                             <tbody>
                             <tr>
                                 <td>정가</td>
-                                <td>{{bookPri}}</td>
+                                <td name="money">{{bookPri}}</td>
                             </tr>
                             <tr>
                                 <td>판매가</td>
-                                <th id="bkprice">{{bookPri}}</th>
+                                <th id="bkprice" name="money">{{bookPri}}</th>
                             </tr>
                             <tr>
                                 <td>포인트</td>
@@ -54,8 +54,7 @@
                             </p>
                         </div>
                         <div id="total">
-                            <span id="value">{{bookPri}}</span>
-                            <span> 원</span>
+                            <span id="value" name="money">{{bookPri}}</span>
                         </div>
                         <div class="d-flex flex-column">
                             {{#userid}}
@@ -84,8 +83,12 @@
         </table>
     </div>
 {{/bookInfo}}
-
+<script>
+    let money = document.getElementsByName("money");
+    Array.from(money).forEach((item,index) => {
+        item.innerHTML = item.innerHTML.replace(/\B(?=(\d{3})+(?!\d))/g, ",")+"원";
+    })
+</script>
 <script src="/js/app/count.js"></script>
 <script src="/js/app/orders.js"></script>
-<script src="/js/app/books.js"></script>
 {{>layout/footer}}

@@ -1,8 +1,8 @@
 {{>layout/header}}
 {{>layout/nav}}
-<h1>도서 등록</h1>
-<div class="col-md-12">
-    <div class="col-md-4">
+<div class="container">
+<h3>도서 등록</h3>
+    <div class="mt-5 ml-5" style="width:50%;">
         <form action="/books/bookInsert" method="post">
             <div class="form-group">
                 <label for="isbn">ISBN</label>
@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label for="bookDate"> 출간일 </label>
-                <input type="text" class="form-control" id="bookDate" placeholder="출간일을 입력하세요">
+                <input type="date" class="form-control" id="bookDate" placeholder="출간일을 입력하세요">
             </div>
             <div class="form-group">
                 <label for="bookHouse"> 출판사 </label>
@@ -49,5 +49,4 @@
         <button type="button" class="btn btn-primary" id="btn-save">도서 등록</button>
     </div>
 </div>
-<script src="/js/app/books.js"></script>
 {{>layout/footer}}
