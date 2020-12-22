@@ -24,6 +24,24 @@ public class ProfileControllerUnitTest {
     }
 
     @Test
+    public void real_profile이_없으면_첫_번째가_조회() {
+        //given
+        String expectedProfile = "real-db";
+        MockEnvironment env = new MockEnvironment();
+
+        env.addActiveProfile(expectedProfile);
+        env.addActiveProfile("real-db");
+
+        ProfileController controller = new ProfileController(env);
+
+        //when
+        String profile = controller.profile();
+
+        //then
+        assertThat(profile).isEqualTo(expectedProfile);
+    }
+
+    @Test
     public void active_profile이_없으면_default가_조회() {
         //given
         String expectedProfile = "default";
