@@ -7,14 +7,14 @@ function find_idle_profile()
     # 현재 엔진엑스가 바라보고 있는 스프링부트가 정상적으로 수행 중인지 확인
     # 응답값을 HttpStatus로 받음
 
-    if [ ${RESPONSE_CODE} -ge 400 ] # 400 보다 크면 40x/50x에러 모두 포함
+    if [ `${RESPONSE_CODE}` -ge 400 ] # 400 보다 크면 40x/50x에러 모두 포함
     then
         CURRENT_PROFILE=real2
     else
         CURRENT_PROFILE=$(curl -s http://localhost/profile)
     fi
 
-    if [ ${CURRENT_PROFILE} == real1 ]
+    if [ `${CURRENT_PROFILE}` == real1 ]
     then
         IDLE_PROFILE=real2
     else
@@ -30,7 +30,7 @@ function find_idle_profile()
 function find_idle_port() {
     IDLE_PROFILE=$(find_idle_profile)
 
-    if [ ${IDLE_PROFILE} == real1 ]
+    if [ `${IDLE_PROFILE}` == real1 ]
     then
         echo "8081"
     else
