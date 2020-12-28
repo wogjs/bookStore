@@ -37,7 +37,7 @@ public class BookController {
         } else if (searchWhat.equals("bookAuthor")) {
             model.addAttribute("bookInfo", booksService.bookAuthor(searchKey));
         } 
-        return "index";
+        return "search";
     }
 
     @GetMapping("/books/bookInsert")

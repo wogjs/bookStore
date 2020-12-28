@@ -6,24 +6,18 @@
             <a class="btn btn-outline-primary" href="/books/bookInsert"  class="btn btn-primary">도서등록</a>
         {{/master}}
     </div>
-    <table class="table text-align-center mt-3" style="text-align:center">
-        <thead>
-        <tr>
-            <th scope="col">ISBN</th>
-            <th scope="col">도서 명</th>
-            <th scope="col">가격</th>
-        </tr>
-        </thead>
-        <tbody>
+    <div class="d-flex flex-row flex-wrap justify-content-around align-content-around">
         {{#bookInfo}}
-            <tr onclick="location.href='/books/bookInfo/{{isbn}}'">
-                <td>{{isbn}}</td>
-                <td>{{bookName}}</td>
-                <td name="money">{{bookPri}}</td>
-            </tr>
+            <div class="card mt-5" style="width: 20rem">
+                <div class="card-body">
+                    <p class="text-center" style="font-size:5px; text-align:center;">[{{bookGen}}]</p>
+                    <h5 class="card-title text-center">{{bookName}}</h5>
+                    <p class="card-text text-right" name="money">가격 : {{bookPri}}</p>
+                    <a href="/books/bookInfo/{{isbn}}" class="btn btn-outline-secondary btn-sm float-right">상세보기</a>
+                </div>
+            </div>
         {{/bookInfo}}
-        </tbody>
-    </table>
+    </div>
 </div>
 <script>
     let money = document.getElementsByName("money");
