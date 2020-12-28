@@ -1,5 +1,5 @@
 # SpringBoot, JPA, Mybatis, Mustache를 이용한 온라인 서점 개발 :kr:
-SpringBoot, JPA 개인공부용 Toy Project
+SpringBoot, JPA 개인공부용 Toy Project [![Build Status](https://travis-ci.org/wogjs/bookstore.svg?branch=master)](https://travis-ci.org/wogjs/bookstore)
 
 ## 프로젝트 
 Spring과 AWS를 이용해서 온라인 서점 배포를 목적으로 개발시작
