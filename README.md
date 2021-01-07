@@ -14,7 +14,7 @@ CI는 Travis CI를 이용하였으며 AWS의 S3와 CodeDeploy를 사용
 
 CD의 경우 Nginx를 사용
 
-서점 주소 : http://bookstore.wogjs.xyz/
+서점 주소 : http://bookstore.jaeheon.xyz/
 
 ## 사용기술 :sunny:
 * SpringFramework
